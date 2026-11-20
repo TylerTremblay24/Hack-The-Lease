@@ -180,7 +180,14 @@ export interface Elimination {
     | "leaseMax" | "leaseShort" | "parking" | "noise" | "grocery" | "lateWalk" | "place";
   text: string; // human-readable, with distance to feasibility
   gap?: number; // e.g. $/mo over cap, min/week over limit
+  placeId?: string; // for code "place": which of the student's places
 }
+
+/** What the UI can do to make a tipping point real. Price tipping points have none (that is the landlord's move). */
+export type TippingAction =
+  | { type: "cap"; to: number } // raise the hard cap to this
+  | { type: "swap"; tier: number } // swap priority tiers `tier` and `tier + 1`
+  | { type: "relax"; code: Elimination["code"]; placeId?: string }; // drop one must-have
 
 export interface ListingEvaluation {
   listingId: string;
@@ -203,6 +210,7 @@ export interface TippingPoint {
   listingId: string;
   text: string; // ready-to-render sentence
   amount?: number; // $ for price, n/a otherwise
+  apply?: TippingAction;
 }
 
 export interface DecisionResult {

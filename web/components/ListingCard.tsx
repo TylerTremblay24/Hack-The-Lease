@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import type { Listing, ListingEvaluation, UserPlace } from "@/lib/types";
 import { AcceptabilityBar } from "./AcceptabilityBar";
 
-type Props = { listing: Listing; ev: ListingEvaluation; rank: number; prevFirst?: number | null; cap: number; places?: UserPlace[] };
+type Props = { listing: Listing; ev: ListingEvaluation; rank: number; prevFirst?: number | null; cap: number; places?: UserPlace[]; pinned?: boolean; canPin?: boolean; onPin?: () => void };
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
-export function ListingCard({ listing: l, ev, rank, prevFirst, cap, places = [] }: Props) {
+export function ListingCard({ listing: l, ev, rank, prevFirst, cap, places = [], pinned = false, canPin = true, onPin }: Props) {
   const c = ev.cost.effective;
   const lo = Math.max(0, Math.min(c.lo, cap * 0.8)), hi = Math.max(c.hi, cap * 1.05);
   const pos = (x: number) => `${((x - lo) / (hi - lo)) * 100}%`;
@@ -16,6 +16,12 @@ export function ListingCard({ listing: l, ev, rank, prevFirst, cap, places = [] 
         <span className="font-semibold text-slate-100">{l.name}</span>
         <span className="text-sm text-slate-500">· {l.neighborhood}</span>
         <span className="ml-auto rounded bg-slate-800 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-slate-400">SYNTHETIC LISTING</span>
+        {onPin && (
+          <button onClick={onPin} disabled={!pinned && !canPin} title={!pinned && !canPin ? "Unpin one first (3 max)" : undefined}
+            className={`rounded border px-2 py-0.5 text-xs ${pinned ? "border-emerald-500 bg-emerald-500/15 text-emerald-200" : "border-slate-700 text-slate-400 hover:text-slate-200"} disabled:opacity-40`}>
+            {pinned ? "Pinned" : "Compare"}
+          </button>
+        )}
       </div>
       <AcceptabilityBar shares={ev.rankAcceptability} prevFirst={prevFirst} />
       <div className="mt-3 text-sm">

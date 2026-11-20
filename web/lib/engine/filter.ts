@@ -42,7 +42,7 @@ export function eliminationReasons(l: Listing, p: StudentProfile, cost: CostBrea
     const lim = h.placeMaxWalkMin?.[pl.id];
     if (lim == null) continue;
     const w = walkMinToPlace(l, pl);
-    if (w > lim) why.push({ code: "place", gap: w - lim, text: `${Math.round(w)}-min walk to ${pl.name} (your limit is ${lim})` });
+    if (w > lim) why.push({ code: "place", placeId: pl.id, gap: w - lim, text: `${Math.round(w)}-min walk to ${pl.name} (your limit is ${lim})` });
   }
   if (h.petFriendly && !l.petFriendly) why.push({ code: "pets", text: "No pets allowed" });
   if (h.furnished && !l.furnished) why.push({ code: "furnished", text: "Unfurnished" });

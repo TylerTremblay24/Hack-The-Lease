@@ -3,23 +3,32 @@ import { useMemo, useState } from "react";
 import { ASSUMPTIONS, LISTINGS, PERSONAS, PLACES } from "@/lib/seed";
 import { useDecision } from "@/lib/useDecision";
 import { criterionLabel } from "@/lib/engine/explain";
-import type { CriterionId, HardConstraints, StudentProfile, UserPlace } from "@/lib/types";
+import type { AnchorId, CriterionId, HardConstraints, ScheduleAnchor, StudentProfile, TippingPoint, UserPlace } from "@/lib/types";
+import { applyTipping } from "@/lib/applyTipping";
 import { PriorityChips } from "@/components/PriorityChips";
 import { ChangeStrip, VERDICT } from "@/components/ChangeStrip";
 import { ListingCard } from "@/components/ListingCard";
 import { TippingPoints } from "@/components/TippingPoints";
 import { RangeSlider } from "@/components/RangeSlider";
 import { MyPlaces } from "@/components/MyPlaces";
+import { RhythmEditor, type Rhythm } from "@/components/RhythmEditor";
+import { CompareView } from "@/components/CompareView";
 
 interface State {
-  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[];
+  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[]; rhythm: Rhythm;
   rules: HardConstraints; dataU: boolean;
 }
+const ANCHORS: AnchorId[] = ["central", "north", "kerrytown", "medical", "downtown"];
+const rhythmOf = (p: StudentProfile): Rhythm =>
+  Object.fromEntries(ANCHORS.map((a) => {
+    const f = p.anchors.find((x) => x.anchor === a);
+    return [a, { days: f?.daysPerWeek ?? 0, late: f?.lateReturn ?? false }];
+  })) as Rhythm;
 const init = (persona: number): State => {
   const p = PERSONAS[persona];
   return {
     persona, tiers: p.priorities, budget: [p.budget.targetMonthly, p.budget.capMonthly], months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
-    hasCar: p.hasCar, places: [], rules: { ...p.hardConstraints }, dataU: true,
+    hasCar: p.hasCar, places: [], rhythm: rhythmOf(p), rules: { ...p.hardConstraints }, dataU: true,
   };
 };
 const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
@@ -52,6 +61,7 @@ export default function Decide() {
   const [s, setS] = useState<State>(init(0));
   const [history, setHistory] = useState<State[]>([]);
   const [what, setWhat] = useState<string | null>(null);
+  const [pinned, setPinned] = useState<string[]>([]);
 
   const base = PERSONAS[s.persona];
   const profile: StudentProfile = useMemo(() => {
@@ -65,6 +75,9 @@ export default function Decide() {
       monthsNeeded: mid(s.months),
       monthsRange: s.months,
       occupantsRange: s.occupants,
+      anchors: ANCHORS.filter((a) => s.rhythm[a].days > 0).map((a): ScheduleAnchor => ({
+        anchor: a, daysPerWeek: s.rhythm[a].days, lateReturn: s.rhythm[a].late, label: base.anchors.find((x) => x.anchor === a)?.label,
+      })),
       hasCar: s.hasCar,
       places: s.places,
       hardConstraints: hc,
@@ -107,6 +120,13 @@ export default function Decide() {
     rule({ placeMaxWalkMin: Object.keys(limits).length ? limits : undefined }, v ? `${pl.name} must be within ${v} min.` : `${pl.name} no longer limited.`);
   };
 
+  function applyTip(tp: TippingPoint) {
+    if (!tp.apply) return;
+    const { patch, label } = applyTipping({ tiers: s.tiers, budget: s.budget, rules: s.rules, hasCar: s.hasCar, places: s.places }, tp.apply);
+    edit(patch as Partial<State>, label);
+  }
+  const togglePin = (id: string) => setPinned((p) => (p.includes(id) ? p.filter((x) => x !== id) : p.length < 3 ? [...p, id] : p));
+
   const listing = (id: string) => LISTINGS.find((l) => l.id === id)!;
   const feasible = result.evaluations.filter((e) => e.feasible);
   const out = result.evaluations.filter((e) => !e.feasible);
@@ -122,7 +142,7 @@ export default function Decide() {
           <section>
             <h2 className="mb-2 text-sm font-semibold text-slate-100">Demo persona (synthetic)</h2>
             <select className={`${sel} w-full`} value={s.persona}
-              onChange={(e) => { setS(init(Number(e.target.value))); setHistory([]); setWhat(null); }}>
+              onChange={(e) => { setS(init(Number(e.target.value))); setHistory([]); setWhat(null); setPinned([]); }}>
               {PERSONAS.map((p, i) => <option key={i} value={i}>{p.displayName}</option>)}
             </select>
           </section>
@@ -130,6 +150,9 @@ export default function Decide() {
           <section>
             <PriorityChips tiers={s.tiers} places={s.places} onChange={(t, note) => edit({ tiers: t }, note)} />
           </section>
+
+          <RhythmEditor rhythm={s.rhythm} notes={Object.fromEntries(base.anchors.filter((a) => a.label).map((a) => [a.anchor, a.label]))}
+            onChange={(id, next, label) => edit({ rhythm: { ...s.rhythm, [id]: next } }, label)} />
 
           <MyPlaces all={PLACES} chosen={s.places} onAdd={addPlace} onRemove={removePlace} />
 
@@ -175,9 +198,13 @@ export default function Decide() {
             <span className="rounded bg-emerald-500 px-2 py-0.5 text-xs font-bold text-slate-950">{VERDICT[result.verdict]}</span>
             <span className="text-xs text-slate-500">±{(result.monteCarloSE * 100).toFixed(0)} pt · {result.samples.toLocaleString()} draws</span>
           </div>
+          <CompareView
+            cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
+            result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
           {feasible.length === 0 && <p className={`${card} text-sm`}>Nothing fits all your rules. Loosen one below to see what comes back.</p>}
           {feasible.map((e, i) => (
-            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.budget[1]} places={s.places} />
+            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.budget[1]} places={s.places}
+              pinned={pinned.includes(e.listingId)} canPin={pinned.length < 3} onPin={() => togglePin(e.listingId)} />
           ))}
           {out.length > 0 && (
             <details className={`${card} text-sm`} open={feasible.length === 0}>
@@ -207,7 +234,7 @@ export default function Decide() {
               <p className="text-xs text-slate-500">Green favors #1; red favors #2.</p>
             </section>
           )}
-          <TippingPoints result={result} places={s.places} />
+          <TippingPoints result={result} places={s.places} onApply={applyTip} />
         </aside>
       </div>
     </div>

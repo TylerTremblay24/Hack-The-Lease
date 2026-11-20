@@ -1,5 +1,5 @@
 "use client";
-import type { CriterionId, DecisionResult, UserPlace } from "@/lib/types";
+import type { CriterionId, DecisionResult, TippingPoint, UserPlace } from "@/lib/types";
 import { criterionLabel } from "@/lib/engine/explain";
 
 const KIND: Record<string, { label: string; color: string }> = {
@@ -8,7 +8,7 @@ const KIND: Record<string, { label: string; color: string }> = {
   constraint: { label: "RULE", color: "bg-amber-500/20 text-amber-300" },
 };
 
-export function TippingPoints({ result, places = [] }: { result: DecisionResult; places?: UserPlace[] }) {
+export function TippingPoints({ result, places = [], onApply }: { result: DecisionResult; places?: UserPlace[]; onApply?: (t: TippingPoint) => void }) {
   const w = (Object.entries(result.weightsROC) as [CriterionId, number][]).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
   return (
     <section>
@@ -18,6 +18,12 @@ export function TippingPoints({ result, places = [] }: { result: DecisionResult;
         {result.tippingPoints.map((t, i) => (
           <li key={i} className="rounded-md border border-slate-800 bg-slate-900 p-2 text-xs text-slate-300">
             <span className={`mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold ${KIND[t.kind].color}`}>{KIND[t.kind].label}</span>{t.text}
+            {t.apply && onApply && (
+              <button onClick={() => onApply(t)} className="ml-2 rounded border border-emerald-600 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-300 hover:bg-emerald-500/10">
+                Apply
+              </button>
+            )}
+            {t.kind === "price" && <span className="ml-2 text-[10px] text-slate-500">a rent negotiation, not a setting</span>}
           </li>
         ))}
       </ul>

@@ -155,6 +155,7 @@ export function decide(
       if (best && best.l.id !== leader.l.id)
         tipping.push({
           kind: "swap",
+          apply: { type: "swap", tier: t },
           listingId: best.l.id,
           text: `If ${tierNames(tiers[t + 1], profile.places)} mattered more than ${tierNames(tiers[t], profile.places)}, ${best.l.name} would be #1.`,
         });
@@ -171,6 +172,7 @@ export function decide(
       if (s2 > lead2)
         tipping.push({
           kind: "constraint",
+          apply: r.code === "cap" ? { type: "cap", to: Math.ceil(b.cost.effective.mid) } : { type: "relax", code: r.code, placeId: r.placeId },
           listingId: e.listingId,
           amount: r.code === "cap" ? Math.ceil(r.gap ?? 0) : undefined,
           text:

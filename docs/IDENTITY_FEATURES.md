@@ -24,14 +24,16 @@ Status: DONE, NEXT (build this round), PLANNED.
 | 1 | Priority chip bank, 12 base criteria, ties | Drags chips into a ranked list | ROC weights and SMAA rank acceptability | DONE |
 | 2 | Must-have rules | Ticks hard rules | Listings that fail are out; near misses become tipping points | DONE |
 | 3 | Range inputs (budget, months, people) | Drags two thumbs | Keeps every listing that fits anywhere in the range | DONE |
-| 4 | **My places** | Picks restaurants, cafes, gym, study spots they actually use | Each place becomes a chip "Near [place]" scored by walking time, plus an optional "within N min" must-have | NEXT |
-| 5 | Weekly rhythm | Sets days on campus, late nights, where | Drives commute and late-walk scores (already in the engine, needs a UI) | NEXT |
+| 4 | **My places** | Picks restaurants, cafes, gym, study spots they actually use | Each place becomes a chip "Near [place]" scored by walking time, plus an optional "within N min" must-have | DONE |
+| 5 | Weekly rhythm ("My week") | Sets days per week at each campus area and which days run late | Drives commute and late-walk scores | DONE |
 | 6 | Getting-around style | Chooses walk, bike, bus, car, in any mix | Changes which travel time counts and adds a bike-friendliness chip | PLANNED |
 | 7 | Home habits | Cooks at home, hosts friends, studies at home, night owl or early bird | Adds chips for kitchen and grocery access, space for hosting, quiet hours; maps to noise tolerance | PLANNED |
 | 8 | Needs, not identities | Ticks access needs such as ground floor, elevator, step-free entry | Hard rules with the same near-miss tipping points | PLANNED |
 | 9 | Roommates | Each roommate ranks chips on their own; the group is merged | SMAA with several decision makers; shows where the group agrees and the exact point where they split | PLANNED |
 | 10 | Your story card | Sees "why this fits you" with the student's own words quoted | Pulls verbatim evidence from the free-text parse (Claude parses at the edges only) | PLANNED |
-| 11 | Compare and share | Pins two or three listings, exports a one-page summary | Side-by-side values, tipping points, sources | PLANNED |
+| 11 | Compare | Pins up to three listings | Side-by-side values with the best in each row highlighted, what each is strongest on, and what would flip it | DONE |
+| 11b | Click-to-apply tipping points | Clicks Apply on "raise your cap", "swap these priorities" or "drop this rule" | The page applies the change, the change strip shows what moved, and Undo reverts it | DONE |
+| 11c | Export a one-page summary | Saves the compare view | Printable summary with sources | PLANNED |
 | 12 | Paste a listing or lease | Pastes text, reviews extracted fields | Claude extracts, the student confirms, fees and utilities flow into true cost | PLANNED |
 
 ## My places (feature 4) in detail
