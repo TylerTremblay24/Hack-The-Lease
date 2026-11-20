@@ -12,8 +12,8 @@ when they sleep, who they live with, and what they would never give up.
 2. **The student's order drives everything.** New inputs become chips in the same bank, with the same ranking,
    uncertainty and tipping points. Nothing is hidden inside a score.
 3. **Local by default.** Chosen places and routines stay in the browser. The one exception is a custom place the
-   student asks Claude to look up: only that short description (160 characters) is sent, only when they click
-   "Look up", and nothing is stored.
+   student looks up: only that short description (160 characters) is sent to OpenStreetMap (free, no account), only
+   when they click "Look up", and nothing is stored.
 4. **Every number is checkable.** Each feature says its formula, its anchors and its data provenance (REAL,
    ESTIMATE, SYNTHETIC, USER).
 
@@ -51,12 +51,13 @@ Status: DONE, NEXT (build this round), PLANNED.
   shows up as a rule tipping point.
 - **Provenance.** Place coordinates are approximate and listing coordinates are synthetic, so walking times are
   labeled ESTIMATE in the UI. Real geocoding and routing are a later step.
-- **Custom places.** The student types something like "Panera on State St". The API asks Claude, with a forced tool call
-  and a strict schema, for the name, type and approximate location. Locations outside Ann Arbor or with low
-  confidence are discarded and the student picks the nearest landmark instead. The student always confirms before it
-  becomes a chip, and it is labeled CLAUDE ESTIMATE. If the API is down, the built-in places or manual entry still work.
-- **Privacy.** Built-in places stay in the browser. For a custom place only the short description is sent, when the
-  student clicks "Look up". Nothing is stored.
+- **Custom places.** The student types something like "Panera on State St". By default the browser searches
+  OpenStreetMap (Photon, then Nominatim as a fallback), free with no key or credits, limited to an Ann Arbor box, and
+  shows up to 5 matches. The student picks one, confirms the name and type, and it becomes a chip labeled OSM.
+  Optional: set `NEXT_PUBLIC_USE_CLAUDE_LOOKUP=1` to use the Claude API path instead (needs credits; labeled CLAUDE
+  ESTIMATE). If lookup is unreachable, the built-in places or manual entry still work.
+- **Privacy.** Built-in places stay in the browser. For a custom place only the short description is sent to
+  OpenStreetMap, when the student clicks "Look up". Nothing is stored by us.
 
 ## Demo story this enables
 

@@ -13,7 +13,7 @@ text at the edges (a place description, a pasted listing). It never ranks anythi
 
 ## Run it
 
-Requires Node 18+ (Python 3.10+ only for the optional API).
+Requires Node 18+ (Python 3.10+ only for the optional API). Custom "My places" lookup is free: it uses OpenStreetMap from the browser, no API key or credits. The Claude API is optional (`NEXT_PUBLIC_USE_CLAUDE_LOOKUP=1`).
 
 ```bash
 npm run setup          # installs web dependencies (from the repo root)

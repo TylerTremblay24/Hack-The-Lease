@@ -2,6 +2,10 @@
 import { useState } from "react";
 import type { PlaceCategory, UserPlace } from "@/lib/types";
 import { lookupPlace, type PlaceLookup } from "@/lib/api";
+import { searchPlaces, type Candidate } from "@/lib/geocode";
+
+// Free OpenStreetMap lookup is the default. Set NEXT_PUBLIC_USE_CLAUDE_LOOKUP=1 to use the Claude API instead.
+const USE_CLAUDE = process.env.NEXT_PUBLIC_USE_CLAUDE_LOOKUP === "1";
 
 const CATS: { id: PlaceCategory; label: string }[] = [
   { id: "food", label: "Food" },
@@ -20,7 +24,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(
 /** A draft place the student is confirming before it becomes a chip. */
 interface Draft {
   name: string; category: PlaceCategory; lat: number | null; lng: number | null; note: string;
-  source: "claude" | "list" | "manual"; snapTo: string; message: string;
+  source: "claude" | "list" | "manual" | "osm"; snapTo: string; message: string;
 }
 
 /** Pick the places you actually go to, or describe your own. Each one becomes a "Near ..." chip in the bank. */
@@ -30,6 +34,7 @@ export function MyPlaces({ all, chosen, onAdd, onRemove }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [draft, setDraft] = useState<Draft | null>(null);
+  const [cands, setCands] = useState<Candidate[] | null>(null);
   const ids = new Set(chosen.map((p) => p.id));
   const options = all.filter((p) => p.category === cat && !ids.has(p.id));
 
@@ -37,10 +42,21 @@ export function MyPlaces({ all, chosen, onAdd, onRemove }: Props) {
     setDraft({ name: text.trim(), category: "food", lat: null, lng: null, note: "", source: "manual", snapTo: "", message });
   }
 
+  function pick(c: Candidate) {
+    setCands(null);
+    setDraft({ name: c.name, category: c.category, lat: c.lat, lng: c.lng, note: c.address, source: "osm", snapTo: "", message: "From OpenStreetMap. Check the name and type look right." });
+  }
+
   async function find() {
     if (text.trim().length < 2) return;
-    setBusy(true); setError(""); setDraft(null);
+    setBusy(true); setError(""); setDraft(null); setCands(null);
     try {
+      if (!USE_CLAUDE) {
+        const list = await searchPlaces(text.trim());
+        if (list.length === 0) setError("No match near Ann Arbor. Try the street name, or enter it by hand.");
+        else setCands(list);
+        return;
+      }
       const r: PlaceLookup = await lookupPlace(text.trim());
       const d = r.data;
       setDraft({
@@ -64,7 +80,7 @@ export function MyPlaces({ all, chosen, onAdd, onRemove }: Props) {
     while (taken.has(id)) id = `${slug(draft.name)}-${n++}`;
     onAdd({
       id, name: draft.name.trim(), category: draft.category, coords,
-      source: snapped ? "manual" : draft.source === "list" ? "list" : draft.source,
+      source: snapped ? "manual" : draft.source,
       note: snapped ? `near ${snapped.name}` : draft.note || undefined,
     });
     setDraft(null); setText(""); setError("");
@@ -99,9 +115,20 @@ export function MyPlaces({ all, chosen, onAdd, onRemove }: Props) {
           <button onClick={find} disabled={busy || text.trim().length < 2}
             className="shrink-0 rounded bg-emerald-500 px-2.5 py-1 text-xs font-semibold text-slate-950 disabled:opacity-40">{busy ? "Looking..." : "Look up"}</button>
         </div>
-        <p className="text-[11px] text-slate-500">"Look up" sends only this short text to Claude to find the name and location. Nothing else leaves your browser.</p>
+        <p className="text-[11px] text-slate-500">{USE_CLAUDE ? "\"Look up\" sends only this short text to Claude to find the name and location. Nothing else leaves your browser." : "\"Look up\" sends only this short text to OpenStreetMap (free, no account) to find the name and location. Nothing else leaves your browser."}</p>
         {error && <p className="text-xs text-amber-300">{error} <button className="underline" onClick={() => manual()}>Enter it by hand</button></p>}
-        {!draft && !error && <button className="text-[11px] text-slate-500 underline hover:text-slate-300" onClick={() => manual()}>Enter by hand instead</button>}
+        {cands && (
+          <div className="space-y-1">
+            <div className="text-[11px] text-slate-400">Pick the right one:</div>
+            {cands.map((c, i) => (
+              <button key={i} onClick={() => pick(c)} className="block w-full rounded border border-slate-700 bg-slate-800 px-2 py-1 text-left text-xs text-slate-200 hover:border-emerald-500">
+                {c.name}<span className="ml-1.5 text-slate-500">{c.address}</span>
+              </button>
+            ))}
+            <button className="text-[11px] text-slate-500 underline" onClick={() => { setCands(null); manual(); }}>None of these. Enter it by hand</button>
+          </div>
+        )}
+        {!draft && !error && !cands && <button className="text-[11px] text-slate-500 underline hover:text-slate-300" onClick={() => manual()}>Enter by hand instead</button>}
       </div>
 
       {draft && (
@@ -133,7 +160,7 @@ export function MyPlaces({ all, chosen, onAdd, onRemove }: Props) {
         <div className="space-y-1 border-t border-slate-800 pt-2">
           {chosen.map((p) => (
             <div key={p.id} className="flex items-center justify-between text-xs text-slate-300">
-              <span>{p.name}{p.source === "claude" && <span className="ml-1.5 rounded bg-sky-500/20 px-1 text-[10px] text-sky-300">CLAUDE ESTIMATE</span>}{p.source === "manual" && <span className="ml-1.5 rounded bg-slate-700 px-1 text-[10px] text-slate-300">USER</span>}</span>
+              <span>{p.name}{p.source === "claude" && <span className="ml-1.5 rounded bg-sky-500/20 px-1 text-[10px] text-sky-300">CLAUDE ESTIMATE</span>}{p.source === "osm" && <span className="ml-1.5 rounded bg-teal-500/20 px-1 text-[10px] text-teal-300">OSM</span>}{p.source === "manual" && <span className="ml-1.5 rounded bg-slate-700 px-1 text-[10px] text-slate-300">USER</span>}</span>
               <button onClick={() => onRemove(p)} className="text-slate-500 hover:text-rose-400" aria-label={`Remove ${p.name}`}>×</button>
             </div>
           ))}

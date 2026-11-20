@@ -74,7 +74,7 @@ class UserPlace(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     category: PlaceCategory
     coords: Coords
-    source: Optional[Literal["list", "claude", "manual"]] = None
+    source: Optional[Literal["list", "claude", "manual", "osm"]] = None
     note: Optional[str] = Field(default=None, max_length=120)
 
 

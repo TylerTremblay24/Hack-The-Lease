@@ -31,7 +31,7 @@ export interface UserPlace {
   name: string;
   category: PlaceCategory;
   coords: { lat: number; lng: number }; // approximate
-  source?: "list" | "claude" | "manual"; // where the location came from
+  source?: "list" | "claude" | "manual" | "osm"; // where the location came from
   note?: string; // e.g. "State St near Liberty"
 }
 export type PlaceCriterionId = `place:${string}`;

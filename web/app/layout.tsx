@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">ESTIMATE</span>costs, travel and walking times are ranges we modeled.{" "}
           <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">USER</span>something you entered.{" "}
           <span className="mr-1 rounded bg-sky-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-sky-300">CLAUDE ESTIMATE</span>a place location Claude proposed and you confirmed.
+          <span className="mx-1 rounded bg-teal-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-teal-300">OSM</span>a place found on OpenStreetMap and confirmed by you.
         </footer>
       </body>
     </html>
