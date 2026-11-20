@@ -1,7 +1,7 @@
 // Hard constraints. Every elimination says how far the listing is from passing,
 // so near-misses can become "constraint" tipping points.
 import type { CostBreakdown, Elimination, Listing, StudentProfile } from "../types";
-import { weeklyCommute } from "./criteria";
+import { weeklyCommute, worstLateTrip } from "./criteria";
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
@@ -22,6 +22,19 @@ export function eliminationReasons(l: Listing, p: StudentProfile, cost: CostBrea
     if (w > h.maxWeeklyCommuteMin)
       why.push({ code: "commute", gap: w - h.maxWeeklyCommuteMin, text: `${Math.round(w - h.maxWeeklyCommuteMin)} min/week over your commute limit` });
   }
+  if (h.laundryAtLeast && l.laundry === "none")
+    why.push({ code: "laundryMin", text: "No laundry on site (you need some)" });
+  if (h.parkingRequired && !l.parking.available)
+    why.push({ code: "parking", text: "No parking offered (you marked it required)" });
+  if (h.maxNoise != null && l.noiseLevel > h.maxNoise)
+    why.push({ code: "noise", text: `Noise level ${l.noiseLevel}/5 (you want ${h.maxNoise} or quieter)` });
+  if (h.maxGroceryWalkMin != null && l.groceryWalkMin > h.maxGroceryWalkMin)
+    why.push({ code: "grocery", gap: l.groceryWalkMin - h.maxGroceryWalkMin, text: `${l.groceryWalkMin}-min walk to groceries (your limit is ${h.maxGroceryWalkMin})` });
+  if (h.maxLateWalkMin != null) {
+    const w = worstLateTrip(l, p);
+    if (w > h.maxLateWalkMin)
+      why.push({ code: "lateWalk", gap: w - h.maxLateWalkMin, text: `${w}-min walk home late at night (your limit is ${h.maxLateWalkMin})` });
+  }
   if (h.petFriendly && !l.petFriendly) why.push({ code: "pets", text: "No pets allowed" });
   if (h.furnished && !l.furnished) why.push({ code: "furnished", text: "Unfurnished" });
   if (h.maxLeaseMonths != null && l.leaseMonths > h.maxLeaseMonths)
@@ -35,5 +48,5 @@ export function isNearMiss(reasons: Elimination[], capMonthly: number): boolean 
   if (reasons.length !== 1) return false;
   const r = reasons[0];
   if (r.code === "cap") return (r.gap ?? Infinity) <= 0.1 * capMonthly;
-  return r.code === "laundry" || r.code === "commute" || r.code === "furnished" || r.code === "leaseMax";
+  return ["laundry", "laundryMin", "commute", "furnished", "leaseMax", "parking", "noise", "grocery", "lateWalk"].includes(r.code);
 }

@@ -17,7 +17,12 @@ export type CriterionId =
   | "laundry" // in-unit > in-building > none
   | "space" // sq ft per person
   | "quiet" // listing noise level (synthetic for the demo)
-  | "grocery"; // walk minutes to the nearest full grocery store
+  | "grocery" // walk minutes to the nearest full grocery store
+  | "bathroom" // bathrooms per person
+  | "furnished"
+  | "pets" // pet-friendly building
+  | "parking" // a parking spot is offered
+  | "leaseFit"; // lease length vs. months you actually need (fewer unused months = better)
 
 export const ALL_CRITERIA: CriterionId[] = [
   "cost",
@@ -27,6 +32,11 @@ export const ALL_CRITERIA: CriterionId[] = [
   "space",
   "quiet",
   "grocery",
+  "bathroom",
+  "furnished",
+  "pets",
+  "parking",
+  "leaseFit",
 ];
 
 /** Preset destinations. No home address is ever collected. */
@@ -52,6 +62,11 @@ export interface HardConstraints {
   petFriendly?: boolean;
   furnished?: boolean;
   maxLeaseMonths?: number;
+  laundryAtLeast?: "in_building"; // some laundry on site (in-unit or in-building)
+  parkingRequired?: boolean;
+  maxNoise?: number; // noise level 1-5; e.g. 2 = quiet buildings only
+  maxGroceryWalkMin?: number;
+  maxLateWalkMin?: number; // worst walk home on late days
 }
 
 export interface StudentProfile {
@@ -141,7 +156,9 @@ export interface CostBreakdown {
 }
 
 export interface Elimination {
-  code: "bedrooms" | "cap" | "laundry" | "commute" | "pets" | "furnished" | "leaseMax" | "leaseShort";
+  code:
+    | "bedrooms" | "cap" | "laundry" | "laundryMin" | "commute" | "pets" | "furnished"
+    | "leaseMax" | "leaseShort" | "parking" | "noise" | "grocery" | "lateWalk";
   text: string; // human-readable, with distance to feasibility
   gap?: number; // e.g. $/mo over cap, min/week over limit
 }

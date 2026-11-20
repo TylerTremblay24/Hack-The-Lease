@@ -10,7 +10,34 @@ export const CRITERION_LABEL: Record<CriterionId, string> = {
   space: "Space per person",
   quiet: "Quiet",
   grocery: "Grocery access",
+  bathroom: "Bathrooms per person",
+  furnished: "Furnished",
+  pets: "Pet-friendly",
+  parking: "Parking available",
+  leaseFit: "Lease fits my stay",
 };
+
+export const CRITERION_BLURB: Record<CriterionId, string> = {
+  cost: "Rent + bills + fees, per person, for the months you live there",
+  commute: "Door-to-door minutes for your own week",
+  lateNight: "Walk home after about 11 PM",
+  laundry: "In-unit beats in-building beats none",
+  space: "Square feet for each person",
+  quiet: "Lower noise level in and around the building",
+  grocery: "Walk to a full grocery store",
+  bathroom: "Less waiting for the shower",
+  furnished: "Move in with the basics already there",
+  pets: "The building allows pets",
+  parking: "A spot is offered with the unit",
+  leaseFit: "Fewer months you pay for but don't use",
+};
+
+export const CRITERION_GROUPS: { title: string; ids: CriterionId[] }[] = [
+  { title: "Money", ids: ["cost", "leaseFit"] },
+  { title: "Time and travel", ids: ["commute", "lateNight", "grocery", "parking"] },
+  { title: "Space and comfort", ids: ["space", "bathroom", "quiet", "laundry"] },
+  { title: "Lifestyle", ids: ["furnished", "pets"] },
+];
 
 export function pointScore(v: Record<CriterionId, number>, w: Partial<Record<CriterionId, number>>): number {
   let u = 0;

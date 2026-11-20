@@ -3,7 +3,10 @@ anything Claude returns outside the schema is rejected, so demographic fields ca
 from typing import Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-Criterion = Literal["cost", "commute", "lateNight", "laundry", "space", "quiet", "grocery"]
+Criterion = Literal[
+    "cost", "commute", "lateNight", "laundry", "space", "quiet", "grocery",
+    "bathroom", "furnished", "pets", "parking", "leaseFit",
+]
 Anchor = Literal["central", "north", "kerrytown", "medical", "downtown"]
 Strict = ConfigDict(extra="forbid")
 
@@ -29,6 +32,11 @@ class HardConstraints(BaseModel):
     petFriendly: Optional[bool] = None
     furnished: Optional[bool] = None
     maxLeaseMonths: Optional[int] = Field(default=None, ge=1, le=24)
+    laundryAtLeast: Optional[Literal["in_building"]] = None
+    parkingRequired: Optional[bool] = None
+    maxNoise: Optional[int] = Field(default=None, ge=1, le=5)
+    maxGroceryWalkMin: Optional[int] = Field(default=None, ge=0, le=120)
+    maxLateWalkMin: Optional[int] = Field(default=None, ge=0, le=120)
 
 
 class Budget(BaseModel):

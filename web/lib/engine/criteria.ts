@@ -42,6 +42,11 @@ export function rawValues(l: Listing, p: StudentProfile, x: RawInputs): Record<C
     space: l.sqft / Math.max(1, p.household.occupants),
     quiet: l.noiseLevel,
     grocery: l.groceryWalkMin,
+    bathroom: l.bathrooms / Math.max(1, p.household.occupants),
+    furnished: l.furnished ? 1 : 0,
+    pets: l.petFriendly ? 1 : 0,
+    parking: l.parking.available ? 1 : 0,
+    leaseFit: Math.max(0, l.leaseMonths - p.monthsNeeded), // months paid but unused
   };
 }
 
@@ -71,5 +76,12 @@ export function toValues(
     quiet: clamp01((5 - raw.quiet) / 4),
     // 1 at <= 5 min walk, 0 at >= 25 min.
     grocery: clamp01(1 - (raw.grocery - A.groceryBest) / (A.groceryWorst - A.groceryBest)),
+    // 0 at half a bathroom per person, 1 at one or more.
+    bathroom: clamp01((raw.bathroom - 0.5) / 0.5),
+    furnished: raw.furnished,
+    pets: raw.pets,
+    parking: raw.parking,
+    // 1 when the lease matches your stay, 0 at 6+ unused months.
+    leaseFit: clamp01(1 - raw.leaseFit / 6),
   };
 }

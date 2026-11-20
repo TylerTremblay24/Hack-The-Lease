@@ -8,7 +8,7 @@ Rules:
 - Every priority, constraint, budget figure and schedule item MUST have an evidence entry whose quote is
   copied VERBATIM from the student's text (an exact substring, 3-25 words).
 - priorities: tiers of criteria, most important first; put criteria in the same tier only if the student
-  gives no basis to order them. Criteria: cost, commute, lateNight, laundry, space, quiet, grocery.
+  gives no basis to order them. Criteria: cost, commute, lateNight, laundry, space, quiet, grocery, bathroom, furnished, pets, parking, leaseFit.
   Past bad experiences ("my old place was above a bar") count as strong evidence for a criterion.
 - anchors: map places to central (Diag, UgLi/Shapiro, Hatcher, Ross, Central Campus classes),
   north (North Campus, Pierpont, Duderstadt, BBB, EECS, GG Brown), kerrytown (Kerrytown, Zingerman's),
