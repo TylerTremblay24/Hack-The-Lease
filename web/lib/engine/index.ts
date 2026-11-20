@@ -11,7 +11,7 @@ import type {
 import { costFor } from "./cost";
 import { rawValues, toValues } from "./criteria";
 import { eliminationReasons, isNearMiss } from "./filter";
-import { bisect, CRITERION_LABEL, dominates, pointScore, tierNames, whyDeltas } from "./explain";
+import { bisect, dominates, pointScore, tierNames, whyDeltas } from "./explain";
 import { hashString, triangular, u01 } from "./rng";
 import { confidenceFactor, flattenTiers, rocWeights, runSmaa, SEED } from "./smaa";
 
@@ -30,7 +30,11 @@ export function decide(
 ): DecisionResult {
   const samples = opts.samples ?? 5000;
   const dataUncertainty = opts.dataUncertainty ?? true;
-  const tiers = profile.priorities.filter((t) => t.length > 0);
+  // Drop place chips whose place is gone, so a stale id can never produce NaN scores.
+  const known = new Set((profile.places ?? []).map((p) => `place:${p.id}`));
+  const tiers = profile.priorities
+    .map((t) => t.filter((c) => !c.startsWith("place:") || known.has(c)))
+    .filter((t) => t.length > 0);
   const criteria = flattenTiers(tiers);
   const wROC = rocWeights(tiers);
 
@@ -152,7 +156,7 @@ export function decide(
         tipping.push({
           kind: "swap",
           listingId: best.l.id,
-          text: `If ${tierNames(tiers[t + 1])} mattered more than ${tierNames(tiers[t])}, ${best.l.name} would be #1.`,
+          text: `If ${tierNames(tiers[t + 1], profile.places)} mattered more than ${tierNames(tiers[t], profile.places)}, ${best.l.name} would be #1.`,
         });
     }
     // constraint: near-miss eliminations that would otherwise outscore the leader.
@@ -180,7 +184,7 @@ export function decide(
   const vOf = (id: string) => base.find((b) => b.l.id === id)!.value;
   return {
     weightsROC: Object.fromEntries(
-      (Object.keys(CRITERION_LABEL) as CriterionId[]).map((c) => [c, wROC[c] ?? 0]),
+      Object.entries(wROC).map(([c, w]) => [c, w ?? 0]),
     ) as Record<CriterionId, number>,
     evaluations: [...ranked, ...eliminated],
     winnerId: winner?.listingId ?? null,

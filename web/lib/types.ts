@@ -10,7 +10,7 @@ export interface Range {
   hi: number;
 }
 
-export type CriterionId =
+export type BaseCriterionId =
   | "cost" // effective monthly cost per person
   | "commute" // weekly door-to-door minutes for the student's schedule
   | "lateNight" // worst late-night trip home (walking)
@@ -24,7 +24,19 @@ export type CriterionId =
   | "parking" // a parking spot is offered
   | "leaseFit"; // lease length vs. months you actually need (fewer unused months = better)
 
-export const ALL_CRITERIA: CriterionId[] = [
+/** A place the student picked (their own words, nothing demographic). Chip id is `place:<id>`. */
+export type PlaceCategory = "food" | "coffee" | "gym" | "study" | "market";
+export interface UserPlace {
+  id: string;
+  name: string;
+  category: PlaceCategory;
+  coords: { lat: number; lng: number }; // approximate
+}
+export type PlaceCriterionId = `place:${string}`;
+export type CriterionId = BaseCriterionId | PlaceCriterionId;
+export const placeCriterion = (p: UserPlace): PlaceCriterionId => `place:${p.id}`;
+
+export const ALL_CRITERIA: BaseCriterionId[] = [
   "cost",
   "commute",
   "lateNight",
@@ -67,6 +79,8 @@ export interface HardConstraints {
   maxNoise?: number; // noise level 1-5; e.g. 2 = quiet buildings only
   maxGroceryWalkMin?: number;
   maxLateWalkMin?: number; // worst walk home on late days
+  /** Per-place walking limit in minutes, keyed by place id. */
+  placeMaxWalkMin?: Record<string, number>;
 }
 
 export interface StudentProfile {
@@ -78,6 +92,7 @@ export interface StudentProfile {
   monthsNeeded: number; // months the student will actually live there (used for scoring)
   /** Optional [min, max] ranges when the student isn't sure. A listing is kept if it works for
    *  at least one value in the range; scoring uses monthsNeeded / household.occupants (the midpoint). */
+  places?: UserPlace[]; // the student's own places; each can be a priority chip
   monthsRange?: [number, number];
   occupantsRange?: [number, number];
   hasCar: boolean;
@@ -162,7 +177,7 @@ export interface CostBreakdown {
 export interface Elimination {
   code:
     | "bedrooms" | "cap" | "laundry" | "laundryMin" | "commute" | "pets" | "furnished"
-    | "leaseMax" | "leaseShort" | "parking" | "noise" | "grocery" | "lateWalk";
+    | "leaseMax" | "leaseShort" | "parking" | "noise" | "grocery" | "lateWalk" | "place";
   text: string; // human-readable, with distance to feasibility
   gap?: number; // e.g. $/mo over cap, min/week over limit
 }

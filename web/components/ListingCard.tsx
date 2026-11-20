@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import type { Listing, ListingEvaluation } from "@/lib/types";
+import type { Listing, ListingEvaluation, UserPlace } from "@/lib/types";
 import { AcceptabilityBar } from "./AcceptabilityBar";
 
-type Props = { listing: Listing; ev: ListingEvaluation; rank: number; prevFirst?: number | null; cap: number };
+type Props = { listing: Listing; ev: ListingEvaluation; rank: number; prevFirst?: number | null; cap: number; places?: UserPlace[] };
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
-export function ListingCard({ listing: l, ev, rank, prevFirst, cap }: Props) {
+export function ListingCard({ listing: l, ev, rank, prevFirst, cap, places = [] }: Props) {
   const c = ev.cost.effective;
   const lo = Math.max(0, Math.min(c.lo, cap * 0.8)), hi = Math.max(c.hi, cap * 1.05);
   const pos = (x: number) => `${((x - lo) / (hi - lo)) * 100}%`;
@@ -30,6 +30,11 @@ export function ListingCard({ listing: l, ev, rank, prevFirst, cap }: Props) {
         {l.laundry === "in_unit" ? "In-unit laundry" : l.laundry === "in_building" ? "Laundry in building" : "No laundry"} · {l.bedrooms} BR · {l.leaseMonths}-month lease · {Math.round(ev.raw.commute)} min/week commute
         {ev.confidence != null && <> · confidence {Math.round(ev.confidence * 100)}%</>}
       </div>
+      {places.length > 0 && (
+        <div className="mt-1 flex flex-wrap gap-x-3 text-xs text-sky-300">
+          {places.map((p) => <span key={p.id}>{Math.round(ev.raw[`place:${p.id}`])} min to {p.name}</span>)}
+        </div>
+      )}
     </motion.div>
   );
 }

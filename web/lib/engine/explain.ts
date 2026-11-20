@@ -1,8 +1,8 @@
 // Explanations: point scores at ROC weights, Pareto dominance, why-#1 deltas,
 // and counterfactual tipping points. Every output is a sentence a judge can check.
-import type { CriterionId } from "../types";
+import type { CriterionId, UserPlace } from "../types";
 
-export const CRITERION_LABEL: Record<CriterionId, string> = {
+export const CRITERION_LABEL: Record<string, string> = {
   cost: "True monthly cost",
   commute: "Weekly commute",
   lateNight: "Late-night trip home",
@@ -17,7 +17,7 @@ export const CRITERION_LABEL: Record<CriterionId, string> = {
   leaseFit: "Lease fits my stay",
 };
 
-export const CRITERION_BLURB: Record<CriterionId, string> = {
+export const CRITERION_BLURB: Record<string, string> = {
   cost: "Rent + bills + fees, per person, for the months you live there",
   commute: "Door-to-door minutes for your own week",
   lateNight: "Walk home after about 11 PM",
@@ -38,6 +38,18 @@ export const CRITERION_GROUPS: { title: string; ids: CriterionId[] }[] = [
   { title: "Space and comfort", ids: ["space", "bathroom", "quiet", "laundry"] },
   { title: "Lifestyle", ids: ["furnished", "pets"] },
 ];
+
+/** Label for any chip, including "Near <place>" chips built from the student's places. */
+export function criterionLabel(c: CriterionId, places: UserPlace[] = []): string {
+  if (c.startsWith("place:")) {
+    const pl = places.find((p) => `place:${p.id}` === c);
+    return pl ? `Near ${pl.name}` : "Near a place";
+  }
+  return CRITERION_LABEL[c];
+}
+export function criterionBlurb(c: CriterionId): string {
+  return c.startsWith("place:") ? "Shorter walk to a place you picked" : CRITERION_BLURB[c];
+}
 
 export function pointScore(v: Record<CriterionId, number>, w: Partial<Record<CriterionId, number>>): number {
   let u = 0;
@@ -79,4 +91,4 @@ export function bisect(f: (x: number) => boolean, lo: number, hi: number, iters 
   return hi;
 }
 
-export const tierNames = (tier: CriterionId[]) => tier.map((c) => CRITERION_LABEL[c]).join(" + ");
+export const tierNames = (tier: CriterionId[], places: UserPlace[] = []) => tier.map((c) => criterionLabel(c, places)).join(" + ");

@@ -1,24 +1,25 @@
 "use client";
 import { useMemo, useState } from "react";
-import { ASSUMPTIONS, LISTINGS, PERSONAS } from "@/lib/seed";
+import { ASSUMPTIONS, LISTINGS, PERSONAS, PLACES } from "@/lib/seed";
 import { useDecision } from "@/lib/useDecision";
-import { CRITERION_LABEL } from "@/lib/engine/explain";
-import type { CriterionId, HardConstraints, StudentProfile } from "@/lib/types";
+import { criterionLabel } from "@/lib/engine/explain";
+import type { CriterionId, HardConstraints, StudentProfile, UserPlace } from "@/lib/types";
 import { PriorityChips } from "@/components/PriorityChips";
 import { ChangeStrip, VERDICT } from "@/components/ChangeStrip";
 import { ListingCard } from "@/components/ListingCard";
 import { TippingPoints } from "@/components/TippingPoints";
 import { RangeSlider } from "@/components/RangeSlider";
+import { MyPlaces } from "@/components/MyPlaces";
 
 interface State {
-  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean;
+  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[];
   rules: HardConstraints; dataU: boolean;
 }
 const init = (persona: number): State => {
   const p = PERSONAS[persona];
   return {
     persona, tiers: p.priorities, budget: [p.budget.targetMonthly, p.budget.capMonthly], months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
-    hasCar: p.hasCar, rules: { ...p.hardConstraints }, dataU: true,
+    hasCar: p.hasCar, places: [], rules: { ...p.hardConstraints }, dataU: true,
   };
 };
 const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
@@ -65,6 +66,7 @@ export default function Decide() {
       monthsRange: s.months,
       occupantsRange: s.occupants,
       hasCar: s.hasCar,
+      places: s.places,
       hardConstraints: hc,
     };
   }, [base, s]);
@@ -85,6 +87,25 @@ export default function Decide() {
     setS(last);
     setWhat(null);
   }
+
+  function addPlace(pl: UserPlace) {
+    edit({ places: [...s.places, pl] }, `Added ${pl.name} to your places.`);
+  }
+  function removePlace(pl: UserPlace) {
+    const id = `place:${pl.id}`;
+    const limits = { ...(s.rules.placeMaxWalkMin ?? {}) };
+    delete limits[pl.id];
+    edit({
+      places: s.places.filter((p) => p.id !== pl.id),
+      tiers: s.tiers.map((t) => t.filter((c) => c !== id)).filter((t) => t.length),
+      rules: { ...s.rules, placeMaxWalkMin: Object.keys(limits).length ? limits : undefined },
+    }, `Removed ${pl.name} from your places.`);
+  }
+  const setPlaceLimit = (pl: UserPlace, v?: number) => {
+    const limits = { ...(s.rules.placeMaxWalkMin ?? {}) };
+    if (v == null) delete limits[pl.id]; else limits[pl.id] = v;
+    rule({ placeMaxWalkMin: Object.keys(limits).length ? limits : undefined }, v ? `${pl.name} must be within ${v} min.` : `${pl.name} no longer limited.`);
+  };
 
   const listing = (id: string) => LISTINGS.find((l) => l.id === id)!;
   const feasible = result.evaluations.filter((e) => e.feasible);
@@ -107,8 +128,10 @@ export default function Decide() {
           </section>
 
           <section>
-            <PriorityChips tiers={s.tiers} onChange={(t, note) => edit({ tiers: t }, note)} />
+            <PriorityChips tiers={s.tiers} places={s.places} onChange={(t, note) => edit({ tiers: t }, note)} />
           </section>
+
+          <MyPlaces all={PLACES} chosen={s.places} onAdd={addPlace} onRemove={removePlace} />
 
           <section className={`${card} space-y-2 text-sm`}>
             <h2 className="font-semibold text-slate-100">Must-haves</h2>
@@ -125,6 +148,10 @@ export default function Decide() {
               onChange={(v) => rule({ maxLateWalkMin: v }, v ? `Late walk home must be under ${v} min.` : "Late walk no longer limited.")} />
             <Limit label="Commute at most" unit="min/week" options={[90, 150, 210, 300]} value={r.maxWeeklyCommuteMin}
               onChange={(v) => rule({ maxWeeklyCommuteMin: v }, v ? `Weekly commute capped at ${v} min.` : "Commute no longer capped.")} />
+            {s.places.map((pl) => (
+              <Limit key={pl.id} label={`Walk to ${pl.name}`} unit="min" options={[5, 10, 15, 20]} value={r.placeMaxWalkMin?.[pl.id]}
+                onChange={(v) => setPlaceLimit(pl, v)} />
+            ))}
           </section>
 
           <section className={`${card} space-y-3 text-sm`}>
@@ -135,7 +162,7 @@ export default function Decide() {
               onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
             <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
               onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
-            <p className="text-xs text-slate-500">Budget: the lower thumb is what you'd like to pay, the upper is your hard cap. For months and people, a range keeps every listing that works for any value in it, and costs and scores use the middle.</p>
+            <p className="text-xs text-slate-500">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
             <Check label="On-site parking (needed, and its cost is counted)" checked={s.hasCar || !!s.rules.parkingRequired}
               onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
             <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
@@ -150,7 +177,7 @@ export default function Decide() {
           </div>
           {feasible.length === 0 && <p className={`${card} text-sm`}>Nothing fits all your rules. Loosen one below to see what comes back.</p>}
           {feasible.map((e, i) => (
-            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.budget[1]} />
+            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.budget[1]} places={s.places} />
           ))}
           {out.length > 0 && (
             <details className={`${card} text-sm`} open={feasible.length === 0}>
@@ -169,7 +196,7 @@ export default function Decide() {
               <p className="mb-2 text-xs text-slate-500">{listing(result.winnerId).name} vs {listing(result.runnerUpId).name}</p>
               {result.whyWinner.map((d) => (
                 <div key={d.criterion} className="mb-1 flex items-center gap-2">
-                  <span className="w-32 text-xs text-slate-300">{CRITERION_LABEL[d.criterion]}</span>
+                  <span className="w-32 text-xs text-slate-300">{criterionLabel(d.criterion, s.places)}</span>
                   <div className="relative h-3 flex-1 rounded bg-slate-800">
                     <div className="absolute left-1/2 h-3 border-l border-slate-600" />
                     <div className={`absolute h-3 ${d.delta >= 0 ? "bg-emerald-500" : "bg-rose-500"}`}
@@ -180,7 +207,7 @@ export default function Decide() {
               <p className="text-xs text-slate-500">Green favors #1; red favors #2.</p>
             </section>
           )}
-          <TippingPoints result={result} />
+          <TippingPoints result={result} places={s.places} />
         </aside>
       </div>
     </div>

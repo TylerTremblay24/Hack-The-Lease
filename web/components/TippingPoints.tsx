@@ -1,6 +1,6 @@
 "use client";
-import type { CriterionId, DecisionResult } from "@/lib/types";
-import { CRITERION_LABEL } from "@/lib/engine/explain";
+import type { CriterionId, DecisionResult, UserPlace } from "@/lib/types";
+import { criterionLabel } from "@/lib/engine/explain";
 
 const KIND: Record<string, { label: string; color: string }> = {
   price: { label: "PRICE", color: "bg-sky-500/20 text-sky-300" },
@@ -8,7 +8,7 @@ const KIND: Record<string, { label: string; color: string }> = {
   constraint: { label: "RULE", color: "bg-amber-500/20 text-amber-300" },
 };
 
-export function TippingPoints({ result }: { result: DecisionResult }) {
+export function TippingPoints({ result, places = [] }: { result: DecisionResult; places?: UserPlace[] }) {
   const w = (Object.entries(result.weightsROC) as [CriterionId, number][]).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
   return (
     <section>
@@ -37,7 +37,7 @@ export function TippingPoints({ result }: { result: DecisionResult }) {
             <div className="mb-1 text-slate-300">Weights your order implies</div>
             {w.map(([c, v]) => (
               <div key={c} className="mb-1 flex items-center gap-2">
-                <span className="w-28 truncate">{CRITERION_LABEL[c]}</span>
+                <span className="w-28 truncate">{criterionLabel(c, places)}</span>
                 <div className="h-2 flex-1 rounded bg-slate-800"><div className="h-2 rounded bg-emerald-500" style={{ width: `${v * 100}%` }} /></div>
                 <span className="w-8 text-right">{Math.round(v * 100)}%</span>
               </div>

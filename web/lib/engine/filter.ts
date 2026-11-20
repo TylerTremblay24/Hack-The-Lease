@@ -1,7 +1,7 @@
 // Hard constraints. Every elimination says how far the listing is from passing,
 // so near-misses can become "constraint" tipping points.
 import type { CostBreakdown, Elimination, Listing, StudentProfile } from "../types";
-import { weeklyCommute, worstLateTrip } from "./criteria";
+import { walkMinToPlace, weeklyCommute, worstLateTrip } from "./criteria";
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
@@ -38,6 +38,12 @@ export function eliminationReasons(l: Listing, p: StudentProfile, cost: CostBrea
     if (w > h.maxLateWalkMin)
       why.push({ code: "lateWalk", gap: w - h.maxLateWalkMin, text: `${w}-min walk home late at night (your limit is ${h.maxLateWalkMin})` });
   }
+  for (const pl of p.places ?? []) {
+    const lim = h.placeMaxWalkMin?.[pl.id];
+    if (lim == null) continue;
+    const w = walkMinToPlace(l, pl);
+    if (w > lim) why.push({ code: "place", gap: w - lim, text: `${Math.round(w)}-min walk to ${pl.name} (your limit is ${lim})` });
+  }
   if (h.petFriendly && !l.petFriendly) why.push({ code: "pets", text: "No pets allowed" });
   if (h.furnished && !l.furnished) why.push({ code: "furnished", text: "Unfurnished" });
   if (h.maxLeaseMonths != null && l.leaseMonths > h.maxLeaseMonths)
@@ -51,5 +57,5 @@ export function isNearMiss(reasons: Elimination[], capMonthly: number): boolean 
   if (reasons.length !== 1) return false;
   const r = reasons[0];
   if (r.code === "cap") return (r.gap ?? Infinity) <= 0.1 * capMonthly;
-  return ["laundry", "laundryMin", "commute", "furnished", "leaseMax", "parking", "noise", "grocery", "lateWalk"].includes(r.code);
+  return ["laundry", "laundryMin", "commute", "furnished", "leaseMax", "parking", "noise", "grocery", "lateWalk", "place"].includes(r.code);
 }
