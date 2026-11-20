@@ -28,16 +28,17 @@ Status: DONE, NEXT (build this round), PLANNED.
 | 3 | Range inputs (budget, months, people) | Drags two thumbs | Keeps every listing that fits anywhere in the range | DONE |
 | 4 | **My places** | Picks restaurants, cafes, gym, study spots they actually use, or describes their own and Claude proposes the name, type and location for them to confirm | Each place becomes a chip "Near [place]" scored by walking time, plus an optional "within N min" must-have | DONE |
 | 5 | Weekly rhythm ("My week") | Sets days per week at each campus area and which days run late | Drives commute and late-walk scores | DONE |
-| 6 | Getting-around style | Chooses walk, bike, bus, car, in any mix | Changes which travel time counts and adds a bike-friendliness chip | PLANNED |
-| 7 | Home habits | Cooks at home, hosts friends, studies at home, night owl or early bird | Adds chips for kitchen and grocery access, space for hosting, quiet hours; maps to noise tolerance | PLANNED |
+| 6 | Getting-around style | Chooses walk, bike, bus, car, in any mix | Changes which travel time counts and adds a bike-friendliness chip | DROPPED |
+| 7 | Home habits | Cooks at home, hosts friends, studies at home, night owl or early bird | Adds chips for kitchen and grocery access, space for hosting, quiet hours; maps to noise tolerance | DROPPED |
 | 8 | Needs, not identities | Ticks access needs such as ground floor, elevator, step-free entry | Hard rules with the same near-miss tipping points | PLANNED |
 | 9 | Roommates | Each roommate ranks chips on their own; the group is merged | SMAA with several decision makers; shows where the group agrees and the exact point where they split | DONE |
-| 10 | Your story card | Sees "why this fits you" with the student's own words quoted | Pulls verbatim evidence from the free-text parse (Claude parses at the edges only) | PLANNED |
+| 10 | Your story card | Sees "why this fits you" with the student's own words quoted | Pulls verbatim evidence from the free-text parse (Claude parses at the edges only) | DONE |
 | 11 | Compare | Pins up to three listings | Side-by-side values with the best in each row highlighted, what each is strongest on, and what would flip it | DONE |
 | 11b | Click-to-apply tipping points | Clicks Apply on "raise your cap", "swap these priorities" or "drop this rule" | The page applies the change, the change strip shows what moved, and Undo reverts it | DONE |
-| 11c | Export a one-page summary | Saves the compare view | Printable summary with sources | PLANNED |
+| 11c | Export a one-page summary | Saves the compare view | Printable summary with sources | DONE |
+| 14 | **Largest possible listing bank** | Sees many more real apartments, not a handful | Collect as many Ann Arbor listings as we can legitimately reach (see "Listing bank" below), normalize them to the Listing schema, label each with its source and provenance | PLANNED |
 | 13 | **UI overhaul** | Uses a distinctive, memorable interface instead of a default dashboard | Visual identity built around the drag-to-rank chips; done last, after features are locked | PLANNED (design direction to be chosen) |
-| 12 | Paste a listing or lease | Pastes text, reviews extracted fields | Claude extracts, the student confirms, fees and utilities flow into true cost | PLANNED |
+| 12 | Paste a listing or lease | Pastes text, reviews extracted fields | Claude extracts, the student confirms, fees and utilities flow into true cost | DROPPED |
 
 ## My places (feature 4) in detail
 
@@ -79,3 +80,30 @@ says exactly how much closer or cheaper a rival would need to be.
   group pick least, the fairest compromise, a score table per roommate, and the top 3 priorities where the roommates differ most.
 - **Group tipping points** name the roommate: "If Roommate 2 put X above Y, Z would be the group's #1" and "the tightest
   budget raising their cap by $N makes Z the group's #1", each with an Apply button.
+
+## Story card and one-page summary (features 10 and 11c) in detail
+
+- **Story card.** For the current #1, three lines in the student's own ranked order. Each shows the listing's real number
+  (true cost with range, commute minutes, sq ft per person, and so on) and a Strong / OK / Weak tag, with the persona's own words
+  quoted when they exist. It also states the trade-off (the weakest of the top-5 priorities), how often it finishes #1, and the
+  first tipping point. Built from numbers already on screen by deterministic code, so no model call and no invented text.
+- **One-page summary.** A button on the story card opens a print sheet: verdict, why it fits, top 3 side by side, roommates
+  table (in group mode), what would change the answer, implied weights, and how to read it with provenance. "Print or save as
+  PDF" uses the browser, so nothing is uploaded. Checked to print on exactly one US Letter page.
+
+## Dropped from scope (decided by the team)
+
+Getting-around style (6), home habits (7) and paste-a-listing or lease (12). Not planned.
+
+## Listing bank (feature 14): plan and risks
+
+Goal: the biggest honest bank of Ann Arbor apartments the app can score. Rules we keep: every listing carries a source and a
+provenance label (REAL or SYNTHETIC), and no demographic profiling.
+- **Sources to try, safest first:** open data (City of Ann Arbor rental registrations and addresses, OpenStreetMap building and
+  amenity data for walk times and grocery distance), landlord and property-manager sites that allow access, then listing sites.
+- **Risk:** most big listing sites (Zillow, Apartments.com, Zumper) forbid scraping in their terms and block bots. Check each
+  site's terms and robots.txt first. Scraping also needs a machine with network access, which this build environment lacks.
+- **Pipeline:** fetch, parse to the Listing schema (rent, beds, baths, sqft, lease, laundry, parking, pets, address to block-level
+  coordinates), fill gaps with labeled ESTIMATES, drop duplicates, save to `data/seed/`. Missing fields must stay missing, not guessed.
+- **Judging note:** the rubric says synthetic data must be labeled. If real data is added, label it REAL and keep the synthetic set
+  as the safe demo fallback.

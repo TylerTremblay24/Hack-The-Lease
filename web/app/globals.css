@@ -14,3 +14,13 @@ select option { background: #0f172a; color: #e2e8f0; }
 .range2 input[type="range"]::-moz-range-track { background: transparent; }
 .range2 input[type="range"]::-webkit-slider-thumb { pointer-events: auto; -webkit-appearance: none; appearance: none; height: 16px; width: 16px; border-radius: 9999px; background: #34d399; border: 2px solid #020617; cursor: pointer; margin-top: -6px; }
 .range2 input[type="range"]::-moz-range-thumb { pointer-events: auto; height: 14px; width: 14px; border-radius: 9999px; background: #34d399; border: 2px solid #020617; cursor: pointer; }
+
+@media print {
+  html, body { background: #fff !important; color: #0f172a !important; }
+  body > *:not(#summary-sheet) { display: none !important; }
+  #summary-sheet { position: static !important; background: #fff !important; padding: 0 !important; overflow: visible !important; }
+  #summary-sheet .sheet { box-shadow: none !important; max-width: none !important; padding: 0 !important; }
+  .no-print { display: none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { margin: 12mm; }
+}

@@ -15,6 +15,9 @@ import { RhythmEditor, type Rhythm } from "@/components/RhythmEditor";
 import { CompareView } from "@/components/CompareView";
 import { GroupPanel, type GroupState } from "@/components/GroupPanel";
 import { GroupResults } from "@/components/GroupResults";
+import { StoryCard } from "@/components/StoryCard";
+import { SummarySheet } from "@/components/SummarySheet";
+import { buildStory } from "@/lib/story";
 import { AssumptionsDrawer, type Tune, type TuneKey } from "@/components/AssumptionsDrawer";
 
 interface State {
@@ -65,6 +68,7 @@ export default function Decide() {
   const [history, setHistory] = useState<State[]>([]);
   const [what, setWhat] = useState<string | null>(null);
   const [pinned, setPinned] = useState<string[]>([]);
+  const [showSummary, setShowSummary] = useState(false);
 
   const base = PERSONAS[s.persona];
   const profile: StudentProfile = useMemo(() => {
@@ -171,6 +175,16 @@ export default function Decide() {
   }
   const togglePin = (id: string) => setPinned((p) => (p.includes(id) ? p.filter((x) => x !== id) : p.length < 3 ? [...p, id] : p));
 
+  const winEv = result.evaluations.find((e) => e.listingId === result.winnerId && e.feasible);
+  const order = useMemo<CriterionId[]>(() => {
+    const flat = (gOn ? [] : s.tiers.flat()) as CriterionId[];
+    const w = Object.entries(result.weightsROC) as [CriterionId, number][];
+    return w.filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1] || flat.indexOf(a[0]) - flat.indexOf(b[0])).map(([c]) => c);
+  }, [result, gOn, s.tiers]);
+  const story = winEv ? buildStory({ profile, listing: LISTINGS.find((l) => l.id === winEv.listingId)!, ev: winEv, result, places: s.places, order, listings: LISTINGS, extra, withQuotes: !gOn }) : null;
+  const who = gOn ? `Group of ${s.group.members.length}: ${s.group.members.map((m) => m.name).join(", ")}` : base.displayName ?? "Student";
+  const budgetText = gOn && extra ? `${usd(extra.budget.target)} target, ${usd(extra.budget.cap)} cap per person` : `${usd(s.budget[0])} target, ${usd(s.budget[1])} cap per person`;
+
   const listing = (id: string) => LISTINGS.find((l) => l.id === id)!;
   const feasible = result.evaluations.filter((e) => e.feasible);
   const out = result.evaluations.filter((e) => !e.feasible);
@@ -249,6 +263,7 @@ export default function Decide() {
           <CompareView
             cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
             result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
+          {story && <StoryCard story={story} onSummary={() => setShowSummary(true)} />}
           {extra && <GroupResults result={result} x={extra} listings={LISTINGS} places={s.places} />}
           {feasible.length === 0 && <p className={`${card} text-sm`}>Nothing fits all your rules. Loosen one below to see what comes back.</p>}
           {feasible.map((e, i) => (
@@ -286,6 +301,7 @@ export default function Decide() {
           <TippingPoints result={result} places={s.places} onApply={applyTip} />
         </aside>
       </div>
+      {showSummary && story && <SummarySheet story={story} result={result} listings={LISTINGS} places={s.places} extra={extra} who={who} budgetText={budgetText} onClose={() => setShowSummary(false)} />}
     </div>
   );
 }
