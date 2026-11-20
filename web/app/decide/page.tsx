@@ -112,7 +112,6 @@ export default function Decide() {
             <Check label="In-unit laundry" checked={!!r.inUnitLaundryRequired} onChange={(v) => rule({ inUnitLaundryRequired: v, laundryAtLeast: v ? undefined : r.laundryAtLeast }, onOff(v, "In-unit laundry is now required.", "In-unit laundry no longer required."))} />
             <Check label="Some laundry on site" checked={!!r.laundryAtLeast || !!r.inUnitLaundryRequired} disabled={!!r.inUnitLaundryRequired}
               onChange={(v) => rule({ laundryAtLeast: v ? "in_building" : undefined }, onOff(v, "Laundry on site is now required.", "Laundry on site no longer required."))} />
-            <Check label="Parking included" checked={!!r.parkingRequired} onChange={(v) => rule({ parkingRequired: v || undefined }, onOff(v, "Parking is now required.", "Parking no longer required."))} />
             <Check label="Pet-friendly" checked={!!r.petFriendly} onChange={(v) => rule({ petFriendly: v || undefined }, onOff(v, "Pet-friendly is now required.", "Pet-friendly no longer required."))} />
             <Check label="Furnished" checked={!!r.furnished} onChange={(v) => rule({ furnished: v || undefined }, onOff(v, "Furnished is now required.", "Furnished no longer required."))} />
             <Check label="Quiet buildings only (noise 2 or lower)" checked={r.maxNoise != null} onChange={(v) => rule({ maxNoise: v ? 2 : undefined }, onOff(v, "Only quiet buildings now.", "Noise no longer limited."))} />
@@ -122,8 +121,6 @@ export default function Decide() {
               onChange={(v) => rule({ maxLateWalkMin: v }, v ? `Late walk home must be under ${v} min.` : "Late walk no longer limited.")} />
             <Limit label="Commute at most" unit="min/week" options={[90, 150, 210, 300]} value={r.maxWeeklyCommuteMin}
               onChange={(v) => rule({ maxWeeklyCommuteMin: v }, v ? `Weekly commute capped at ${v} min.` : "Commute no longer capped.")} />
-            <Limit label="Lease no longer than" unit="months" options={[9, 10, 12]} value={r.maxLeaseMonths}
-              onChange={(v) => rule({ maxLeaseMonths: v }, v ? `Lease capped at ${v} months.` : "Lease length no longer capped.")} />
           </section>
 
           <section className={`${card} space-y-3 text-sm`}>
@@ -132,17 +129,16 @@ export default function Decide() {
               <input type="range" min={900} max={2200} step={25} value={s.cap} className="w-full"
                 onChange={(e) => edit({ cap: Number(e.target.value) }, `Cap set to ${usd(Number(e.target.value))}.`)} />
             </label>
-            <label className="flex items-center justify-between gap-2">Months you'll live there
-              <select className={sel} value={s.months} onChange={(e) => edit({ months: Number(e.target.value) }, `You'll be there ${e.target.value} months.`)}>
-                {[4, 6, 8, 9, 10, 12].map((m) => <option key={m} value={m}>{m}</option>)}
-              </select>
+            <label className="block">Months you'll live there: <b className="text-slate-100">{s.months}</b>
+              <input type="range" min={1} max={12} step={1} value={s.months} className="w-full"
+                onChange={(e) => edit({ months: Number(e.target.value) }, `You'll be there ${e.target.value} months.`)} />
             </label>
-            <label className="flex items-center justify-between gap-2">People sharing the unit
-              <select className={sel} value={s.occupants} onChange={(e) => edit({ occupants: Number(e.target.value) }, `${e.target.value} people share the unit.`)}>
-                {[1, 2, 3, 4].map((m) => <option key={m} value={m}>{m}</option>)}
-              </select>
+            <label className="block">People sharing the unit: <b className="text-slate-100">{s.occupants}</b>
+              <input type="range" min={1} max={8} step={1} value={s.occupants} className="w-full"
+                onChange={(e) => edit({ occupants: Number(e.target.value) }, `${e.target.value} ${e.target.value === "1" ? "person lives" : "people share"} in the unit.`)} />
             </label>
-            <Check label="I have a car" checked={s.hasCar} onChange={(v) => edit({ hasCar: v }, onOff(v, "You have a car.", "You don't have a car."))} />
+            <Check label="On-site parking (needed, and its cost is counted)" checked={s.hasCar || !!s.rules.parkingRequired}
+              onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
             <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
           </section>
         </aside>
