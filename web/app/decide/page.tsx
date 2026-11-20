@@ -1,12 +1,13 @@
 "use client";
 import { useMemo, useState } from "react";
-import { ASSUMPTIONS, PERSONAS, PLACES, bankListings, DEMO_LISTINGS, WEB_LISTINGS, type Bank } from "@/lib/seed";
+import { MotionConfig } from "framer-motion";
+import { ASSUMPTIONS, PERSONAS, PLACES, bankListings, DEMO_LISTINGS, WEB_LISTINGS, LISTINGS as ALL_LISTINGS, type Bank } from "@/lib/seed";
 import { useDecision } from "@/lib/useDecision";
 import { criterionLabel } from "@/lib/engine/explain";
 import type { AnchorId, CriterionId, HardConstraints, ScheduleAnchor, StudentProfile, TippingPoint, UserPlace } from "@/lib/types";
 import { applyTipping } from "@/lib/applyTipping";
 import { PriorityChips } from "@/components/PriorityChips";
-import { ChangeStrip, VERDICT } from "@/components/ChangeStrip";
+import { ChangeStrip } from "@/components/ChangeStrip";
 import { ListingCard } from "@/components/ListingCard";
 import { TippingPoints } from "@/components/TippingPoints";
 import { RangeSlider } from "@/components/RangeSlider";
@@ -19,6 +20,10 @@ import { StoryCard } from "@/components/StoryCard";
 import { SummarySheet } from "@/components/SummarySheet";
 import { buildStory } from "@/lib/story";
 import { AssumptionsDrawer, type Tune, type TuneKey } from "@/components/AssumptionsDrawer";
+import { SideNav, type NavTarget } from "@/components/shell/SideNav";
+import { InputRail, type RailTab } from "@/components/shell/InputRail";
+import { DecisionHero } from "@/components/DecisionHero";
+import { Legend, label, panel } from "@/components/ui";
 
 interface State {
   persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[]; rhythm: Rhythm; tune: Tune;
@@ -39,22 +44,24 @@ const init = (persona: number): State => {
 };
 const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
-const card = "rounded-lg border border-slate-800 bg-slate-900 p-3";
-const sel = "rounded border border-slate-700 bg-slate-800 px-2 py-1 text-sm text-slate-200";
+const sel = "rounded-ctl border border-line-strong bg-bg px-2 py-1 text-sm text-ink";
+const personaName = (d?: string) => (d ?? "Student").split(" (")[0];
+const railSec = "space-y-2.5 border-t border-line p-4 text-sm first:border-t-0";
+const railHead = "flex items-center justify-between text-[13px] font-bold text-ink";
 
 /** Boolean must-have row. */
-function Check({ label, checked, onChange, disabled }: { label: string; checked: boolean; onChange: (v: boolean) => void; disabled?: boolean }) {
+function Check({ label: text, checked, onChange, disabled }: { label: string; checked: boolean; onChange: (v: boolean) => void; disabled?: boolean }) {
   return (
-    <label className={`flex items-center gap-2 ${disabled ? "opacity-40" : ""}`}>
-      <input type="checkbox" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} />{label}
+    <label className={`flex cursor-pointer items-center gap-2.5 py-0.5 ${disabled ? "opacity-40" : ""}`}>
+      <input type="checkbox" className="h-4 w-4" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} />{text}
     </label>
   );
 }
 /** "Any" or a numeric limit. */
-function Limit({ label, value, options, unit, onChange }: { label: string; value?: number; options: number[]; unit: string; onChange: (v?: number) => void }) {
+function Limit({ label: text, value, options, unit, onChange }: { label: string; value?: number; options: number[]; unit: string; onChange: (v?: number) => void }) {
   return (
     <label className="flex items-center justify-between gap-2">
-      <span>{label}</span>
+      <span className="text-ink-muted">{text}</span>
       <select className={sel} value={value ?? ""} onChange={(e) => onChange(e.target.value === "" ? undefined : Number(e.target.value))}>
         <option value="">Any</option>
         {options.map((o) => <option key={o} value={o}>{o} {unit}</option>)}
@@ -70,6 +77,7 @@ export default function Decide() {
   const [pinned, setPinned] = useState<string[]>([]);
   const [showSummary, setShowSummary] = useState(false);
   const [bank, setBank] = useState<Bank>("all");
+  const [tab, setTab] = useState<RailTab>("week");
   const LISTINGS = useMemo(() => bankListings(bank), [bank]);
 
   const base = PERSONAS[s.persona];
@@ -121,12 +129,12 @@ export default function Decide() {
   }
   const prevFirst = (id: string) => prev?.evaluations.find((e) => e.listingId === id)?.rankAcceptability[0] ?? null;
 
-  function edit(next: Partial<State>, label: string) {
+  function edit(next: Partial<State>, text: string) {
     setHistory((h) => [...h, s]);
     setS({ ...s, ...next });
-    setWhat(label);
+    setWhat(text);
   }
-  const rule = (patch: HardConstraints, label: string) => edit({ rules: { ...s.rules, ...patch } }, label);
+  const rule = (patch: HardConstraints, text: string) => edit({ rules: { ...s.rules, ...patch } }, text);
   function undo() {
     const last = history.at(-1);
     if (!last) return;
@@ -155,7 +163,7 @@ export default function Decide() {
     rule({ placeMaxWalkMin: Object.keys(limits).length ? limits : undefined }, v ? `${pl.name} must be within ${v} min.` : `${pl.name} no longer limited.`);
   };
 
-  const tuneOne = (k: TuneKey, v: number, label: string) => edit({ tune: { ...s.tune, [k]: v } }, label);
+  const tuneOne = (k: TuneKey, v: number, text: string) => edit({ tune: { ...s.tune, [k]: v } }, text);
 
   function applyTip(tp: TippingPoint) {
     if (!tp.apply) return;
@@ -172,8 +180,8 @@ export default function Decide() {
       });
       return edit({ group: { ...s.group, members } }, a.type === "memberCap" ? `Applied: ${m.name}'s cap raised to ${usd(a.to)}.` : `Applied: ${m.name} swapped two priorities.`);
     }
-    const { patch, label } = applyTipping({ tiers: s.tiers, budget: s.budget, rules: s.rules, hasCar: s.hasCar, places: s.places }, a);
-    edit(patch as Partial<State>, label);
+    const { patch, label: text } = applyTipping({ tiers: s.tiers, budget: s.budget, rules: s.rules, hasCar: s.hasCar, places: s.places }, a);
+    edit(patch as Partial<State>, text);
   }
   const togglePin = (id: string) => setPinned((p) => (p.includes(id) ? p.filter((x) => x !== id) : p.length < 3 ? [...p, id] : p));
 
@@ -194,127 +202,152 @@ export default function Decide() {
   const r = s.rules;
   const onOff = (v: boolean, a: string, b: string) => (v ? a : b);
 
+  function nav(t: NavTarget) {
+    if (t === "summary") { if (story) setShowSummary(true); return; }
+    if (t === "compare") { document.getElementById("compare")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (t === "group" || t === "tune") { setTab(t); document.getElementById("inputs")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    setTab("week");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function pickPersona(i: number) { setS(init(i)); setHistory([]); setWhat(null); setPinned([]); }
+  function pickBank(b: Bank) {
+    const n = b === "demo" ? DEMO_LISTINGS.length : b === "web" ? WEB_LISTINGS.length : ALL_LISTINGS.length;
+    setBank(b); setPinned([]); setWhat(`Listing bank: ${b === "all" ? "All" : b === "web" ? "Web" : "Demo"} (${n}).`);
+  }
+  const rulesOn = Object.values(r).filter((v) => v !== undefined && v !== false).length;
+
   return (
-    <div>
-      <ChangeStrip what={what} diff={diff} prev={prev} result={result} listings={LISTINGS} onUndo={history.length ? undo : undefined} />
-      <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-[320px_1fr_340px]">
-        <aside className="space-y-5">
-          <section className={`${card} space-y-1.5 text-sm`}>
-            <h2 className="font-semibold text-slate-100">Listing bank</h2>
-            <div className="flex gap-1">
-              {([["all", `All (${DEMO_LISTINGS.length + WEB_LISTINGS.length})`], ["web", `Web (${WEB_LISTINGS.length})`], ["demo", `Demo (${DEMO_LISTINGS.length})`]] as const).map(([b, label]) => (
-                <button key={b} onClick={() => { setBank(b); setPinned([]); setWhat(`Listing bank: ${label}.`); }}
-                  className={`rounded border px-2 py-1 text-xs ${bank === b ? "border-emerald-500 bg-emerald-500/20 text-emerald-100" : "border-slate-700 text-slate-400 hover:text-slate-200"}`}>{label}</button>
-              ))}
-            </div>
-            <p className="text-[11px] text-slate-500">Web listings were collected by hand from public pages (see each card's source link). Rents and amenities are as listed; locations, travel times, noise and missing sizes are estimates. Demo listings are synthetic.</p>
-          </section>
+    <MotionConfig reducedMotion="user">
+      <div className="md:flex">
+        <SideNav
+          personas={PERSONAS.map((p) => ({ name: personaName(p.displayName), synthetic: /synthetic/i.test(p.displayName ?? "") }))}
+          persona={s.persona} onPersona={pickPersona}
+          bank={bank} onBank={pickBank}
+          banks={[{ id: "all", label: "All", count: ALL_LISTINGS.length }, { id: "web", label: "Web", count: WEB_LISTINGS.length }, { id: "demo", label: "Demo", count: DEMO_LISTINGS.length }]}
+          pinned={pinned.length} roommates={gOn ? s.group.members.length : 0}
+          onNav={nav} active={tab === "group" ? "group" : tab === "tune" ? "tune" : "decide"} />
 
-          <section>
-            <h2 className="mb-2 text-sm font-semibold text-slate-100">Demo persona (synthetic)</h2>
-            <select className={`${sel} w-full`} value={s.persona}
-              onChange={(e) => { setS(init(Number(e.target.value))); setHistory([]); setWhat(null); setPinned([]); }}>
-              {PERSONAS.map((p, i) => <option key={i} value={i}>{p.displayName}</option>)}
-            </select>
-          </section>
+        <main className="min-w-0 flex-1 px-4 pb-12 md:px-7">
+          <div className="mx-auto max-w-page">
+            <DecisionHero result={result} listings={LISTINGS} group={gOn ? s.group.members.map((m) => m.name) : undefined}>
+              <ChangeStrip what={what} diff={diff} prev={prev} result={result} listings={LISTINGS} onUndo={history.length ? undo : undefined} />
+            </DecisionHero>
 
-          <GroupPanel g={s.group} budget={s.budget} onChange={onGroup} />
-
-          <section>
-            <PriorityChips tiers={shownTiers} places={s.places} onChange={setTiers} />
-          </section>
-
-          <RhythmEditor rhythm={s.rhythm} notes={Object.fromEntries(base.anchors.filter((a) => a.label).map((a) => [a.anchor, a.label]))}
-            onChange={(id, next, label) => edit({ rhythm: { ...s.rhythm, [id]: next } }, label)} />
-
-          <MyPlaces all={PLACES} chosen={s.places} onAdd={addPlace} onRemove={removePlace} />
-
-          <section className={`${card} space-y-2 text-sm`}>
-            <h2 className="font-semibold text-slate-100">Must-haves</h2>
-            <p className="text-xs text-slate-500">Hard rules. A listing that breaks one is out, and the tipping points show near misses.</p>
-            <Check label="In-unit laundry" checked={!!r.inUnitLaundryRequired} onChange={(v) => rule({ inUnitLaundryRequired: v, laundryAtLeast: v ? undefined : r.laundryAtLeast }, onOff(v, "In-unit laundry is now required.", "In-unit laundry no longer required."))} />
-            <Check label="Some laundry on site" checked={!!r.laundryAtLeast || !!r.inUnitLaundryRequired} disabled={!!r.inUnitLaundryRequired}
-              onChange={(v) => rule({ laundryAtLeast: v ? "in_building" : undefined }, onOff(v, "Laundry on site is now required.", "Laundry on site no longer required."))} />
-            <Check label="Pet-friendly" checked={!!r.petFriendly} onChange={(v) => rule({ petFriendly: v || undefined }, onOff(v, "Pet-friendly is now required.", "Pet-friendly no longer required."))} />
-            <Check label="Furnished" checked={!!r.furnished} onChange={(v) => rule({ furnished: v || undefined }, onOff(v, "Furnished is now required.", "Furnished no longer required."))} />
-            <Check label="Quiet buildings only (noise 2 or lower)" checked={r.maxNoise != null} onChange={(v) => rule({ maxNoise: v ? 2 : undefined }, onOff(v, "Only quiet buildings now.", "Noise no longer limited."))} />
-            <Limit label="Groceries within" unit="min walk" options={[5, 8, 12, 15]} value={r.maxGroceryWalkMin}
-              onChange={(v) => rule({ maxGroceryWalkMin: v }, v ? `Groceries must be within ${v} min.` : "Grocery distance no longer limited.")} />
-            <Limit label="Late walk home under" unit="min" options={[8, 12, 15, 20]} value={r.maxLateWalkMin}
-              onChange={(v) => rule({ maxLateWalkMin: v }, v ? `Late walk home must be under ${v} min.` : "Late walk no longer limited.")} />
-            <Limit label="Commute at most" unit="min/week" options={[90, 150, 210, 300]} value={r.maxWeeklyCommuteMin}
-              onChange={(v) => rule({ maxWeeklyCommuteMin: v }, v ? `Weekly commute capped at ${v} min.` : "Commute no longer capped.")} />
-            {s.places.map((pl) => (
-              <Limit key={pl.id} label={`Walk to ${pl.name}`} unit="min" options={[5, 10, 15, 20]} value={r.placeMaxWalkMin?.[pl.id]}
-                onChange={(v) => setPlaceLimit(pl, v)} />
-            ))}
-          </section>
-
-          <section className={`${card} space-y-3 text-sm`}>
-            <h2 className="font-semibold text-slate-100">Your situation</h2>
-            <RangeSlider label={gOn ? `${s.group.members[s.group.active].name}'s budget per person (target to hard cap)` : "Budget per person (target to hard cap)"} min={900} max={2200} step={25} value={shownBudget} format={usd}
-              onChange={(v) => setBudget(v, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
-            <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
-              onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
-            <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
-              onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
-            <p className="text-xs text-slate-500">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
-            <Check label="On-site parking (needed, and its cost is counted)" checked={s.hasCar || !!s.rules.parkingRequired}
-              onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
-            <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
-          </section>
-
-          <AssumptionsDrawer base={ASSUMPTIONS} tune={s.tune} onTune={tuneOne} onReset={() => edit({ tune: {} }, "Assumptions reset to defaults.")} />
-        </aside>
-
-        <main className="space-y-3">
-          <div className="flex flex-wrap items-baseline gap-3">
-            <h1 className="text-lg font-semibold text-slate-100">Results</h1>
-            <span className="rounded bg-emerald-500 px-2 py-0.5 text-xs font-bold text-slate-950">{VERDICT[result.verdict]}</span>
-            <span className="text-xs text-slate-500">±{(result.monteCarloSE * 100).toFixed(0)} pt · {result.samples.toLocaleString()} draws</span>
-          </div>
-          <CompareView
-            cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
-            result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
-          {story && <StoryCard story={story} onSummary={() => setShowSummary(true)} />}
-          {extra && <GroupResults result={result} x={extra} listings={LISTINGS} places={s.places} />}
-          {feasible.length === 0 && <p className={`${card} text-sm`}>Nothing fits all your rules. Loosen one below to see what comes back.</p>}
-          {feasible.map((e, i) => (
-            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={extra?.budget.cap ?? s.budget[1]} places={s.places}
-              pinned={pinned.includes(e.listingId)} canPin={pinned.length < 3} onPin={() => togglePin(e.listingId)} />
-          ))}
-          {out.length > 0 && (
-            <details className={`${card} text-sm`} open={feasible.length === 0}>
-              <summary className="cursor-pointer text-slate-300">{out.length} listings didn’t make it (why)</summary>
-              <ul className="mt-2 space-y-1 text-slate-400">
-                {out.map((e) => <li key={e.listingId}><b className="text-slate-200">{listing(e.listingId).name}</b>: {e.eliminatedBecause.map((x) => x.text).join("; ")}</li>)}
-              </ul>
-            </details>
-          )}
-        </main>
-
-        <aside className="space-y-6 text-sm">
-          {result.whyWinner && result.winnerId && result.runnerUpId && (
-            <section>
-              <h2 className="mb-2 font-semibold text-slate-100">Why #1 beats #2</h2>
-              <p className="mb-2 text-xs text-slate-500">{listing(result.winnerId).name} vs {listing(result.runnerUpId).name}</p>
-              {result.whyWinner.map((d) => (
-                <div key={d.criterion} className="mb-1 flex items-center gap-2">
-                  <span className="w-32 text-xs text-slate-300">{criterionLabel(d.criterion, s.places)}</span>
-                  <div className="relative h-3 flex-1 rounded bg-slate-800">
-                    <div className="absolute left-1/2 h-3 border-l border-slate-600" />
-                    <div className={`absolute h-3 ${d.delta >= 0 ? "bg-emerald-500" : "bg-rose-500"}`}
-                      style={{ width: `${(Math.abs(d.delta) / maxDelta) * 50}%`, [d.delta >= 0 ? "left" : "right"]: "50%" }} />
-                  </div>
-                </div>
-              ))}
-              <p className="text-xs text-slate-500">Green favors #1; red favors #2.</p>
+            <section className={`${panel} mt-5 p-4 md:p-5`} aria-label="Your priorities">
+              {gOn && <p className="mb-2 text-xs text-ink-muted">Editing <b className="text-ink">{s.group.members[s.group.active].name}</b>&apos;s priorities. Switch roommates in the Roommates tab.</p>}
+              <PriorityChips tiers={shownTiers} places={s.places} onChange={setTiers} />
             </section>
-          )}
-          <TippingPoints result={result} places={s.places} onApply={applyTip} />
-        </aside>
+
+            <div className="mt-5 grid gap-5 lg:grid-cols-[theme(width.rail)_minmax(0,1fr)] xl:grid-cols-[theme(width.rail)_minmax(0,1fr)_theme(width.side)]">
+              <div className="lg:row-span-2 xl:row-span-1">
+                <InputRail tab={tab} onTab={setTab} badges={{ rules: rulesOn > 0 ? true : undefined, group: gOn || undefined, tune: Object.keys(s.tune).length > 0 || undefined }}>
+                  {tab === "week" && (
+                    <RhythmEditor rhythm={s.rhythm} notes={Object.fromEntries(base.anchors.filter((a) => a.label).map((a) => [a.anchor, a.label]))}
+                      onChange={(id, next, text) => edit({ rhythm: { ...s.rhythm, [id]: next } }, text)} />
+                  )}
+                  {tab === "places" && <MyPlaces all={PLACES} chosen={s.places} onAdd={addPlace} onRemove={removePlace} />}
+                  {tab === "rules" && (
+                    <>
+                      <section className={railSec}>
+                        <h3 className={railHead}>Must-haves</h3>
+                        <p className="text-xs text-ink-faint">Hard rules. A listing that breaks one is out, and the tipping points show near misses.</p>
+                        <Check label="In-unit laundry" checked={!!r.inUnitLaundryRequired} onChange={(v) => rule({ inUnitLaundryRequired: v, laundryAtLeast: v ? undefined : r.laundryAtLeast }, onOff(v, "In-unit laundry is now required.", "In-unit laundry no longer required."))} />
+                        <Check label="Some laundry on site" checked={!!r.laundryAtLeast || !!r.inUnitLaundryRequired} disabled={!!r.inUnitLaundryRequired}
+                          onChange={(v) => rule({ laundryAtLeast: v ? "in_building" : undefined }, onOff(v, "Laundry on site is now required.", "Laundry on site no longer required."))} />
+                        <Check label="Pet-friendly" checked={!!r.petFriendly} onChange={(v) => rule({ petFriendly: v || undefined }, onOff(v, "Pet-friendly is now required.", "Pet-friendly no longer required."))} />
+                        <Check label="Furnished" checked={!!r.furnished} onChange={(v) => rule({ furnished: v || undefined }, onOff(v, "Furnished is now required.", "Furnished no longer required."))} />
+                        <Check label="Quiet buildings only (noise 2 or lower)" checked={r.maxNoise != null} onChange={(v) => rule({ maxNoise: v ? 2 : undefined }, onOff(v, "Only quiet buildings now.", "Noise no longer limited."))} />
+                        <Check label="On-site parking (cost counted)" checked={s.hasCar || !!s.rules.parkingRequired}
+                          onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
+                      </section>
+                      <section className={railSec}>
+                        <h3 className={railHead}>Limits</h3>
+                        <Limit label="Groceries within" unit="min walk" options={[5, 8, 12, 15]} value={r.maxGroceryWalkMin}
+                          onChange={(v) => rule({ maxGroceryWalkMin: v }, v ? `Groceries must be within ${v} min.` : "Grocery distance no longer limited.")} />
+                        <Limit label="Late walk home under" unit="min" options={[8, 12, 15, 20]} value={r.maxLateWalkMin}
+                          onChange={(v) => rule({ maxLateWalkMin: v }, v ? `Late walk home must be under ${v} min.` : "Late walk no longer limited.")} />
+                        <Limit label="Commute at most" unit="min/wk" options={[90, 150, 210, 300]} value={r.maxWeeklyCommuteMin}
+                          onChange={(v) => rule({ maxWeeklyCommuteMin: v }, v ? `Weekly commute capped at ${v} min.` : "Commute no longer capped.")} />
+                        {s.places.map((pl) => (
+                          <Limit key={pl.id} label={`Walk to ${pl.name}`} unit="min" options={[5, 10, 15, 20]} value={r.placeMaxWalkMin?.[pl.id]}
+                            onChange={(v) => setPlaceLimit(pl, v)} />
+                        ))}
+                      </section>
+                    </>
+                  )}
+                  {tab === "budget" && (
+                    <section className={`${railSec} space-y-4`}>
+                      <RangeSlider label={gOn ? `${s.group.members[s.group.active].name}'s budget per person` : "Budget per person"} hint="target to hard cap" min={900} max={2200} step={25} value={shownBudget} format={usd}
+                        onChange={(v) => setBudget(v, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
+                      <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
+                        onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
+                      <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
+                        onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
+                      <p className="text-xs text-ink-faint">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
+                      <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
+                    </section>
+                  )}
+                  {tab === "group" && <GroupPanel g={s.group} budget={s.budget} onChange={onGroup} />}
+                  {tab === "tune" && <AssumptionsDrawer base={ASSUMPTIONS} tune={s.tune} onTune={tuneOne} onReset={() => edit({ tune: {} }, "Assumptions reset to defaults.")} />}
+                </InputRail>
+              </div>
+
+              <div className="min-w-0 space-y-5">
+                {story && <StoryCard story={story} onSummary={() => setShowSummary(true)} />}
+                {extra && <GroupResults result={result} x={extra} listings={LISTINGS} places={s.places} />}
+                <div id="compare" className="scroll-mt-20">
+                  <CompareView
+                    cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
+                    result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
+                </div>
+                <section className="space-y-3">
+                  <div className="flex items-baseline gap-3">
+                    <h2 className="text-[15px] font-bold">{feasible.length} {feasible.length === 1 ? "apartment fits" : "apartments fit"}</h2>
+                    {out.length > 0 && <span className="text-sm text-ink-muted">{out.length} didn&apos;t</span>}
+                  </div>
+                  {feasible.length === 0 && <p className={`${panel} p-4 text-sm`}>Nothing fits all your rules. Loosen one on the left to see what comes back.</p>}
+                  {feasible.map((e, i) => (
+                    <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={extra?.budget.cap ?? s.budget[1]} places={s.places}
+                      pinned={pinned.includes(e.listingId)} canPin={pinned.length < 3} onPin={() => togglePin(e.listingId)} />
+                  ))}
+                  {out.length > 0 && (
+                    <details className={`${panel} p-4 text-sm`} open={feasible.length === 0}>
+                      <summary className="cursor-pointer text-ink-muted">{out.length} listings didn&apos;t make it (why)</summary>
+                      <ul className="mt-2 space-y-1 text-ink-muted">
+                        {out.map((e) => <li key={e.listingId}><b className="text-ink">{listing(e.listingId).name}</b>: {e.eliminatedBecause.map((x) => x.text).join("; ")}</li>)}
+                      </ul>
+                    </details>
+                  )}
+                </section>
+              </div>
+
+              <aside className="min-w-0 space-y-5 text-sm lg:col-start-2 xl:col-start-auto">
+                {result.whyWinner && result.winnerId && result.runnerUpId && (
+                  <section className={`${panel} p-4`}>
+                    <h2 className="mb-1 text-[15px] font-bold">Why #1 beats #2</h2>
+                    <p className="mb-3 text-xs text-ink-faint">{listing(result.winnerId).name} vs {listing(result.runnerUpId).name}</p>
+                    {result.whyWinner.map((d) => (
+                      <div key={d.criterion} className="mb-1.5 flex items-center gap-2">
+                        <span className="w-32 text-xs text-ink-muted">{criterionLabel(d.criterion, s.places)}</span>
+                        <div className="relative h-2 flex-1 rounded-sm bg-line">
+                          <div className="absolute left-1/2 h-2 border-l border-line-strong" />
+                          <div className={`absolute h-2 rounded-sm ${d.delta >= 0 ? "bg-leader" : "bg-against"}`}
+                            style={{ width: `${(Math.abs(d.delta) / maxDelta) * 50}%`, [d.delta >= 0 ? "left" : "right"]: "50%" }} />
+                        </div>
+                      </div>
+                    ))}
+                    <p className={`${label} mt-2`}>Green favors #1 · coral favors #2</p>
+                  </section>
+                )}
+                <TippingPoints result={result} places={s.places} onApply={applyTip} />
+              </aside>
+            </div>
+
+            <div className="mt-8"><Legend /></div>
+          </div>
+        </main>
       </div>
       {showSummary && story && <SummarySheet story={story} result={result} listings={LISTINGS} places={s.places} extra={extra} who={who} budgetText={budgetText} onClose={() => setShowSummary(false)} />}
-    </div>
+    </MotionConfig>
   );
 }
