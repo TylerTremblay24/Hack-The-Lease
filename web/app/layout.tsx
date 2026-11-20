@@ -1,27 +1,20 @@
 import "./globals.css";
 import type { ReactNode } from "react";
+import localFont from "next/font/local";
 
-export const metadata = { title: "Tipping Point", description: "How sure should you be about your apartment pick?" };
+// Self-hosted (SIL Open Font License) so the build and the demo never depend on the network.
+const sans = localFont({ src: "./fonts/PlusJakartaSans-latin.woff2", weight: "200 800", variable: "--font-sans", display: "swap" });
+const mono = localFont({ src: "./fonts/JetBrainsMono-latin.woff2", weight: "100 800", variable: "--font-mono", display: "swap" });
+
+export const metadata = {
+  title: "New Lease",
+  description: "Find a place that fits you. Rank what matters, see how sure you can be, and what would tip the answer.",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body>
-        <header className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-6 py-3">
-          <span className="h-3 w-3 rounded-full bg-emerald-400" />
-          <span className="font-semibold text-slate-100">Tipping Point</span>
-          <span className="text-xs text-slate-500">Rank by your priorities. See what would flip the answer.</span>
-        </header>
-        {children}
-        <footer className="px-6 py-4 text-xs text-slate-500">
-          <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">SYNTHETIC</span>made-up listings and personas for the demo.{" "}
-          <span className="mr-1 rounded bg-sky-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-sky-300">WEB LISTING</span>collected by hand from a public page; rent and amenities as listed, location and travel estimated.{" "}
-          <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">ESTIMATE</span>costs, travel and walking times are ranges we modeled.{" "}
-          <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">USER</span>something you entered.{" "}
-          <span className="mr-1 rounded bg-sky-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-sky-300">CLAUDE ESTIMATE</span>a place location Claude proposed and you confirmed.
-          <span className="mx-1 rounded bg-teal-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-teal-300">OSM</span>a place found on OpenStreetMap and confirmed by you.
-        </footer>
-      </body>
+    <html lang="en" className={`dark ${sans.variable} ${mono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

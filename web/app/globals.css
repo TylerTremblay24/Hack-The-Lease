@@ -1,22 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root { color-scheme: dark; }
-body { @apply bg-slate-950 text-slate-200 antialiased; }
-select, input[type="range"], input[type="checkbox"] { accent-color: #34d399; }
-select option { background: #0f172a; color: #e2e8f0; }
+
+/* New Lease tokens. Channels only ("r g b") so Tailwind can add opacity: bg-leader/20.
+   Palette from References/NameandImageAssets.png: Forest, Sage, Mist, Navy, Cream, Slate, plus Michigan maize for "would flip".
+   Text pairs are at least 4.5:1 on surface (ink-faint 5.0:1, ink-muted 8.4:1). */
+:root {
+  color-scheme: dark;
+  --bg: 7 17 13;
+  --surface: 13 26 21;
+  --surface-2: 19 37 32;
+  --line: 30 50 41;
+  --line-strong: 43 69 56;
+  --ink: 245 241 233;
+  --ink-muted: 163 174 168;
+  --ink-faint: 126 141 134;
+  --ink-inverse: 10 26 18;
+  --forest: 15 45 36;
+  --sage: 79 119 94;
+  --mist: 167 191 166;
+  --navy: 11 31 46;
+  --cream: 245 241 233;
+  --leader: 140 199 158;
+  --flip: 255 203 5;
+  --against: 227 154 130;
+  --badge-synth: 27 38 34;
+  --badge-synth-ink: 182 192 187;
+  --badge-web: 11 31 46;
+  --badge-web-ink: 156 195 230;
+  --badge-est-ink: 233 223 201;
+  --badge-user: 22 48 31;
+  --badge-user-ink: 167 191 166;
+  --badge-osm: 14 42 42;
+  --badge-osm-ink: 134 211 195;
+  --mate-1: 140 199 158;
+  --mate-2: 125 180 230;
+  --mate-3: 232 168 124;
+  --mate-4: 184 160 226;
+  --paper: 255 255 255;
+  --paper-ink: 15 23 20;
+  --paper-muted: 84 96 90;
+  --paper-line: 205 212 208;
+  --paper-desk: 222 228 224;
+}
+
+html { background: rgb(var(--bg)); }
+body { @apply bg-bg font-sans text-ink antialiased; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+select, input[type="range"], input[type="checkbox"] { accent-color: rgb(var(--sage)); }
+select option { background: rgb(var(--surface)); color: rgb(var(--ink)); }
+::selection { background: rgb(var(--sage) / 0.6); }
+:focus-visible { outline: 2px solid rgb(var(--flip)); outline-offset: 2px; border-radius: 6px; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 6px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--line-strong)); border-radius: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* single-thumb sliders (week, assumptions) */
+input[type="range"].slider { appearance: none; -webkit-appearance: none; height: 20px; background: transparent; }
+input[type="range"].slider::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: rgb(var(--line-strong)); }
+input[type="range"].slider::-moz-range-track { height: 4px; border-radius: 2px; background: rgb(var(--line-strong)); }
+input[type="range"].slider::-webkit-slider-thumb { -webkit-appearance: none; height: 16px; width: 16px; margin-top: -6px; border-radius: 9999px; background: rgb(var(--cream)); border: 3px solid rgb(var(--sage)); cursor: pointer; }
+input[type="range"].slider::-moz-range-thumb { height: 12px; width: 12px; border-radius: 9999px; background: rgb(var(--cream)); border: 3px solid rgb(var(--sage)); cursor: pointer; }
 
 /* two-thumb range slider: stack two inputs, let only the thumbs take the pointer */
 .range2 input[type="range"] { position: absolute; inset: 0; width: 100%; margin: 0; background: transparent; pointer-events: none; appearance: none; -webkit-appearance: none; }
 .range2 input[type="range"]::-webkit-slider-runnable-track { background: transparent; height: 4px; }
 .range2 input[type="range"]::-moz-range-track { background: transparent; }
-.range2 input[type="range"]::-webkit-slider-thumb { pointer-events: auto; -webkit-appearance: none; appearance: none; height: 16px; width: 16px; border-radius: 9999px; background: #34d399; border: 2px solid #020617; cursor: pointer; margin-top: -6px; }
-.range2 input[type="range"]::-moz-range-thumb { pointer-events: auto; height: 14px; width: 14px; border-radius: 9999px; background: #34d399; border: 2px solid #020617; cursor: pointer; }
+.range2 input[type="range"]::-webkit-slider-thumb { pointer-events: auto; -webkit-appearance: none; appearance: none; height: 16px; width: 16px; border-radius: 9999px; background: rgb(var(--cream)); border: 3px solid rgb(var(--sage)); cursor: pointer; margin-top: -6px; }
+.range2 input[type="range"]::-moz-range-thumb { pointer-events: auto; height: 12px; width: 12px; border-radius: 9999px; background: rgb(var(--cream)); border: 3px solid rgb(var(--sage)); cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+}
 
 @media print {
-  html, body { background: #fff !important; color: #0f172a !important; }
+  html, body { background: #fff !important; color: rgb(var(--paper-ink)) !important; }
   body > *:not(#summary-sheet) { display: none !important; }
   #summary-sheet { position: static !important; background: #fff !important; padding: 0 !important; overflow: visible !important; }
   #summary-sheet .sheet { box-shadow: none !important; max-width: none !important; padding: 0 !important; }
