@@ -77,11 +77,12 @@ cd api && python -m pytest -q tests      # API tests (Claude is stubbed, no key 
 
 | Where | What it is |
 |-------|------------|
-| Top of the page | The answer: verdict (Robust pick, Leaning, Toss-up), the #1 listing, and a balance that tilts toward whichever listing wins more often. The banner under it says what your last change moved, with **Undo** |
-| Your priorities | Your ranked chips. Drag to reorder; each chip shows its rank and the weight your order gives it. **Chip bank** opens the rest (12 base chips plus your places) |
-| Left panel tabs | **Week** (days per campus area, LATE days), **Places**, **Rules** (must-haves and limits), **Budget** (budget, months, people as ranges), **Roommates**, **Assumptions** |
-| Center | "Why this fits you" story card, then the ranked listings: the leader large with its #1-share ring, the rest compact. "N didn't make it, and why" lists every filtered listing |
-| Right | **Why these results?** (verdict ring, the weights your order implies, why #1 beats #2) and **Tipping points** as levers with **Apply**, plus "How these numbers are calculated" |
+| Top of the page | The answer: verdict (Robust pick, Leaning, Toss-up), the #1 listing, and a balance that tilts toward whichever listing wins more often. The line under the balance says what your last change moved, with **Undo** |
+| Your priorities | Your ranked chips. Drag to reorder; each chip shows its rank and the weight your order gives it. **Add chips** opens the chip bank |
+| Build a smart chip | The strip under your chips (or the left half of the chip bank). Name any place you go, or pick a local favorite, and it becomes a **Near …** chip scored by the walk from every apartment. It joins your ranking at the end; drag it up if it matters more |
+| Your situation | One-line summaries that open as dropdowns: **My week** (days per campus area, LATE days), **Must-haves** (rules and limits, including walk limits for smart chips), **Budget and stay**, **Roommates**, **Assumptions** |
+| Center | "Why this fits you": how the pick does on your top three priorities and the trade-off, with your own words and the numbers in a dropdown. Then the ranked listings: the leader large with its #1-share ring, the rest compact. "N didn't make it, and why" lists every filtered listing |
+| Right | **Why these results?** (verdict ring, why #1 beats #2, and the implied weights in a dropdown) and **Tipping points** as levers with **Apply** (more levers and "How these numbers are calculated" open as dropdowns) |
 | Left nav | Decide, **Compare** (slide-over drawer for up to 3 pinned listings), Roommates, **Summary** (printable one page), Assumptions. Bottom: the **profile** (demo persona) and **Data** (listing bank: All, Web, Demo) |
 
 ## How the numbers work
@@ -103,8 +104,9 @@ start-demo.cmd  Windows one-click start (add "prod" for the production build)
 web/            Next.js 14 + Tailwind + dnd-kit + framer-motion
   app/decide/   The page
   app/fonts/    Self-hosted Plus Jakarta Sans and JetBrains Mono (SIL Open Font License)
-  components/   DecisionHero (balance), PriorityChips, ListingCard, WhyPanel, TippingPoints, StoryCard,
-                CompareView (drawer), shell/ (SideNav, InputRail), ui.tsx (shared tokens and badges)
+  components/   DecisionHero (balance), PriorityChips + ChipBuilder (smart chips), ListingCard, WhyPanel,
+                TippingPoints, StoryCard, CompareView (drawer), Disclosure (dropdowns),
+                shell/ (SideNav, InputRail accordion), ui.tsx (shared tokens and badges)
   lib/engine/   decide(): cost, criteria, filter, SMAA, explanations (pure TypeScript, tested)
   lib/types.ts  Shared contract. Mirror of api/app/schemas.py: change both together
   tailwind.config.ts + app/globals.css   Design tokens (see below)
@@ -131,7 +133,7 @@ variables in `web/app/globals.css`. Components use token classes only (no raw he
 
 - No demographic fields exist anywhere in the schema, and the API rejects unknown fields.
 - Inputs are places and routines the student chooses. Nothing is stored.
-- Only the short text typed into "Not listed? Describe it" leaves the browser, and only when the student clicks
+- Only the short text typed into the smart chip builder leaves the browser, and only when the student clicks
   **Look up** (to OpenStreetMap by default, or Claude if enabled). Everything else stays in the browser.
 - Every number carries a label: SYNTHETIC, WEB LISTING, ESTIMATE, USER, OSM or CLAUDE ESTIMATE.
 
@@ -142,16 +144,19 @@ Full version with timings, roles and fallbacks: [docs/DEMO_SCRIPT.md](docs/DEMO_
 1. **(0:00) The problem.** Maya (synthetic) can do $1,200 a month, $1,400 max. The question isn't which
    apartment is best, it's which is best for her life, and how sure we are.
 2. **(0:30) Her priorities** are the chip row: cost, laundry, commute, late walk home, quiet and space tied.
-   The % on each chip is the weight her order implies. Her week is in the Week tab.
+   The % on each chip is the weight her order implies. Her week is under Your situation, My week.
 3. **(1:10) Read the answer** at the top: Plymouth Rd Garden 2BR, **Robust pick**, wins 70%. The balance leans
    toward it. Scroll to "Why this fits you": her own words next to the real numbers, and the trade-off.
 4. **(1:50) The tipping point.** Drag **Laundry** onto **True monthly cost**. The balance swings to Broadway
-   (56% vs 44%), the pill turns to **Toss-up**, and the banner says what moved.
-5. **(2:40) Undo**, then point at the first **PRICE LEVER**: Broadway overtakes if its rent drops $20 a person.
-6. **(3:00) Roommates** in the left nav, **Plan with roommates**, then **Protect the least happy**.
-7. **(3:40) Just me**, then **Data** at the bottom of the nav, **Web 84**: real listings with source links. 518 S
+   (56% vs 44%), the pill turns to **Toss-up**, and the line under the balance says what moved.
+5. **(2:40) Undo** (under the balance), then point at the first **PRICE LEVER**: Broadway overtakes if its rent
+   drops $20 a person.
+6. **(3:00) Smart chip.** **Build a smart chip**, **Food**, **Zingerman's Deli**. One place she actually goes,
+   ranked last at 2%, and Plymouth drops from Robust 70% to a **Toss-up at 53%**. **Undo**.
+7. **(3:30) Roommates** in the left nav, **Plan with roommates**, then **Protect the least happy**.
+8. **(4:00) Just me**, then **Data** at the bottom of the nav, **Web 84**: real listings with source links. 518 S
    4th Ave leads at 57%.
-8. **(4:15) Summary** in the nav: the one-page summary to share. **(4:40)** Close on the decision.
+9. **(4:20) Summary** in the nav: the one-page summary to share. **(4:40)** Close on the decision.
 
 ## Likely judge questions
 

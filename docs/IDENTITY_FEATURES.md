@@ -26,7 +26,7 @@ Status: DONE, NEXT (build this round), PLANNED.
 | 1 | Priority chip bank, 12 base criteria, ties | Drags chips into a ranked list | ROC weights and SMAA rank acceptability | DONE |
 | 2 | Must-have rules | Ticks hard rules | Listings that fail are out; near misses become tipping points | DONE |
 | 3 | Range inputs (budget, months, people) | Drags two thumbs | Keeps every listing that fits anywhere in the range | DONE |
-| 4 | **My places** | Picks restaurants, cafes, gym, study spots they actually use, or describes their own and Claude proposes the name, type and location for them to confirm | Each place becomes a chip "Near [place]" scored by walking time, plus an optional "within N min" must-have | DONE |
+| 4 | **My places (smart chips)** | Picks restaurants, cafes, gym, study spots they actually use, or describes their own and Claude proposes the name, type and location for them to confirm | Each place becomes a chip "Near [place]" scored by walking time, plus an optional "within N min" must-have | DONE |
 | 5 | Weekly rhythm ("My week") | Sets days per week at each campus area and which days run late | Drives commute and late-walk scores | DONE |
 | 6 | Getting-around style | Chooses walk, bike, bus, car, in any mix | Changes which travel time counts and adds a bike-friendliness chip | DROPPED |
 | 7 | Home habits | Cooks at home, hosts friends, studies at home, night owl or early bird | Adds chips for kitchen and grocery access, space for hosting, quiet hours; maps to noise tolerance | DROPPED |

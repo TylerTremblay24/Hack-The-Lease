@@ -21,10 +21,9 @@ type Props = {
 export function RhythmEditor({ rhythm, notes, onChange }: Props) {
   const total = ROWS.reduce((a, r) => a + rhythm[r.id].days, 0);
   return (
-    <section className="space-y-4 p-4 text-sm">
+    <section className="space-y-4 px-4 pb-4 text-sm">
       <div>
-        <h3 className="text-sm font-bold">My week</h3>
-        <p className="mt-1 text-xs text-ink-muted">Days a week you head to each place. &ldquo;Late&rdquo; means home after about 11 PM. This drives your commute and late-night walk scores.</p>
+        <p className="text-xs text-ink-muted">Days a week you head to each place. &ldquo;Late&rdquo; means home after about 11 PM. This drives your commute and late-night walk scores.</p>
       </div>
       {ROWS.map((r) => {
         const v = rhythm[r.id];

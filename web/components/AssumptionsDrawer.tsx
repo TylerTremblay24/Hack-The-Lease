@@ -33,9 +33,8 @@ export function AssumptionsDrawer({ base, tune, onTune, onReset }: Props) {
   const u = base.utilitiesPerUnit;
   const range = (r: { lo: number; hi: number }) => `$${r.lo}-${r.hi}`;
   return (
-    <section className="space-y-4 p-4 text-sm">
+    <section className="space-y-4 px-4 pb-4 text-sm">
       <div className="flex items-center gap-2">
-        <h3 className="text-sm font-bold">Assumptions</h3>
         <Badge kind="est">ESTIMATE</Badge>
         {changed > 0 && <span className="ml-auto font-mono text-micro text-flip">{changed} CHANGED</span>}
       </div>

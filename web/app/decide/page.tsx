@@ -10,7 +10,7 @@ import { ChangeStrip } from "@/components/ChangeStrip";
 import { ListingCard } from "@/components/ListingCard";
 import { TippingPoints } from "@/components/TippingPoints";
 import { RangeSlider } from "@/components/RangeSlider";
-import { MyPlaces } from "@/components/MyPlaces";
+import { ChipBuilder } from "@/components/ChipBuilder";
 import { RhythmEditor, type Rhythm } from "@/components/RhythmEditor";
 import { CompareView } from "@/components/CompareView";
 import { GroupPanel, type GroupState } from "@/components/GroupPanel";
@@ -46,8 +46,9 @@ const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 const sel = "rounded-ctl border border-line-strong bg-bg px-2 py-1 text-sm text-ink";
 const personaName = (d?: string) => (d ?? "Student").split(" (")[0];
-const railSec = "space-y-2.5 border-t border-line p-4 text-sm first:border-t-0";
+const railSec = "space-y-2.5 px-4 pb-4 text-sm";
 const railHead = "flex items-center justify-between text-sm font-bold text-ink";
+const SHORT: Record<AnchorId, string> = { central: "Central", north: "North", kerrytown: "Kerrytown", medical: "Medicine", downtown: "Downtown" };
 
 /** Boolean must-have row. */
 function Check({ label: text, checked, onChange, disabled }: { label: string; checked: boolean; onChange: (v: boolean) => void; disabled?: boolean }) {
@@ -77,7 +78,7 @@ export default function Decide() {
   const [pinned, setPinned] = useState<string[]>([]);
   const [showSummary, setShowSummary] = useState(false);
   const [bank, setBank] = useState<Bank>("all");
-  const [tab, setTab] = useState<RailTab>("week");
+  const [sec, setSec] = useState<RailTab | null>(null);
   const [compareOpen, setCompareOpen] = useState(false);
   const LISTINGS = useMemo(() => bankListings(bank), [bank]);
 
@@ -144,9 +145,21 @@ export default function Decide() {
     setWhat(null);
   }
 
+  // A new smart chip joins the ranked list (the active roommate's, in group mode) at the end, in one undoable step.
+  const withTiers = (t: CriterionId[][]): Partial<State> =>
+    gOn ? { group: { ...s.group, members: s.group.members.map((m, i) => (i === s.group.active ? { ...m, tiers: t } : m)) } } : { tiers: t };
   function addPlace(pl: UserPlace) {
-    edit({ places: [...s.places, pl] }, `Added ${pl.name} to your places.`);
+    const t = [...shownTiers.map((x) => [...x]), [`place:${pl.id}` as CriterionId]];
+    edit({ places: [...s.places, pl], ...withTiers(t) }, `New smart chip: Near ${pl.name}, ranked #${t.flat().length}. Drag it up if it matters more.`);
   }
+  const placeRank = (pl: UserPlace) => {
+    const i = shownTiers.findIndex((t) => t.includes(`place:${pl.id}` as CriterionId));
+    return i < 0 ? null : shownTiers.slice(0, i).reduce((a, t) => a + t.length, 0) + 1;
+  };
+  const rankPlace = (pl: UserPlace) => {
+    const t = [...shownTiers.map((x) => [...x]), [`place:${pl.id}` as CriterionId]];
+    edit(withTiers(t), `Ranked Near ${pl.name} at #${t.flat().length}.`);
+  };
   function removePlace(pl: UserPlace) {
     const id = `place:${pl.id}`;
     const limits = { ...(s.rules.placeMaxWalkMin ?? {}) };
@@ -205,8 +218,7 @@ export default function Decide() {
   function nav(t: NavTarget) {
     if (t === "summary") { if (story) setShowSummary(true); return; }
     if (t === "compare") { setCompareOpen(true); return; }
-    if (t === "group" || t === "tune") { setTab(t); document.getElementById("inputs")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
-    setTab("week");
+    if (t === "group" || t === "tune") { setSec(t); setTimeout(() => document.getElementById("inputs")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); return; }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
   function pickPersona(i: number) { setS(init(i)); setHistory([]); setWhat(null); setPinned([]); }
@@ -225,7 +237,7 @@ export default function Decide() {
           bank={bank} onBank={pickBank}
           banks={[{ id: "all", label: "All", count: ALL_LISTINGS.length }, { id: "web", label: "Web", count: WEB_LISTINGS.length }, { id: "demo", label: "Demo", count: DEMO_LISTINGS.length }]}
           pinned={pinned.length} roommates={gOn ? s.group.members.length : 0}
-          onNav={nav} active={compareOpen ? "compare" : tab === "group" ? "group" : tab === "tune" ? "tune" : "decide"} />
+          onNav={nav} active={compareOpen ? "compare" : sec === "group" ? "group" : sec === "tune" ? "tune" : "decide"} />
 
         <main className="min-w-0 flex-1 px-4 pb-12 md:px-7">
           <div className="mx-auto max-w-page">
@@ -235,61 +247,78 @@ export default function Decide() {
 
             <section className={`${panel} mt-5 p-4 md:p-5`} aria-label="Your priorities">
               <PriorityChips tiers={shownTiers} places={s.places} onChange={setTiers} weights={gOn ? undefined : result.weightsROC}
-                owner={gOn ? s.group.members[s.group.active].name : undefined} />
+                owner={gOn ? s.group.members[s.group.active].name : undefined}
+                builder={(focusKey) => <ChipBuilder all={PLACES} chosen={s.places} onAdd={addPlace} onRemove={removePlace} rankOf={placeRank} onRank={rankPlace} focusKey={focusKey} />} />
             </section>
 
             <div className="mt-5 grid gap-5 lg:grid-cols-[theme(width.rail)_minmax(0,1fr)] xl:grid-cols-[theme(width.rail)_minmax(0,1fr)_theme(width.side)]">
               <div className="lg:row-span-2 xl:row-span-1">
-                <InputRail tab={tab} onTab={setTab} badges={{ rules: rulesOn > 0 ? true : undefined, group: gOn || undefined, tune: Object.keys(s.tune).length > 0 || undefined }}>
-                  {tab === "week" && (
-                    <RhythmEditor rhythm={s.rhythm} notes={Object.fromEntries(base.anchors.filter((a) => a.label).map((a) => [a.anchor, a.label]))}
-                      onChange={(id, next, text) => edit({ rhythm: { ...s.rhythm, [id]: next } }, text)} />
-                  )}
-                  {tab === "places" && <MyPlaces all={PLACES} chosen={s.places} onAdd={addPlace} onRemove={removePlace} />}
-                  {tab === "rules" && (
-                    <>
-                      <section className={railSec}>
-                        <h3 className={railHead}>Must-haves</h3>
-                        <p className="text-xs text-ink-faint">Hard rules. A listing that breaks one is out, and the tipping points show near misses.</p>
-                        <Check label="In-unit laundry" checked={!!r.inUnitLaundryRequired} onChange={(v) => rule({ inUnitLaundryRequired: v, laundryAtLeast: v ? undefined : r.laundryAtLeast }, onOff(v, "In-unit laundry is now required.", "In-unit laundry no longer required."))} />
-                        <Check label="Some laundry on site" checked={!!r.laundryAtLeast || !!r.inUnitLaundryRequired} disabled={!!r.inUnitLaundryRequired}
-                          onChange={(v) => rule({ laundryAtLeast: v ? "in_building" : undefined }, onOff(v, "Laundry on site is now required.", "Laundry on site no longer required."))} />
-                        <Check label="Pet-friendly" checked={!!r.petFriendly} onChange={(v) => rule({ petFriendly: v || undefined }, onOff(v, "Pet-friendly is now required.", "Pet-friendly no longer required."))} />
-                        <Check label="Furnished" checked={!!r.furnished} onChange={(v) => rule({ furnished: v || undefined }, onOff(v, "Furnished is now required.", "Furnished no longer required."))} />
-                        <Check label="Quiet buildings only (noise 2 or lower)" checked={r.maxNoise != null} onChange={(v) => rule({ maxNoise: v ? 2 : undefined }, onOff(v, "Only quiet buildings now.", "Noise no longer limited."))} />
-                        <Check label="On-site parking (cost counted)" checked={s.hasCar || !!s.rules.parkingRequired}
-                          onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
+                <InputRail open={sec} onOpen={setSec} sections={[
+                  {
+                    id: "week", title: "My week", icon: "week",
+                    summary: ANCHORS.filter((a) => s.rhythm[a].days > 0).map((a) => `${SHORT[a]} ${s.rhythm[a].days}d${s.rhythm[a].late ? " (late)" : ""}`).join(" · ") || "No campus trips set",
+                    content: <RhythmEditor rhythm={s.rhythm} notes={Object.fromEntries(base.anchors.filter((a) => a.label).map((a) => [a.anchor, a.label]))}
+                      onChange={(id, next, text) => edit({ rhythm: { ...s.rhythm, [id]: next } }, text)} />,
+                  },
+                  {
+                    id: "rules", title: "Must-haves", icon: "rules", changed: rulesOn > 0,
+                    summary: rulesOn === 0 ? "None yet. Every listing is in play" : `${rulesOn} ${rulesOn === 1 ? "rule" : "rules"} on`,
+                    content: (
+                      <div className="text-sm">
+                        <section className={railSec}>
+                          <p className="text-xs text-ink-faint">Hard rules. A listing that breaks one is out, and the tipping points show near misses.</p>
+                          <Check label="In-unit laundry" checked={!!r.inUnitLaundryRequired} onChange={(v) => rule({ inUnitLaundryRequired: v, laundryAtLeast: v ? undefined : r.laundryAtLeast }, onOff(v, "In-unit laundry is now required.", "In-unit laundry no longer required."))} />
+                          <Check label="Some laundry on site" checked={!!r.laundryAtLeast || !!r.inUnitLaundryRequired} disabled={!!r.inUnitLaundryRequired}
+                            onChange={(v) => rule({ laundryAtLeast: v ? "in_building" : undefined }, onOff(v, "Laundry on site is now required.", "Laundry on site no longer required."))} />
+                          <Check label="Pet-friendly" checked={!!r.petFriendly} onChange={(v) => rule({ petFriendly: v || undefined }, onOff(v, "Pet-friendly is now required.", "Pet-friendly no longer required."))} />
+                          <Check label="Furnished" checked={!!r.furnished} onChange={(v) => rule({ furnished: v || undefined }, onOff(v, "Furnished is now required.", "Furnished no longer required."))} />
+                          <Check label="Quiet buildings only (noise 2 or lower)" checked={r.maxNoise != null} onChange={(v) => rule({ maxNoise: v ? 2 : undefined }, onOff(v, "Only quiet buildings now.", "Noise no longer limited."))} />
+                          <Check label="On-site parking (cost counted)" checked={s.hasCar || !!s.rules.parkingRequired}
+                            onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
+                        </section>
+                        <section className={`${railSec} border-t border-line pt-4`}>
+                          <h3 className={railHead}>Limits</h3>
+                          <Limit label="Groceries within" unit="min walk" options={[5, 8, 12, 15]} value={r.maxGroceryWalkMin}
+                            onChange={(v) => rule({ maxGroceryWalkMin: v }, v ? `Groceries must be within ${v} min.` : "Grocery distance no longer limited.")} />
+                          <Limit label="Late walk home under" unit="min" options={[8, 12, 15, 20]} value={r.maxLateWalkMin}
+                            onChange={(v) => rule({ maxLateWalkMin: v }, v ? `Late walk home must be under ${v} min.` : "Late walk no longer limited.")} />
+                          <Limit label="Commute at most" unit="min/wk" options={[90, 150, 210, 300]} value={r.maxWeeklyCommuteMin}
+                            onChange={(v) => rule({ maxWeeklyCommuteMin: v }, v ? `Weekly commute capped at ${v} min.` : "Commute no longer capped.")} />
+                          {s.places.map((pl) => (
+                            <Limit key={pl.id} label={`Walk to ${pl.name} (smart chip)`} unit="min" options={[5, 10, 15, 20]} value={r.placeMaxWalkMin?.[pl.id]}
+                              onChange={(v) => setPlaceLimit(pl, v)} />
+                          ))}
+                        </section>
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "budget", title: "Budget and stay", icon: "money",
+                    summary: `${usd(shownBudget[0])}–${usd(shownBudget[1])} · ${s.months[0] === s.months[1] ? s.months[0] : `${s.months[0]}–${s.months[1]}`} mo · ${s.occupants[0] === s.occupants[1] ? s.occupants[0] : `${s.occupants[0]}–${s.occupants[1]}`} people`,
+                    content: (
+                      <section className={`${railSec} space-y-4`}>
+                        <RangeSlider label={gOn ? `${s.group.members[s.group.active].name}'s budget per person` : "Budget per person"} hint="target to hard cap" min={900} max={2200} step={25} value={shownBudget} format={usd}
+                          onChange={(v) => setBudget(v, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
+                        <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
+                          onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
+                        <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
+                          onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
+                        <p className="text-xs text-ink-faint">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
+                        <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
                       </section>
-                      <section className={railSec}>
-                        <h3 className={railHead}>Limits</h3>
-                        <Limit label="Groceries within" unit="min walk" options={[5, 8, 12, 15]} value={r.maxGroceryWalkMin}
-                          onChange={(v) => rule({ maxGroceryWalkMin: v }, v ? `Groceries must be within ${v} min.` : "Grocery distance no longer limited.")} />
-                        <Limit label="Late walk home under" unit="min" options={[8, 12, 15, 20]} value={r.maxLateWalkMin}
-                          onChange={(v) => rule({ maxLateWalkMin: v }, v ? `Late walk home must be under ${v} min.` : "Late walk no longer limited.")} />
-                        <Limit label="Commute at most" unit="min/wk" options={[90, 150, 210, 300]} value={r.maxWeeklyCommuteMin}
-                          onChange={(v) => rule({ maxWeeklyCommuteMin: v }, v ? `Weekly commute capped at ${v} min.` : "Commute no longer capped.")} />
-                        {s.places.map((pl) => (
-                          <Limit key={pl.id} label={`Walk to ${pl.name}`} unit="min" options={[5, 10, 15, 20]} value={r.placeMaxWalkMin?.[pl.id]}
-                            onChange={(v) => setPlaceLimit(pl, v)} />
-                        ))}
-                      </section>
-                    </>
-                  )}
-                  {tab === "budget" && (
-                    <section className={`${railSec} space-y-4`}>
-                      <RangeSlider label={gOn ? `${s.group.members[s.group.active].name}'s budget per person` : "Budget per person"} hint="target to hard cap" min={900} max={2200} step={25} value={shownBudget} format={usd}
-                        onChange={(v) => setBudget(v, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
-                      <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
-                        onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
-                      <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
-                        onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
-                      <p className="text-xs text-ink-faint">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
-                      <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
-                    </section>
-                  )}
-                  {tab === "group" && <GroupPanel g={s.group} budget={s.budget} onChange={onGroup} />}
-                  {tab === "tune" && <AssumptionsDrawer base={ASSUMPTIONS} tune={s.tune} onTune={tuneOne} onReset={() => edit({ tune: {} }, "Assumptions reset to defaults.")} />}
-                </InputRail>
+                    ),
+                  },
+                  {
+                    id: "group", title: "Roommates", icon: "group", changed: gOn,
+                    summary: gOn ? `${s.group.members.length} people · ${s.group.rule === "fair" ? "protect the least happy" : "average"}` : "Just you",
+                    content: <GroupPanel g={s.group} budget={s.budget} onChange={onGroup} />,
+                  },
+                  {
+                    id: "tune", title: "Assumptions", icon: "tune", changed: Object.keys(s.tune).length > 0,
+                    summary: Object.keys(s.tune).length ? `${Object.keys(s.tune).length} changed from our estimates` : "Our estimates",
+                    content: <AssumptionsDrawer base={ASSUMPTIONS} tune={s.tune} onTune={tuneOne} onReset={() => edit({ tune: {} }, "Assumptions reset to defaults.")} />,
+                  },
+                ]} />
               </div>
 
               <div className="min-w-0 space-y-5">
@@ -304,7 +333,7 @@ export default function Decide() {
                   {feasible.length === 0 && (
                     <div className="p-6 text-sm text-ink-muted">
                       <p className="font-semibold text-ink">Nothing fits all your rules.</p>
-                      <p className="mt-1">Loosen a must-have in the Rules tab, or widen the budget. The list below says what each listing missed.</p>
+                      <p className="mt-1">Loosen a must-have under Your situation, or widen the budget. The list below says what each listing missed.</p>
                     </div>
                   )}
                   {feasible.map((e, i) => (

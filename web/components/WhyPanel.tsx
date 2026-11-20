@@ -4,6 +4,7 @@ import type { CriterionId, DecisionResult, Listing, UserPlace } from "@/lib/type
 import { criterionLabel } from "@/lib/engine/explain";
 import { Icon, SectionTitle, label, panel } from "./ui";
 import { Ring } from "./Ring";
+import { Disclosure } from "./Disclosure";
 import { VERDICT } from "./ChangeStrip";
 
 const spring = { type: "spring", stiffness: 160, damping: 22 } as const;
@@ -36,9 +37,9 @@ export function WhyPanel({ result, listings, places, group }: { result: Decision
       )}
 
       {w.length > 0 && (
-        <div className="mt-4">
-          <div className={`${label} mb-2.5`}>{group ? "Weights the group implies" : "Weights your order implies"}</div>
-          <div className="space-y-2.5">
+        <Disclosure className="mt-4" title={group ? "Weights the group implies" : "Weights your order implies"}
+          summary={w.slice(0, 2).map(([c, v]) => `${criterionLabel(c, places)} ${Math.round(v * 100)}%`).join(" · ")}>
+          <div className="mt-3 space-y-2.5">
             {w.slice(0, 8).map(([c, v]) => (
               <div key={c}>
                 <div className="mb-1 flex justify-between text-xs"><span>{criterionLabel(c, places)}</span><span className="num">{Math.round(v * 100)}%</span></div>
@@ -46,7 +47,7 @@ export function WhyPanel({ result, listings, places, group }: { result: Decision
               </div>
             ))}
           </div>
-        </div>
+        </Disclosure>
       )}
 
       {result.whyWinner && result.winnerId && result.runnerUpId && (

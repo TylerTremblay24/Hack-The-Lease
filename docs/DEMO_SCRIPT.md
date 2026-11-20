@@ -21,17 +21,19 @@ layout. The product is now **New Lease**; **tipping points** is the name of its 
 2. Profile (bottom of the left nav) is **Maya**. Roommates off, nothing pinned.
 3. Click **Data** at the bottom of the left nav and choose **Demo 14**. The page opens on All, so do this first
    or the numbers below won't match.
-4. Click the banner's **Undo** until it disappears, or reload and repeat step 3, so the banner reads "Drag a
-   priority, tick a rule or apply a tipping point".
+4. Click **Undo** (under the balance) until it disappears, or reload and repeat step 3, so the line under the
+   balance reads "Drag a chip, tick a rule or pull a lever, and watch it tip".
+5. Close the chip bank if it is open, and collapse every Your situation dropdown.
 
 ## Where things are
 
-- **Top of the page:** the verdict pill, the #1 listing, and the balance ("How the decision leans"). The
-  banner under it names the last change, with **Undo**.
-- **Your priorities:** the chip row. **Chip bank** (right) opens the rest of the chips.
-- **Left panel tabs:** Week, Places, Rules, Budget, Roommates, Assumptions.
-- **Center:** "Why this fits you", then the ranked listings.
-- **Right:** "Why these results?" and **Tipping points**.
+- **Top of the page:** the verdict pill, the #1 listing, and the balance ("How the decision leans"). The line
+  under the balance names the last change, with **Undo**.
+- **Your priorities:** the chip row. **Add chips** (right) opens the chip bank; the maize **Build a smart
+  chip** strip opens it with the smart chip builder ready to type in.
+- **Your situation (left):** dropdowns for My week, Must-haves, Budget and stay, Roommates, Assumptions.
+- **Center:** "Why this fits you" (details in a dropdown), then the ranked listings.
+- **Right:** "Why these results?" and **Tipping points** (more levers in a dropdown).
 - **Left nav:** Compare (drawer), Roommates, Summary (one-page sheet), Assumptions; profile and Data at the bottom.
 
 ## 5-minute script
@@ -39,16 +41,17 @@ layout. The product is now **New Lease**; **tipping points** is the name of its 
 | Time | Driver does | Narrator says | Screen shows |
 |------|-------------|---------------|--------------|
 | 0:00-0:30 | Nothing; app is on screen | "Maya is a junior with labs on North Campus Tuesday and Thursday who studies at the UgLi until 1 AM. She can do $1,200 a month, $1,400 max. On Zillow, a dozen 2-bedrooms look the same. The question isn't which apartment is best, it's which is best for her life, and how sure we are." | Plymouth Rd Garden 2BR, **Robust pick**, balance leaning left |
-| 0:30-1:10 | Point at the chip row, then click the **Week** tab | "She doesn't type weights. She ranks what matters: cost, then laundry, commute, the late walk home, quiet and space tied. The percent on each chip is the weight her order implies. Her week drives commute minutes. Nothing demographic is asked." | Chips with 41%, 24%, 16%...; Week tab with LATE on Central Campus |
+| 0:30-1:10 | Point at the chip row, then at **My week** under Your situation (its summary reads "Central 4d (late) · North 3d") | "She doesn't type weights. She ranks what matters: cost, then laundry, commute, the late walk home, quiet and space tied. The percent on each chip is the weight her order implies. Her week drives commute minutes. Nothing demographic is asked." | Chips with 41%, 24%, 16%...; My week summary |
 | 1:10-1:50 | Point at the top, then scroll to "Why this fits you" | "Plymouth Rd Garden 2BR is a robust pick: it wins in 70% of 5,000 weight sets that respect her order. The balance shows how hard it leans. The story card puts her own words next to the real numbers, and names the trade-off: the late walk home." | "Robust pick", 70%, story card |
-| 1:50-2:40 | Scroll back up. Drag the **Laundry** chip onto **True monthly cost** | "Watch what happens if laundry matters more than price." Pause. "It tips. The balance swings to Broadway, 56 to 44; it's a toss-up. The banner says exactly what moved. That's decision sensitivity." | Balance swings right; pill turns maize **Toss-up**; banner "Moved Laundry to #1" |
-| 2:40-3:00 | Click **Undo** in the banner; point at the first **PRICE LEVER** on the right | "Back to robust. And here's a lever: Broadway overtakes if its rent drops just $20 a person. That's a negotiation, not a setting." | "−$20/mo" lever |
-| 3:00-3:40 | Click **Roommates** in the left nav, then **Plan with roommates**, then **Roommate 2**, then **Protect the least happy** | "Most students don't decide alone. Her roommate ranks quiet and laundry first, with their own color everywhere. Both still favor Plymouth, but their own top picks only match in 45% of draws. 'Protect the least happy' scores each place by whoever likes it least, and tipping points name who would have to give." | Group view: "Partly aligned: everyone's own #1 matches in 45% of draws", colored score bars |
-| 3:40-4:15 | Click **Just me** (Roommates tab), then **Data** at the bottom of the nav, then **Web 84** | "These were synthetic, labeled so. Here are 84 real Ann Arbor listings we collected today. Each links to its source; anything we estimated, like location and travel time, is labeled. The answer changes: 518 S 4th Ave leads, at 57%." | WEB LISTING badges with source links; **Leaning**, 57% |
-| 4:15-4:40 | Click **Summary** in the left nav | "She can take a one-page summary to her roommates or parents: the pick, why, what would change it, and every source." | Summary sheet |
+| 1:50-2:40 | Scroll back up. Drag the **Laundry** chip onto **True monthly cost** | "Watch what happens if laundry matters more than price." Pause. "It tips. The balance swings to Broadway, 56 to 44; it's a toss-up. The line under the balance says exactly what moved. That's decision sensitivity." | Balance swings right; pill turns maize **Toss-up**; "Moved Laundry to #1" under the balance |
+| 2:40-3:00 | Click **Undo** under the balance; point at the first **PRICE LEVER** on the right | "Back to robust. And here's a lever: Broadway overtakes if its rent drops just $20 a person. That's a negotiation, not a setting." | "−$20/mo" lever |
+| 3:00-3:30 | Click **Build a smart chip**, then **Food**, then **Zingerman's Deli**. Then **Undo** | "Here's what no listing site can do. Maya eats at Zingerman's. One click and that place is a priority, scored by the walk from every apartment. She ranked it last, worth 2%, and Plymouth drops from robust to a toss-up at 53%. Any place she types works the same way: her gym, her job." | "Near Zingerman's Deli · 07 · SMART" chip; **Toss-up**, 53% |
+| 3:30-4:00 | Click **Roommates** in the left nav, then **Plan with roommates**, then **Roommate 2**, then **Protect the least happy** | "Most students don't decide alone. Her roommate ranks quiet and laundry first, with their own color everywhere. Both still favor Plymouth, but their own top picks only match in 45% of draws. 'Protect the least happy' scores each place by whoever likes it least, and tipping points name who would have to give." | Group view: "Partly aligned: everyone's own #1 matches in 45% of draws", colored score bars |
+| 4:00-4:20 | Click **Just me** (in the Roommates dropdown), then **Data** at the bottom of the nav, then **Web 84** | "These were synthetic, labeled so. Here are 84 real Ann Arbor listings we collected today. Each links to its source; anything we estimated, like location and travel time, is labeled. The answer changes: 518 S 4th Ave leads, at 57%." | WEB LISTING badges with source links; **Leaning**, 57% |
+| 4:20-4:40 | Click **Summary** in the left nav | "She can take a one-page summary to her roommates or parents: the pick, why, what would change it, and every source." | Summary sheet |
 | 4:40-5:00 | Close the sheet | "New Lease: rank what matters, see how sure you can be, and know exactly what would tip the answer. The engine is plain, explainable code, with no paid AI and no personal data." | Results |
 
-**If the drag misbehaves at 1:50:** click **Apply** on the **PRIORITY LEVER** ("If Laundry mattered more than
+**If the drag misbehaves at 1:50:** click **Apply** on the **PRIORITY LEVER** (always shown, second in the list) ("If Laundry mattered more than
 True monthly cost, Broadway 2BR would be #1"). It makes the same swap but keeps Quiet and Space tied, so the
 screen shows **54% to 46%** instead of 56% to 44%. Keyboard also works: Tab to the Laundry chip, Space, Left
 arrow, Space.
@@ -77,7 +80,7 @@ arrow, Space.
 - Latest `claude/decide-page` (or `main`, once merged) pulled on the projector laptop.
 - App started with `start-demo.cmd prod` at least 5 minutes early; /decide loaded once.
 - Browser full screen, zoom 100%, other tabs and notifications closed, laptop plugged in, sleep disabled.
-- Data on **Demo 14**, profile **Maya**, roommates off, no pins, banner idle.
+- Data on **Demo 14**, profile **Maya**, roommates off, no pins, no smart chips, nothing under the balance.
 - Projector resolution checked: at 1280 px wide the nav collapses to icons and all three columns still fit.
   If the projector is smaller, zoom the browser to 90%.
 - Backup PDF of the summary saved on the desktop; backup screenshots of each demo step in a folder.
@@ -92,6 +95,7 @@ arrow, Space.
 | Page will not load | Switch to the second laptop; or close the window and run `start-demo.cmd prod` again |
 | Drag does not drop | Use **Apply** on the PRIORITY LEVER (54% to 46%) |
 | Numbers differ from the script | Check Data is **Demo 14** and the profile is **Maya**; reload the page to reset |
-| Out of time | Skip the Web step; go straight to the closing line |
+| Out of time | Skip the Web step, then the roommates step; go straight to the closing line |
+| Smart chip lookup is offline | Use a local favorite (Food, Zingerman's Deli). It needs no internet |
 | Something breaks within 30 minutes of the demo | Run `git checkout pre-ui` for the previous UI (only if the `pre-ui` tag was created) |
 | Total failure | Walk through the backup screenshots and the summary PDF, and say so honestly |
