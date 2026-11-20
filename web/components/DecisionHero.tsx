@@ -50,7 +50,7 @@ export function DecisionHero({ result, listings, group, children }: Props) {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/75 to-bg/30" />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg to-transparent to-50%" />
 
-      <div className="relative grid items-end gap-6 lg:grid-cols-[minmax(0,1fr)_theme(width.balance)]">
+      <div className="relative grid grid-cols-[minmax(0,1fr)] items-end gap-6 lg:grid-cols-[minmax(0,1fr)_theme(width.balance)]">
         <div className="min-w-0">
           <div className="mb-3 flex flex-wrap items-center gap-2.5">
             <span className={`rounded-full px-2.5 py-1 font-mono text-label font-semibold uppercase ${PILL[result.verdict]}`}>{VERDICT[result.verdict]}</span>
@@ -64,8 +64,8 @@ export function DecisionHero({ result, listings, group, children }: Props) {
             <>
               <h1 className="text-display-sm md:text-display">{winner.name}</h1>
               <p className="mt-3 max-w-3xl text-base text-ink-muted">
-                {winner.neighborhood} · <span className="num text-ink">{usd(wEv.cost.effective.mid)}</span>/mo true cost per person · wins{" "}
-                <b className="text-leader"><Count value={wEv.rankAcceptability[0] * 100} format={(n) => `${Math.round(n)}%`} /></b> of the {result.samples.toLocaleString("en-US")} weightings that respect {group ? "the group's" : "your"} order
+                {winner.neighborhood} · <span className="num text-ink">{usd(wEv.cost.effective.mid)}</span>/mo per person · #1 in{" "}
+                <b className="text-leader"><Count value={wEv.rankAcceptability[0] * 100} format={(n) => `${Math.round(n)}%`} /></b> of weightings that respect {group ? "the group's" : "your"} order
               </p>
             </>
           ) : (
@@ -74,6 +74,7 @@ export function DecisionHero({ result, listings, group, children }: Props) {
               <p className="mt-3 max-w-2xl text-base text-ink-muted">Loosen one must-have or widen your budget in the panel on the left. The near misses below show what each rule is costing you.</p>
             </>
           )}
+          {!pair && children && <div className="mt-4 max-w-2xl rounded-card border border-line-strong bg-bg/80 px-4 py-3">{children}</div>}
         </div>
 
         {pair && (
@@ -103,10 +104,10 @@ export function DecisionHero({ result, listings, group, children }: Props) {
               <span className={`truncate ${sL >= sR ? "font-semibold text-leader" : "text-ink-muted"}`}>{find(L)?.name}</span>
               <span className={`truncate text-right ${sR > sL ? "font-semibold text-leader" : "text-ink-muted"}`}>{R ? find(R)?.name : "No runner-up"}</span>
             </div>
+            {children && <div className="mt-3 border-t border-line pt-3">{children}</div>}
           </div>
         )}
       </div>
-      {children && <div className="relative mt-5">{children}</div>}
     </section>
   );
 }

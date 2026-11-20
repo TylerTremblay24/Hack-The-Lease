@@ -6,7 +6,7 @@ import {
 import { SortableContext, arrayMove, rectSortingStrategy, sortableKeyboardCoordinates, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState, type KeyboardEvent } from "react";
+import { useEffect, useState, type KeyboardEvent, type ReactNode } from "react";
 import type { CriterionId, UserPlace } from "@/lib/types";
 import { CRITERION_GROUPS, criterionBlurb, criterionLabel } from "@/lib/engine/explain";
 import { Icon, btn, label, poss } from "./ui";
@@ -15,6 +15,7 @@ type Props = {
   tiers: CriterionId[][]; places: UserPlace[]; onChange: (t: CriterionId[][], note: string) => void;
   weights?: Partial<Record<CriterionId, number>>; // the weights the current order implies (ROC), shown on each chip
   owner?: string; // in roommates mode, whose list this is
+  builder?: (focusKey: number) => ReactNode; // the smart chip builder, shown first in the chip bank
 };
 
 const stop = (e: KeyboardEvent) => e.stopPropagation(); // keep Space/Enter on inner buttons from starting a keyboard drag
@@ -41,6 +42,7 @@ interface ChipProps {
 function WorkChip({ id, text, rank, tiedWithPrev, inTie, weight, maxWeight, canTie, onRemove, onTie, insertBefore, settled }: ChipProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const top = rank === 1 && !inTie;
+  const smart = id.startsWith("place:");
   return (
     <div ref={setNodeRef} style={{ transform: CSS.Transform.toString(transform), transition }} className="relative min-w-32 flex-1 basis-32 sm:basis-40">
       {insertBefore && <span aria-hidden className="absolute -left-2 bottom-1 top-1 w-1 rounded-full bg-flip" />}
@@ -52,12 +54,12 @@ function WorkChip({ id, text, rank, tiedWithPrev, inTie, weight, maxWeight, canT
           top ? "border-sage bg-gradient-to-b from-sage/35 to-sage/10" : "border-line-strong bg-surface-2 hover:border-mist/60"
         } ${inTie ? "border-dashed" : ""} ${isDragging ? "opacity-30" : ""}`}>
         <div className="flex items-start gap-1.5">
-          <Icon name="grip" size={14} className="mt-0.5 text-ink-faint" />
+          <Icon name={smart ? "pin" : "grip"} size={14} className={`mt-0.5 ${smart ? "text-flip" : "text-ink-faint"}`} />
           <span className="text-sm font-semibold leading-tight text-ink">{text}</span>
           {weight != null && <span className="num ml-auto pl-1 text-xs text-leader">{Math.round(weight * 100)}%</span>}
         </div>
         <div className="mt-1.5 flex items-center gap-1 pl-5">
-          <span className={`font-mono text-micro ${top ? "text-leader" : "text-ink-muted"}`}>{two(rank)}{top ? " · TOP" : inTie ? " · TIED" : ""}</span>
+          <span className={`font-mono text-micro ${top ? "text-leader" : "text-ink-muted"}`}>{two(rank)}{top ? " · TOP" : inTie ? " · TIED" : smart ? " · SMART" : ""}</span>
           <span className="ml-auto flex items-center">
             {canTie && (
               <button onClick={onTie} onKeyDown={stop} title={tiedWithPrev ? "Untie from the chip before" : "Same importance as the chip before"}
@@ -85,19 +87,21 @@ function Zone({ id, className, children }: { id: string; className: string; chil
 
 /** Your ranked priorities as a row of chips, plus the bank they come from. Drag to reorder (mouse, touch or keyboard:
  *  focus a chip, Space, arrow keys, Space). Drag from the bank into the row, or press + on a bank chip. */
-export function PriorityChips({ tiers, places, onChange, weights, owner }: Props) {
+export function PriorityChips({ tiers, places, onChange, weights, owner, builder }: Props) {
   const lab = (c: CriterionId) => criterionLabel(c, places);
   const [active, setActive] = useState<CriterionId | null>(null);
   const [over, setOver] = useState<string | null>(null);
   const [settled, setSettled] = useState<CriterionId | null>(null);
   const [bankOpen, setBankOpen] = useState(false);
+  const [focusKey, setFocusKey] = useState(0);
+  const openBuilder = () => { setBankOpen(true); setFocusKey((k) => k + 1); };
   useEffect(() => { if (!settled) return; const t = setTimeout(() => setSettled(null), 400); return () => clearTimeout(t); }, [settled]);
   const flat = tiers.flat();
   const inList = new Set(flat);
   const tierOf = (c: CriterionId) => tiers.findIndex((t) => t.includes(c));
   const rankOf = (c: CriterionId) => tiers.slice(0, tierOf(c)).reduce((a, t) => a + t.length, 0) + 1;
   const maxW = Math.max(0.0001, ...flat.map((c) => weights?.[c] ?? 0));
-  const bankLeft = [...CRITERION_GROUPS.flatMap((g) => g.ids), ...places.map((p) => `place:${p.id}` as CriterionId)].filter((c) => !inList.has(c)).length;
+  const bankLeft = CRITERION_GROUPS.flatMap((g) => g.ids).filter((c) => !inList.has(c)).length;
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
@@ -156,10 +160,10 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
         <Icon name="spark" size={20} className="hidden text-flip sm:block" />
         <div className="min-w-0">
           <h2 className="text-base font-bold text-ink">{owner ? `${poss(owner)} priorities` : "Your priorities"}</h2>
-          <p className="text-xs text-ink-muted">Drag to reorder, most important first. The order becomes the weights; nothing is typed in.</p>
+          <p className="text-xs text-ink-muted">Drag to reorder, most important first. Your order becomes the weights.</p>
         </div>
         <button onClick={() => setBankOpen((o) => !o)} aria-expanded={bankOpen} aria-controls="chip-bank" className={`${btn} ml-auto`}>
-          <Icon name="plus" size={16} /> Chip bank <span className="num text-ink-muted">{bankLeft}</span>
+          <Icon name="plus" size={16} /> Add chips
           <Icon name="chevron" size={14} className={`transition-transform duration-base ${bankOpen ? "-rotate-90" : "rotate-90"}`} />
         </button>
       </div>
@@ -177,8 +181,16 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
             })}
             {flat.length === 0 && (
               <p className="w-full rounded-xl border border-dashed border-line-strong px-4 py-5 text-sm text-ink-muted">
-                Nothing ranked yet, so only cost counts. Open the chip bank and drag in what matters to you.
+                Nothing ranked yet, so only cost counts. Add a ready-made chip, or build your own from a place you go.
               </p>
+            )}
+            {builder && !bankOpen && (
+              <button onClick={openBuilder} aria-controls="chip-bank"
+                className="group flex w-full flex-col gap-1 rounded-xl border border-dashed border-flip/50 bg-flip/5 px-4 py-3 text-left sm:flex-row sm:items-center sm:gap-4 transition-colors duration-fast hover:border-flip hover:bg-flip/10">
+                <span className="flex items-center gap-2 text-sm font-semibold text-flip"><Icon name="spark" size={16} />Build a smart chip</span>
+                <span className="min-w-0 text-xs text-ink-muted sm:flex-1">Turn any place you go into a priority: your gym, a café, a job. We measure the walk from every apartment.</span>
+                <span className="flex items-center gap-1 text-xs font-semibold text-flip">Build one<Icon name="chevron" size={14} className="transition-transform duration-fast group-hover:translate-x-0.5" /></span>
+              </button>
             )}
           </div>
         </SortableContext>
@@ -188,7 +200,10 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
         {(bankOpen || fromBank) && (
           <motion.div id="chip-bank" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.22, ease: [0.2, 0.8, 0.2, 1] }} className="overflow-hidden">
-            <Zone id="bank-zone" className="mt-4 rounded-xl border border-line bg-bg/50 p-3">
+            <Zone id="bank-zone" className={`mt-4 grid gap-4 rounded-xl border border-line bg-bg/50 p-3 md:p-4 ${builder ? "lg:grid-cols-2" : ""}`}>
+              {builder && <div className="rounded-xl border border-flip/30 bg-flip/5 p-4">{builder(focusKey)}</div>}
+              <div>
+              <div className={`${label} mb-3`}>Ready-made chips <span className="num text-ink-faint">{bankLeft}</span></div>
               <div className="flex flex-wrap gap-x-6 gap-y-3">
                 {CRITERION_GROUPS.map((g) => {
                   const left = g.ids.filter((c) => !inList.has(c));
@@ -202,18 +217,9 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
                     </div>
                   );
                 })}
-                {places.length > 0 && (
-                  <div>
-                    <div className={`${label} mb-1.5`}>My places</div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {places.map((p) => `place:${p.id}` as CriterionId).filter((c) => !inList.has(c))
-                        .map((c) => <BankChip key={c} id={c} text={lab(c)} onAdd={() => add(c)} />)}
-                      {places.every((p) => inList.has(`place:${p.id}` as CriterionId)) && <span className="py-1 text-xs text-ink-faint">all in use</span>}
-                    </div>
-                  </div>
-                )}
               </div>
-              <p className="mt-3 text-xs text-ink-faint">Drag a chip into your list, or press +. Drag a ranked chip down here to remove it. Add your own places in the Places tab.</p>
+              <p className="mt-4 text-xs text-ink-faint">Drag a chip into your list, or press +. Drag a ranked chip down here to take it out of the ranking.</p>
+              </div>
             </Zone>
           </motion.div>
         )}
@@ -222,7 +228,7 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
       <DragOverlay dropAnimation={{ duration: 220, easing: "cubic-bezier(.2,.8,.2,1)" }}>
         {active && (
           <div className="flex rotate-2 cursor-grabbing items-center gap-2 rounded-xl border border-flip bg-surface-2 px-3 py-2.5 text-sm font-semibold text-ink shadow-e2">
-            <Icon name="grip" size={14} className="text-ink-faint" />{lab(active)}
+            <Icon name={active.startsWith("place:") ? "pin" : "grip"} size={14} className={active.startsWith("place:") ? "text-flip" : "text-ink-faint"} />{lab(active)}
           </div>
         )}
       </DragOverlay>

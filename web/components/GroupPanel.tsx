@@ -25,8 +25,7 @@ export const newMember = (n: number, budget: [number, number]): Member => ({
 export function GroupPanel({ g, budget, onChange }: { g: GroupState; budget: [number, number]; onChange: (g: GroupState, note: string) => void }) {
   if (!g.on)
     return (
-      <section className="space-y-3 p-4 text-sm">
-        <h3 className="text-sm font-bold">Roommates</h3>
+      <section className="space-y-3 px-4 pb-4 text-sm">
         <p className="text-xs text-ink-muted">Each roommate ranks their own priorities. See where you agree, who gets the short end, and the exact point where you split.</p>
         <div className="flex -space-x-1.5" aria-hidden>{DOT.slice(0, 3).map((d, i) => <span key={i} className={`h-6 w-6 rounded-full border-2 border-surface ${d}`} />)}</div>
         <button onClick={() => onChange({ ...g, on: true, active: 0, members: [{ id: "r1", name: "You", tiers: [], budget }, newMember(2, budget)] }, "Roommates mode on.")}
@@ -41,9 +40,8 @@ export function GroupPanel({ g, budget, onChange }: { g: GroupState; budget: [nu
   };
   const remove = (i: number) => onChange({ ...g, members: m.filter((_, k) => k !== i), active: 0 }, `Removed ${m[i].name}.`);
   return (
-    <section className="space-y-3 p-4 text-sm">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-bold">Roommates</h3>
+    <section className="space-y-3 px-4 pb-4 text-sm">
+      <div className="flex items-center justify-end">
         <button className={linkBtn} onClick={() => onChange({ ...g, on: false, active: 0, members: [m[0]] }, "Back to just you.")}>Just me</button>
       </div>
       <p className="text-xs text-ink-muted">Editing <b className={mateText(g.active)}>{poss(m[g.active].name).replace(/^Your$/, "your")}</b> priorities and budget. Pick a roommate to switch.</p>
@@ -72,7 +70,7 @@ export function GroupPanel({ g, budget, onChange }: { g: GroupState; budget: [nu
         </div>
         <p className="mt-1.5 text-xs text-ink-faint">{g.rule === "fair" ? "A listing is only as good as the roommate who likes it least." : "A listing's group score is the mean of every roommate's score."}</p>
       </div>
-      <p className="text-xs text-ink-faint">Set each roommate&apos;s budget in the Budget tab while they are selected. Their priorities are the row at the top.</p>
+      <p className="text-xs text-ink-faint">Their priorities are the chip row at the top; set their budget under Budget and stay while they are selected.</p>
     </section>
   );
 }
