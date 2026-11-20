@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "setup": "npm install && npm --prefix web install",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
     "test:engine": "tsx --test web/lib/engine/__tests__/engine.test.ts",
     "demo:numbers": "tsx web/lib/engine/__tests__/run-demo.ts"
   },
