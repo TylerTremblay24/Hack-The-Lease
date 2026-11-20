@@ -2,7 +2,8 @@
 
 type Props = { label: string; min: number; max: number; value: [number, number]; onChange: (v: [number, number]) => void; unit?: string };
 
-/** Two-thumb slider: pick a low and a high value. Equal values mean "exactly this". */
+/** Two-thumb slider: pick a low and a high value. Equal values mean "exactly this".
+ *  If both thumbs overlap, dragging either one pulls the other end apart instead of getting stuck. */
 export function RangeSlider({ label, min, max, value, onChange, unit }: Props) {
   const [lo, hi] = value;
   const pct = (x: number) => ((x - min) / (max - min)) * 100;
@@ -16,9 +17,9 @@ export function RangeSlider({ label, min, max, value, onChange, unit }: Props) {
         <div className="absolute top-1/2 h-1 w-full -translate-y-1/2 rounded bg-slate-700" />
         <div className="absolute top-1/2 h-1 -translate-y-1/2 rounded bg-emerald-500" style={{ left: `${pct(lo)}%`, width: `${pct(hi) - pct(lo)}%` }} />
         <input type="range" aria-label={`${label} minimum`} min={min} max={max} step={1} value={lo}
-          onChange={(e) => onChange([Math.min(Number(e.target.value), hi), hi])} />
+          onChange={(e) => { const v = Number(e.target.value); onChange(v > hi ? [lo, v] : [v, hi]); }} />
         <input type="range" aria-label={`${label} maximum`} min={min} max={max} step={1} value={hi}
-          onChange={(e) => onChange([lo, Math.max(Number(e.target.value), lo)])} />
+          onChange={(e) => { const v = Number(e.target.value); onChange(v < lo ? [v, hi] : [lo, v]); }} />
       </div>
     </div>
   );
