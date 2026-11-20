@@ -234,8 +234,8 @@ export default function Decide() {
             </DecisionHero>
 
             <section className={`${panel} mt-5 p-4 md:p-5`} aria-label="Your priorities">
-              {gOn && <p className="mb-2 text-xs text-ink-muted">Editing <b className="text-ink">{s.group.members[s.group.active].name}</b>&apos;s priorities. Switch roommates in the Roommates tab.</p>}
-              <PriorityChips tiers={shownTiers} places={s.places} onChange={setTiers} />
+              <PriorityChips tiers={shownTiers} places={s.places} onChange={setTiers} weights={gOn ? undefined : result.weightsROC}
+                owner={gOn ? s.group.members[s.group.active].name : undefined} />
             </section>
 
             <div className="mt-5 grid gap-5 lg:grid-cols-[theme(width.rail)_minmax(0,1fr)] xl:grid-cols-[theme(width.rail)_minmax(0,1fr)_theme(width.side)]">
