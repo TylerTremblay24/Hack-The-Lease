@@ -8,18 +8,20 @@ import { PriorityChips } from "@/components/PriorityChips";
 import { ChangeStrip, VERDICT } from "@/components/ChangeStrip";
 import { ListingCard } from "@/components/ListingCard";
 import { TippingPoints } from "@/components/TippingPoints";
+import { RangeSlider } from "@/components/RangeSlider";
 
 interface State {
-  persona: number; tiers: CriterionId[][]; cap: number; months: number; occupants: number; hasCar: boolean;
+  persona: number; tiers: CriterionId[][]; cap: number; months: [number, number]; occupants: [number, number]; hasCar: boolean;
   rules: HardConstraints; dataU: boolean;
 }
 const init = (persona: number): State => {
   const p = PERSONAS[persona];
   return {
-    persona, tiers: p.priorities, cap: p.budget.capMonthly, months: p.monthsNeeded, occupants: p.household.occupants,
+    persona, tiers: p.priorities, cap: p.budget.capMonthly, months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
     hasCar: p.hasCar, rules: { ...p.hardConstraints }, dataU: true,
   };
 };
+const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 const card = "rounded-lg border border-slate-800 bg-slate-900 p-3";
 const sel = "rounded border border-slate-700 bg-slate-800 px-2 py-1 text-sm text-slate-200";
@@ -58,8 +60,10 @@ export default function Decide() {
       ...base,
       priorities: s.tiers.length ? s.tiers : [["cost"]],
       budget: { ...base.budget, capMonthly: s.cap, targetMonthly: Math.min(base.budget.targetMonthly, s.cap) },
-      household: { occupants: s.occupants },
-      monthsNeeded: s.months,
+      household: { occupants: mid(s.occupants) },
+      monthsNeeded: mid(s.months),
+      monthsRange: s.months,
+      occupantsRange: s.occupants,
       hasCar: s.hasCar,
       hardConstraints: hc,
     };
@@ -129,14 +133,11 @@ export default function Decide() {
               <input type="range" min={900} max={2200} step={25} value={s.cap} className="w-full"
                 onChange={(e) => edit({ cap: Number(e.target.value) }, `Cap set to ${usd(Number(e.target.value))}.`)} />
             </label>
-            <label className="block">Months you'll live there: <b className="text-slate-100">{s.months}</b>
-              <input type="range" min={1} max={12} step={1} value={s.months} className="w-full"
-                onChange={(e) => edit({ months: Number(e.target.value) }, `You'll be there ${e.target.value} months.`)} />
-            </label>
-            <label className="block">People sharing the unit: <b className="text-slate-100">{s.occupants}</b>
-              <input type="range" min={1} max={8} step={1} value={s.occupants} className="w-full"
-                onChange={(e) => edit({ occupants: Number(e.target.value) }, `${e.target.value} ${e.target.value === "1" ? "person lives" : "people share"} in the unit.`)} />
-            </label>
+            <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
+              onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
+            <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
+              onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
+            <p className="text-xs text-slate-500">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
             <Check label="On-site parking (needed, and its cost is counted)" checked={s.hasCar || !!s.rules.parkingRequired}
               onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
             <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />

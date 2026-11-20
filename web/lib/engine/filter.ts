@@ -8,10 +8,13 @@ const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 export function eliminationReasons(l: Listing, p: StudentProfile, cost: CostBreakdown): Elimination[] {
   const why: Elimination[] = [];
   const h = p.hardConstraints;
-  if (l.bedrooms < p.household.occupants)
-    why.push({ code: "bedrooms", text: `Only ${l.bedrooms} bedroom${l.bedrooms === 1 ? "" : "s"} for ${p.household.occupants} people` });
-  if (l.leaseMonths < p.monthsNeeded)
-    why.push({ code: "leaseShort", text: `Lease covers ${l.leaseMonths} of the ${p.monthsNeeded} months you need` });
+  // With a range, a listing stays if it works for at least one value in it (smallest group, shortest stay).
+  const minPeople = p.occupantsRange?.[0] ?? p.household.occupants;
+  const minMonths = p.monthsRange?.[0] ?? p.monthsNeeded;
+  if (l.bedrooms < minPeople)
+    why.push({ code: "bedrooms", text: `Only ${l.bedrooms} bedroom${l.bedrooms === 1 ? "" : "s"} for ${minPeople} ${minPeople === 1 ? "person" : "people"}` });
+  if (l.leaseMonths < minMonths)
+    why.push({ code: "leaseShort", text: `Lease covers ${l.leaseMonths} of the ${minMonths} months you need` });
   const over = cost.effective.mid - p.budget.capMonthly;
   if (over > 0)
     why.push({ code: "cap", gap: over, text: `${usd(over)}/mo over your ${usd(p.budget.capMonthly)} cap (true cost ${usd(cost.effective.mid)})` });

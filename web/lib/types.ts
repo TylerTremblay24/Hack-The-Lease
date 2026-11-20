@@ -75,7 +75,11 @@ export interface StudentProfile {
   consent: { useFreeText: boolean; storeProfile: false };
   budget: { targetMonthly: number; capMonthly: number }; // per person, USD
   household: { occupants: number }; // people sharing the unit, incl. student
-  monthsNeeded: number; // months the student will actually live there
+  monthsNeeded: number; // months the student will actually live there (used for scoring)
+  /** Optional [min, max] ranges when the student isn't sure. A listing is kept if it works for
+   *  at least one value in the range; scoring uses monthsNeeded / household.occupants (the midpoint). */
+  monthsRange?: [number, number];
+  occupantsRange?: [number, number];
   hasCar: boolean;
   anchors: ScheduleAnchor[];
   /** Importance tiers, most important first. Criteria in the same tier are
