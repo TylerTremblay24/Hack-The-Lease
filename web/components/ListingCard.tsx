@@ -26,6 +26,7 @@ export function ListingCard({ listing: l, ev, rank, prevFirst, cap, places = [],
       <AcceptabilityBar shares={ev.rankAcceptability} prevFirst={prevFirst} />
       <div className="mt-3 text-sm">
         <b className="text-slate-100">{usd(c.mid)}/mo</b> <span className="text-slate-400">true cost, per person ({usd(c.lo)}–{usd(c.hi)})</span>
+        <span className="ml-2 rounded bg-slate-800 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-slate-400" title="Utilities, fees and subletting are estimated ranges">ESTIMATE</span>
         <div className="relative mt-1 h-2 rounded bg-slate-800">
           <div className="absolute h-2 rounded bg-sky-500" style={{ left: pos(c.lo), width: `calc(${pos(c.hi)} - ${pos(c.lo)})` }} />
           <div className="absolute -top-1 h-4 border-l-2 border-rose-400" style={{ left: pos(cap) }} title={`Your cap ${usd(cap)}`} />
@@ -39,6 +40,7 @@ export function ListingCard({ listing: l, ev, rank, prevFirst, cap, places = [],
       {places.length > 0 && (
         <div className="mt-1 flex flex-wrap gap-x-3 text-xs text-sky-300">
           {places.map((p) => <span key={p.id}>{Math.round(ev.raw[`place:${p.id}`])} min to {p.name}</span>)}
+          <span className="rounded bg-slate-800 px-1.5 text-[10px] font-semibold text-slate-400">ESTIMATE</span>
         </div>
       )}
     </motion.div>

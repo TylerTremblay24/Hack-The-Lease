@@ -1,6 +1,9 @@
 node_modules/
+.next/
+out/
 __pycache__/
 .pytest_cache/
 .env
-.next/
-next-env.d.ts
+.env.local
+*.zip
+.DS_Store

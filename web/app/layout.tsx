@@ -14,7 +14,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </header>
         {children}
         <footer className="px-6 py-4 text-xs text-slate-500">
-          Demo data: listings are synthetic. Costs and travel times are estimates with ranges.
+          <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">SYNTHETIC</span>made-up listings and personas for the demo.{" "}
+          <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">ESTIMATE</span>costs, travel and walking times are ranges we modeled.{" "}
+          <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">USER</span>something you entered.{" "}
+          <span className="mr-1 rounded bg-sky-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-sky-300">CLAUDE ESTIMATE</span>a place location Claude proposed and you confirmed.
         </footer>
       </body>
     </html>

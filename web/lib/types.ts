@@ -25,12 +25,14 @@ export type BaseCriterionId =
   | "leaseFit"; // lease length vs. months you actually need (fewer unused months = better)
 
 /** A place the student picked (their own words, nothing demographic). Chip id is `place:<id>`. */
-export type PlaceCategory = "food" | "coffee" | "gym" | "study" | "market";
+export type PlaceCategory = "food" | "coffee" | "gym" | "study" | "market" | "other";
 export interface UserPlace {
   id: string;
   name: string;
   category: PlaceCategory;
   coords: { lat: number; lng: number }; // approximate
+  source?: "list" | "claude" | "manual"; // where the location came from
+  note?: string; // e.g. "State St near Liberty"
 }
 export type PlaceCriterionId = `place:${string}`;
 export type CriterionId = BaseCriterionId | PlaceCriterionId;

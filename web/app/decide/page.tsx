@@ -13,9 +13,10 @@ import { RangeSlider } from "@/components/RangeSlider";
 import { MyPlaces } from "@/components/MyPlaces";
 import { RhythmEditor, type Rhythm } from "@/components/RhythmEditor";
 import { CompareView } from "@/components/CompareView";
+import { AssumptionsDrawer, type Tune, type TuneKey } from "@/components/AssumptionsDrawer";
 
 interface State {
-  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[]; rhythm: Rhythm;
+  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[]; rhythm: Rhythm; tune: Tune;
   rules: HardConstraints; dataU: boolean;
 }
 const ANCHORS: AnchorId[] = ["central", "north", "kerrytown", "medical", "downtown"];
@@ -28,7 +29,7 @@ const init = (persona: number): State => {
   const p = PERSONAS[persona];
   return {
     persona, tiers: p.priorities, budget: [p.budget.targetMonthly, p.budget.capMonthly], months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
-    hasCar: p.hasCar, places: [], rhythm: rhythmOf(p), rules: { ...p.hardConstraints }, dataU: true,
+    hasCar: p.hasCar, places: [], rhythm: rhythmOf(p), tune: {}, rules: { ...p.hardConstraints }, dataU: true,
   };
 };
 const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
@@ -84,7 +85,13 @@ export default function Decide() {
     };
   }, [base, s]);
 
-  const { result, prev, diff } = useDecision(profile, LISTINGS, ASSUMPTIONS, s.dataU);
+  // The assumptions the engine actually uses: the defaults plus whatever the student tuned.
+  const assumptions = useMemo(() => {
+    const { busTimeSpread, ...anchors } = s.tune;
+    return { ...ASSUMPTIONS, busTimeSpread: busTimeSpread ?? ASSUMPTIONS.busTimeSpread, anchors: { ...ASSUMPTIONS.anchors, ...anchors } };
+  }, [s.tune]);
+
+  const { result, prev, diff } = useDecision(profile, LISTINGS, assumptions, s.dataU);
   const prevFirst = (id: string) => prev?.evaluations.find((e) => e.listingId === id)?.rankAcceptability[0] ?? null;
 
   function edit(next: Partial<State>, label: string) {
@@ -119,6 +126,8 @@ export default function Decide() {
     if (v == null) delete limits[pl.id]; else limits[pl.id] = v;
     rule({ placeMaxWalkMin: Object.keys(limits).length ? limits : undefined }, v ? `${pl.name} must be within ${v} min.` : `${pl.name} no longer limited.`);
   };
+
+  const tuneOne = (k: TuneKey, v: number, label: string) => edit({ tune: { ...s.tune, [k]: v } }, label);
 
   function applyTip(tp: TippingPoint) {
     if (!tp.apply) return;
@@ -190,6 +199,8 @@ export default function Decide() {
               onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
             <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
           </section>
+
+          <AssumptionsDrawer base={ASSUMPTIONS} tune={s.tune} onTune={tuneOne} onReset={() => edit({ tune: {} }, "Assumptions reset to defaults.")} />
         </aside>
 
         <main className="space-y-3">

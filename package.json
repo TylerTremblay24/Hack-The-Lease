@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "setup": "npm install && npm --prefix web install",
+    "setup": "npm --prefix web install",
     "dev": "npm --prefix web run dev",
     "build": "npm --prefix web run build",
-    "test:engine": "tsx --test web/lib/engine/__tests__/engine.test.ts",
+    "test:engine": "tsx --test web/lib/engine/__tests__/*.test.ts",
     "demo:numbers": "tsx web/lib/engine/__tests__/run-demo.ts"
   },
   "devDependencies": { "@types/node": "^22", "tsx": "^4", "typescript": "^5" }
