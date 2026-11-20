@@ -112,7 +112,8 @@ web/            Next.js 14 + Tailwind + dnd-kit + framer-motion
   tailwind.config.ts + app/globals.css   Design tokens (see below)
 api/            FastAPI: /parse/place, /parse/profile, /parse/listing (forced tool call + Pydantic + checks)
 data/seed/      Synthetic and web listings, personas, assumptions, curated places
-docs/           IDENTITY_FEATURES.md (roadmap and design rules), DEMO_SCRIPT.md (presentation script)
+docs/           New-Lease-Technical-Documentation.pdf, New-Lease-User-Guide.pdf,
+                New-Lease-Presentation.pptx, DEMO_SCRIPT.md, IDENTITY_FEATURES.md (roadmap)
 References/     Brand boards and UI references used for the overhaul
 ```
 
