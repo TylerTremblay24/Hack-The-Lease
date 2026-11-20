@@ -15,6 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         <footer className="px-6 py-4 text-xs text-slate-500">
           <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">SYNTHETIC</span>made-up listings and personas for the demo.{" "}
+          <span className="mr-1 rounded bg-sky-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-sky-300">WEB LISTING</span>collected by hand from a public page; rent and amenities as listed, location and travel estimated.{" "}
           <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">ESTIMATE</span>costs, travel and walking times are ranges we modeled.{" "}
           <span className="mr-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold">USER</span>something you entered.{" "}
           <span className="mr-1 rounded bg-sky-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-sky-300">CLAUDE ESTIMATE</span>a place location Claude proposed and you confirmed.

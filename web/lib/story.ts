@@ -74,7 +74,9 @@ export function buildStory(i: StoryInput): Story {
     const w = x.worst[ev.listingId];
     group = `Group: ${w.name} likes it least, at ${Math.round(w.score * 100)} of 100. Everyone's own #1 matches in ${Math.round(x.agreement * 100)}% of draws.`;
   }
-  const caveats = ["Listings, rents and travel times are synthetic or modeled estimates, shown with ranges."];
+  const caveats = [l.source
+    ? "Rent and amenities are as listed on the source page (check it before you act); location, travel time, noise and any missing size are our estimates, shown with ranges."
+    : "This listing is synthetic demo data; costs and travel times are modeled estimates, shown with ranges."];
   if (result.verdict === "toss-up") caveats.push("This is a toss-up: small changes to your priorities can change the answer.");
   if (ev.pOverCap > 0.05) caveats.push(`There is a ${Math.round(ev.pOverCap * 100)}% chance true cost exceeds your cap.`);
   return { listingId: ev.listingId, name: l.name, headline, lines, tradeoff, confidence, flip, group, caveats };

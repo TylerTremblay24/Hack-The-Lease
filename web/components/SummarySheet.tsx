@@ -25,6 +25,10 @@ export function SummarySheet({ story, result, listings, places, extra, who, budg
   const weights = (Object.entries(result.weightsROC) as [CriterionId, number][]).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 6);
   const tips = result.tippingPoints.slice(0, 3);
   const used = [...new Set(places.map((p) => SRC[p.source ?? "list"]))];
+  const lookup = (id: string) => listings.find((l) => l.id === id);
+  const anyWeb = top.some((e) => lookup(e.listingId)?.source), anySyn = top.some((e) => !lookup(e.listingId)?.source);
+  const dataNote = anyWeb && anySyn ? "Mix of WEB listings (rent as listed, locations estimated) and SYNTHETIC demo listings."
+    : anyWeb ? "WEB listings: rent and amenities as listed on each source page; locations and travel times are estimates." : "All listings shown are SYNTHETIC demo data.";
   const date = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   return createPortal(
     <div id="summary-sheet" className="fixed inset-0 z-50 overflow-auto bg-slate-200 p-4 text-slate-900">
@@ -40,7 +44,7 @@ export function SummarySheet({ story, result, listings, places, extra, who, budg
           <h1 className="text-lg font-bold">Tipping Point: apartment summary</h1>
           <span className="text-slate-500">{date}</span>
         </header>
-        <p className="mt-1 text-slate-600">{who}. Budget {budgetText}. <b>All listings are SYNTHETIC demo data.</b></p>
+        <p className="mt-1 text-slate-600">{who}. Budget {budgetText}. <b>{dataNote}</b></p>
 
         <h2 className="mt-3 text-sm font-bold">{story.headline}</h2>
         <p className="text-slate-700">{story.confidence}</p>
@@ -62,6 +66,7 @@ export function SummarySheet({ story, result, listings, places, extra, who, budg
           <thead><tr className="border-b border-slate-400"><th className="py-0.5 pr-2" />{top.map((e) => <th key={e.listingId} className="px-1 py-0.5">{name(e.listingId)}</th>)}</tr></thead>
           <tbody>
             {([
+              ["Source", (e) => { const l = lookup(e.listingId); return l?.source ? `${l.source.name} (${l.source.asOf})` : "Synthetic demo"; }],
               ["Chance of #1", (e: typeof top[number]) => `${Math.round(e.rankAcceptability[0] * 100)}%`],
               ["True cost per person", (e) => `${usd(e.cost.effective.mid)} (${usd(e.cost.effective.lo)}-${usd(e.cost.effective.hi)})`],
               ["Commute, min per week", (e) => `${Math.round(e.raw.commute)}`],

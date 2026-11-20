@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import { ASSUMPTIONS, LISTINGS, PERSONAS, PLACES } from "@/lib/seed";
+import { ASSUMPTIONS, PERSONAS, PLACES, bankListings, DEMO_LISTINGS, WEB_LISTINGS, type Bank } from "@/lib/seed";
 import { useDecision } from "@/lib/useDecision";
 import { criterionLabel } from "@/lib/engine/explain";
 import type { AnchorId, CriterionId, HardConstraints, ScheduleAnchor, StudentProfile, TippingPoint, UserPlace } from "@/lib/types";
@@ -69,6 +69,8 @@ export default function Decide() {
   const [what, setWhat] = useState<string | null>(null);
   const [pinned, setPinned] = useState<string[]>([]);
   const [showSummary, setShowSummary] = useState(false);
+  const [bank, setBank] = useState<Bank>("all");
+  const LISTINGS = useMemo(() => bankListings(bank), [bank]);
 
   const base = PERSONAS[s.persona];
   const profile: StudentProfile = useMemo(() => {
@@ -197,6 +199,17 @@ export default function Decide() {
       <ChangeStrip what={what} diff={diff} prev={prev} result={result} listings={LISTINGS} onUndo={history.length ? undo : undefined} />
       <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-[320px_1fr_340px]">
         <aside className="space-y-5">
+          <section className={`${card} space-y-1.5 text-sm`}>
+            <h2 className="font-semibold text-slate-100">Listing bank</h2>
+            <div className="flex gap-1">
+              {([["all", `All (${DEMO_LISTINGS.length + WEB_LISTINGS.length})`], ["web", `Web (${WEB_LISTINGS.length})`], ["demo", `Demo (${DEMO_LISTINGS.length})`]] as const).map(([b, label]) => (
+                <button key={b} onClick={() => { setBank(b); setPinned([]); setWhat(`Listing bank: ${label}.`); }}
+                  className={`rounded border px-2 py-1 text-xs ${bank === b ? "border-emerald-500 bg-emerald-500/20 text-emerald-100" : "border-slate-700 text-slate-400 hover:text-slate-200"}`}>{label}</button>
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-500">Web listings were collected by hand from public pages (see each card's source link). Rents and amenities are as listed; locations, travel times, noise and missing sizes are estimates. Demo listings are synthetic.</p>
+          </section>
+
           <section>
             <h2 className="mb-2 text-sm font-semibold text-slate-100">Demo persona (synthetic)</h2>
             <select className={`${sel} w-full`} value={s.persona}

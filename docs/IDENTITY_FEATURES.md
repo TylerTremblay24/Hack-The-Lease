@@ -36,7 +36,7 @@ Status: DONE, NEXT (build this round), PLANNED.
 | 11 | Compare | Pins up to three listings | Side-by-side values with the best in each row highlighted, what each is strongest on, and what would flip it | DONE |
 | 11b | Click-to-apply tipping points | Clicks Apply on "raise your cap", "swap these priorities" or "drop this rule" | The page applies the change, the change strip shows what moved, and Undo reverts it | DONE |
 | 11c | Export a one-page summary | Saves the compare view | Printable summary with sources | DONE |
-| 14 | **Largest possible listing bank** | Sees many more real apartments, not a handful | Collect as many Ann Arbor listings as we can legitimately reach (see "Listing bank" below), normalize them to the Listing schema, label each with its source and provenance | PLANNED |
+| 14 | **Largest possible listing bank** | Sees many more real apartments, not a handful | Collect as many Ann Arbor listings as we can legitimately reach (see "Listing bank" below), normalize them to the Listing schema, label each with its source and provenance | DONE (v1: 84 listings) |
 | 13 | **UI overhaul** | Uses a distinctive, memorable interface instead of a default dashboard | Visual identity built around the drag-to-rank chips; done last, after features are locked | PLANNED (design direction to be chosen) |
 | 12 | Paste a listing or lease | Pastes text, reviews extracted fields | Claude extracts, the student confirms, fees and utilities flow into true cost | DROPPED |
 
@@ -107,3 +107,21 @@ provenance label (REAL or SYNTHETIC), and no demographic profiling.
   coordinates), fill gaps with labeled ESTIMATES, drop duplicates, save to `data/seed/`. Missing fields must stay missing, not guessed.
 - **Judging note:** the rubric says synthetic data must be labeled. If real data is added, label it REAL and keep the synthetic set
   as the safe demo fallback.
+
+### Listing bank v1: what was collected (2026-11-20)
+
+84 listings from public pages: Zumper (2-bedroom and studio searches), the UM Off-Campus Housing site, RentCafe, Redfin,
+Homes.com, Apartments.com and ApartmentList. Collected by hand, not by a scraper. Each card links to its source page.
+- **REAL (as listed):** name and address, bedrooms, rent (a listed range uses its midpoint), laundry, parking, pets,
+  furnished and utilities when the page states them.
+- **ESTIMATE (labeled in each listing's `provenance`):** coordinates (block level, about +/-300 m), all travel times (straight line x 1.3,
+  80 m per minute, bus guessed), grocery walk (to People's Food Co-op, Trader Joe's and Whole Foods only), noise, sq ft when
+  not stated, bathrooms when not stated, 12-month lease, one-time fees.
+- **Data quality notes:** the UM site's unit table is a template (identical 829 / 1,212 / 1,545 sq ft on every page), so it was ignored.
+  Some pages contradict themselves; each such listing says which figure was used in its source note.
+- **Known gaps:** no North Campus listings, few 3-bedrooms, no per-bed student complexes (their per-bed pricing needs unit totals),
+  and most suburban complexes were left out. Prices were live on 2026-11-20 and will drift.
+- **Improve it:** `python3 scripts/geocode_listings.py` (run on a machine with internet) replaces estimated coordinates with
+  OpenStreetMap geocodes. `python3 scripts/build_real_listings.py` regenerates the JSON from the hand-collected rows.
+- **Use the Listing bank buttons** (All, Web, Demo) on the decide page. The demo persona stories were tuned on the 14 synthetic
+  listings, so choose Demo for the rehearsed numbers.

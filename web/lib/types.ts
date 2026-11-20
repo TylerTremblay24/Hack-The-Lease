@@ -143,7 +143,9 @@ export interface Listing {
   noiseLevel: 1 | 2 | 3 | 4 | 5; // 1 = very quiet
   groceryWalkMin: number;
   travel: Record<AnchorId, AnchorTravel>;
-  provenance: Partial<Record<keyof Listing | "travel", Provenance>>;
+  provenance: Partial<Record<keyof Listing | "travel" | "coords" | "parking" | "fees" | "bedrooms", Provenance>>;
+  /** Present on listings collected from the public web (not synthetic). */
+  source?: { name: string; url: string; asOf: string; address: string; note?: string };
 }
 
 // ---------------------------------------------------------------- assumptions
