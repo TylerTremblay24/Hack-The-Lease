@@ -11,13 +11,13 @@ import { TippingPoints } from "@/components/TippingPoints";
 import { RangeSlider } from "@/components/RangeSlider";
 
 interface State {
-  persona: number; tiers: CriterionId[][]; cap: number; months: [number, number]; occupants: [number, number]; hasCar: boolean;
+  persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean;
   rules: HardConstraints; dataU: boolean;
 }
 const init = (persona: number): State => {
   const p = PERSONAS[persona];
   return {
-    persona, tiers: p.priorities, cap: p.budget.capMonthly, months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
+    persona, tiers: p.priorities, budget: [p.budget.targetMonthly, p.budget.capMonthly], months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
     hasCar: p.hasCar, rules: { ...p.hardConstraints }, dataU: true,
   };
 };
@@ -59,7 +59,7 @@ export default function Decide() {
     return {
       ...base,
       priorities: s.tiers.length ? s.tiers : [["cost"]],
-      budget: { ...base.budget, capMonthly: s.cap, targetMonthly: Math.min(base.budget.targetMonthly, s.cap) },
+      budget: { targetMonthly: s.budget[0], capMonthly: s.budget[1] },
       household: { occupants: mid(s.occupants) },
       monthsNeeded: mid(s.months),
       monthsRange: s.months,
@@ -129,15 +129,13 @@ export default function Decide() {
 
           <section className={`${card} space-y-3 text-sm`}>
             <h2 className="font-semibold text-slate-100">Your situation</h2>
-            <label className="block">Budget cap: <b className="text-slate-100">{usd(s.cap)}</b> <span className="text-slate-500">per person</span>
-              <input type="range" min={900} max={2200} step={25} value={s.cap} className="w-full"
-                onChange={(e) => edit({ cap: Number(e.target.value) }, `Cap set to ${usd(Number(e.target.value))}.`)} />
-            </label>
+            <RangeSlider label="Budget per person (target to hard cap)" min={900} max={2200} step={25} value={s.budget} format={usd}
+              onChange={(v) => edit({ budget: v }, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
             <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
               onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
             <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
               onChange={(v) => edit({ occupants: v }, v[0] === v[1] ? `${v[0]} ${v[0] === 1 ? "person lives" : "people share"} in the unit.` : `${v[0]} to ${v[1]} people share the unit.`)} />
-            <p className="text-xs text-slate-500">A range keeps every listing that works for any value in it. Costs and scores use the middle of the range.</p>
+            <p className="text-xs text-slate-500">Budget: the lower thumb is what you'd like to pay, the upper is your hard cap. For months and people, a range keeps every listing that works for any value in it, and costs and scores use the middle.</p>
             <Check label="On-site parking (needed, and its cost is counted)" checked={s.hasCar || !!s.rules.parkingRequired}
               onChange={(v) => edit({ hasCar: v, rules: { ...s.rules, parkingRequired: v || undefined } }, onOff(v, "You need on-site parking.", "You no longer need on-site parking."))} />
             <Check label="Include data uncertainty" checked={s.dataU} onChange={(v) => edit({ dataU: v }, onOff(v, "Data uncertainty on.", "Data uncertainty off."))} />
@@ -152,7 +150,7 @@ export default function Decide() {
           </div>
           {feasible.length === 0 && <p className={`${card} text-sm`}>Nothing fits all your rules. Loosen one below to see what comes back.</p>}
           {feasible.map((e, i) => (
-            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.cap} />
+            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.budget[1]} />
           ))}
           {out.length > 0 && (
             <details className={`${card} text-sm`} open={feasible.length === 0}>
