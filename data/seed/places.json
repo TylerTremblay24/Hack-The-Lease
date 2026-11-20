@@ -1,0 +1,21 @@
+[
+  {"id":"zingermans-deli","name":"Zingerman's Deli","category":"food","coords":{"lat":42.2836,"lng":-83.7468}},
+  {"id":"frita-batidos","name":"Frita Batidos","category":"food","coords":{"lat":42.2805,"lng":-83.7488}},
+  {"id":"pizza-house","name":"Pizza House","category":"food","coords":{"lat":42.2745,"lng":-83.7358}},
+  {"id":"jerusalem-garden","name":"Jerusalem Garden","category":"food","coords":{"lat":42.2793,"lng":-83.7472}},
+  {"id":"amers","name":"Amer's Mediterranean","category":"food","coords":{"lat":42.2790,"lng":-83.7417}},
+  {"id":"tomukun","name":"Tomukun Noodle Bar","category":"food","coords":{"lat":42.2797,"lng":-83.7420}},
+  {"id":"literati","name":"Literati Coffee","category":"coffee","coords":{"lat":42.2805,"lng":-83.7476}},
+  {"id":"cafe-zola","name":"Cafe Zola","category":"coffee","coords":{"lat":42.2804,"lng":-83.7485}},
+  {"id":"sweetwaters","name":"Sweetwaters Coffee","category":"coffee","coords":{"lat":42.2805,"lng":-83.7490}},
+  {"id":"ccrb","name":"Central Campus Rec Building","category":"gym","coords":{"lat":42.2753,"lng":-83.7352}},
+  {"id":"ncrb","name":"North Campus Rec Building","category":"gym","coords":{"lat":42.2927,"lng":-83.7166}},
+  {"id":"imsb","name":"Intramural Sports Building","category":"gym","coords":{"lat":42.2655,"lng":-83.7396}},
+  {"id":"ugli","name":"Shapiro Library (UgLi)","category":"study","coords":{"lat":42.2753,"lng":-83.7388}},
+  {"id":"hatcher","name":"Hatcher Graduate Library","category":"study","coords":{"lat":42.2765,"lng":-83.7384}},
+  {"id":"duderstadt","name":"Duderstadt Center","category":"study","coords":{"lat":42.2908,"lng":-83.7171}},
+  {"id":"aadl-downtown","name":"Ann Arbor District Library (downtown)","category":"study","coords":{"lat":42.2786,"lng":-83.7482}},
+  {"id":"farmers-market","name":"Kerrytown Farmers Market","category":"market","coords":{"lat":42.2840,"lng":-83.7473}},
+  {"id":"peoples-coop","name":"People's Food Co-op","category":"market","coords":{"lat":42.2828,"lng":-83.7482}},
+  {"id":"trader-joes","name":"Trader Joe's","category":"market","coords":{"lat":42.2548,"lng":-83.7144}}
+]

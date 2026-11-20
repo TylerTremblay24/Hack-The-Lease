@@ -4,8 +4,8 @@ import json, os, pathlib
 from typing import Type
 from pydantic import BaseModel, ValidationError
 
-from .prompts import LISTING_SYSTEM, PROFILE_SYSTEM
-from .schemas import ParsedListing, StudentProfile
+from .prompts import LISTING_SYSTEM, PLACE_SYSTEM, PROFILE_SYSTEM
+from .schemas import ParsedListing, ParsedPlace, StudentProfile
 
 MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5")
 CACHE = pathlib.Path(__file__).resolve().parents[2] / "web" / "public" / "cache"
@@ -59,3 +59,47 @@ def parse(kind: str, text: str, demo_key: str | None) -> tuple[dict, str, int]:
         if cached is None:
             raise RuntimeError(f"Parse failed and no cache for demoKey={demo_key!r}: {err}") from err
         return cached, "cache", 0
+
+
+# ---------------------------------------------------------------- custom places
+SEED = pathlib.Path(__file__).resolve().parents[2] / "data" / "seed"
+# Ann Arbor and a little beyond. Anything Claude places outside this box is treated as "location unknown".
+BBOX = {"lat": (42.22, 42.33), "lng": (-83.82, -83.65)}
+
+
+def in_ann_arbor(lat: float | None, lng: float | None) -> bool:
+    return (lat is not None and lng is not None
+            and BBOX["lat"][0] <= lat <= BBOX["lat"][1] and BBOX["lng"][0] <= lng <= BBOX["lng"][1])
+
+
+def _norm(t: str) -> str:
+    return "".join(ch for ch in t.lower() if ch.isalnum() or ch == " ").strip()
+
+
+def match_known_place(text: str) -> dict | None:
+    """Offline fallback: match the text against the built-in places. No model, no invented coordinates."""
+    q = _norm(text)
+    if len(q) < 3:
+        return None
+    for p in json.loads((SEED / "places.json").read_text()):
+        n = _norm(p["name"])
+        if q in n or n in q or p["id"].replace("-", " ") in q:
+            return {"name": p["name"], "category": p["category"], "lat": p["coords"]["lat"], "lng": p["coords"]["lng"],
+                    "confidence": "medium", "locationNote": "from the built-in places"}
+    return None
+
+
+def parse_place(text: str) -> tuple[dict, str, bool]:
+    """Returns (data, source, needs_location). Raises RuntimeError if nothing usable."""
+    try:
+        raw = _call_claude(PLACE_SYSTEM, text, ParsedPlace, "save_place")
+        data = ParsedPlace.model_validate(raw).model_dump()
+        ok = in_ann_arbor(data["lat"], data["lng"]) and data["confidence"] != "low"
+        if not ok:
+            data["lat"] = data["lng"] = None
+        return data, "claude", not ok
+    except Exception as err:  # noqa: BLE001 - fall back instead of failing the request
+        known = match_known_place(text)
+        if known is None:
+            raise RuntimeError(f"Could not look up that place: {err}") from err
+        return known, "list", False

@@ -1,9 +1,16 @@
 """Pydantic mirror of web/lib/types.ts (frozen at Hour 3). extra="forbid" everywhere:
 anything Claude returns outside the schema is rejected, so demographic fields cannot sneak in."""
-from typing import Literal, Optional
-from pydantic import BaseModel, ConfigDict, Field
+from typing import Annotated, Literal, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
-Criterion = Literal["cost", "commute", "lateNight", "laundry", "space", "quiet", "grocery"]
+BaseCriterion = Literal[
+    "cost", "commute", "lateNight", "laundry", "space", "quiet", "grocery",
+    "bathroom", "furnished", "pets", "parking", "leaseFit",
+]
+# A chip built from one of the student's own places, e.g. "place:zingermans-deli".
+PlaceCriterion = Annotated[str, StringConstraints(pattern=r"^place:[a-z0-9][a-z0-9-]{0,60}$")]
+Criterion = Union[BaseCriterion, PlaceCriterion]
+PlaceCategory = Literal["food", "coffee", "gym", "study", "market", "other"]
 Anchor = Literal["central", "north", "kerrytown", "medical", "downtown"]
 Strict = ConfigDict(extra="forbid")
 
@@ -29,6 +36,12 @@ class HardConstraints(BaseModel):
     petFriendly: Optional[bool] = None
     furnished: Optional[bool] = None
     maxLeaseMonths: Optional[int] = Field(default=None, ge=1, le=24)
+    laundryAtLeast: Optional[Literal["in_building"]] = None
+    parkingRequired: Optional[bool] = None
+    maxNoise: Optional[int] = Field(default=None, ge=1, le=5)
+    maxGroceryWalkMin: Optional[int] = Field(default=None, ge=0, le=120)
+    maxLateWalkMin: Optional[int] = Field(default=None, ge=0, le=120)
+    placeMaxWalkMin: Optional[dict[str, int]] = None
 
 
 class Budget(BaseModel):
@@ -48,6 +61,23 @@ class Household(BaseModel):
     occupants: int = Field(ge=1, le=8)
 
 
+class Coords(BaseModel):
+    model_config = Strict
+    lat: float = Field(ge=-90, le=90)
+    lng: float = Field(ge=-180, le=180)
+
+
+class UserPlace(BaseModel):
+    """A place the student picked. Mirror of UserPlace in web/lib/types.ts."""
+    model_config = Strict
+    id: str = Field(pattern=r"^[a-z0-9][a-z0-9-]{0,60}$")
+    name: str = Field(min_length=1, max_length=80)
+    category: PlaceCategory
+    coords: Coords
+    source: Optional[Literal["list", "claude", "manual", "osm"]] = None
+    note: Optional[str] = Field(default=None, max_length=120)
+
+
 class StudentProfile(BaseModel):
     model_config = Strict
     schemaVersion: Literal["1.0"] = "1.0"
@@ -56,6 +86,9 @@ class StudentProfile(BaseModel):
     budget: Budget
     household: Household
     monthsNeeded: int = Field(ge=1, le=24)
+    monthsRange: Optional[tuple[int, int]] = None
+    occupantsRange: Optional[tuple[int, int]] = None
+    places: Optional[list[UserPlace]] = None
     hasCar: bool
     anchors: list[ScheduleAnchor]
     priorities: list[list[Criterion]]
@@ -91,4 +124,28 @@ class ParseRequest(BaseModel):
 class ParseResponse(BaseModel):
     source: Literal["claude", "cache"]
     droppedEvidence: int  # quotes Claude returned that were NOT verbatim in the text
+    data: dict
+
+
+class ParsedPlace(BaseModel):
+    """What Claude may extract from a short description of a place the student goes to.
+    Only the place itself: never anything about the person."""
+    model_config = Strict
+    name: str = Field(min_length=1, max_length=80)
+    category: PlaceCategory
+    lat: Optional[float] = None
+    lng: Optional[float] = None
+    confidence: Literal["high", "medium", "low"]
+    locationNote: Optional[str] = Field(default=None, max_length=120)  # e.g. "Packard St near Platt Rd"
+
+
+class PlaceRequest(BaseModel):
+    model_config = Strict
+    text: str = Field(min_length=2, max_length=160)
+    consent: bool
+
+
+class PlaceResponse(BaseModel):
+    source: Literal["claude", "list"]  # "list" = matched the built-in places, no model involved
+    needsLocation: bool  # True when Claude could not place it inside Ann Arbor; the UI asks the student
     data: dict

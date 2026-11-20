@@ -1,0 +1,6528 @@
+[
+ {
+  "id": "web-910-packard-st-2br",
+  "name": "910 Packard St 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2693,
+   "lng": -83.7345
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1920,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 27,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "910 Packard St, Ann Arbor, MI 48104",
+   "note": "Header says $1,290, description says $1,890-1,950; used the description. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-109-n-thayer-2br",
+  "name": "109 N Thayer 2BR",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.28,
+   "lng": -83.739
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1650,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 15,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 35,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 13,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 13,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "109 N Thayer St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-ponds-at-georgetown-2br",
+  "name": "Ponds at Georgetown 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.258,
+   "lng": -83.716
+  },
+  "bedrooms": 2,
+  "bathrooms": 2,
+  "sqft": 800,
+  "rentTotalMonthly": 2080,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 10,
+  "travel": {
+   "central": {
+    "walkMin": 45,
+    "busMin": 24
+   },
+   "north": {
+    "walkMin": 61,
+    "busMin": 29
+   },
+   "kerrytown": {
+    "walkMin": 63,
+    "busMin": 30
+   },
+   "medical": {
+    "walkMin": 50,
+    "busMin": 26
+   },
+   "downtown": {
+    "walkMin": 59,
+    "busMin": 29
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "2511 Packard St, Ann Arbor, MI 48104",
+   "note": "Rent is the midpoint of the listed range $1,788-$2,373. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-807-lawrence-st-2-2br",
+  "name": "807 Lawrence St #2 2BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.2868,
+   "lng": -83.7415
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 3100,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 9,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 7,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "807 Lawrence St #2, Ann Arbor, MI 48104",
+   "note": "Laundry stated as in-unit; description mentions shared basement laundry. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-923-s-7th-st-2br",
+  "name": "923 S 7th St 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.273,
+   "lng": -83.7565
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1695,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 24,
+  "travel": {
+   "central": {
+    "walkMin": 25,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 62,
+    "busMin": 30
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "923 S 7th St, Ann Arbor, MI 48103",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-817-arch-st-2br",
+  "name": "817 Arch St 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2693,
+   "lng": -83.7345
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1872,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 27,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "817 Arch St, Ann Arbor, MI 48104",
+   "note": "Midpoint of $1,499-$2,245. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-fritz-lofts-1014-church-st-2br",
+  "name": "Fritz Lofts 1014 Church St 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1970,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1014 Church St, Ann Arbor, MI 48104",
+   "note": "Midpoint of $1,745-$2,195. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-atrio-1000-w-huron-2br",
+  "name": "Atrio 1000 W Huron 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.281,
+   "lng": -83.757
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1572,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 14,
+  "travel": {
+   "central": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 56,
+    "busMin": 28
+   },
+   "kerrytown": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "downtown": {
+    "walkMin": 11,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1000 W Huron St, Ann Arbor, MI 48103",
+   "note": "Midpoint of $1,395-$1,750. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-727-e-kingsley-2br",
+  "name": "727 E Kingsley 2BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.2868,
+   "lng": -83.7415
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1872,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 9,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 7,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "727 E Kingsley St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-618-packard-2br",
+  "name": "618 Packard 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1795,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "618 Packard St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-sans-souci-1036-s-main-2br",
+  "name": "Sans Souci 1036 S Main 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.27,
+   "lng": -83.7488
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1695,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 57,
+    "busMin": 28
+   },
+   "kerrytown": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 38,
+    "busMin": 21
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1036 S Main St, Ann Arbor, MI 48104",
+   "note": "Midpoint of $1,295-$2,095. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-825-tappan-2br",
+  "name": "825 Tappan 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2150,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "825 Tappan Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-829-tappan-2br",
+  "name": "829 Tappan 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1400,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "829 Tappan Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-418-2nd-st-2br",
+  "name": "418 2nd St 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.281,
+   "lng": -83.757
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1600,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 14,
+  "travel": {
+   "central": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 56,
+    "busMin": 28
+   },
+   "kerrytown": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "downtown": {
+    "walkMin": 11,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/spacious-2-bedroom-units-in-ann-arbor-s-old-westside-236059",
+   "asOf": "2026-11-20",
+   "address": "418 Second St, Ann Arbor, MI 48103",
+   "note": "UM page; its generic unit table was ignored (identical template on every page). Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-628-packard-2br",
+  "name": "628 Packard 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2200,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 75
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "628 Packard St, Ann Arbor, MI 48104",
+   "note": "Homes.com shows a 'starting at $1,750'; used the Zumper exact rent. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-503-hill-st-2br",
+  "name": "503 Hill St 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2728,
+   "lng": -83.7322
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 767,
+  "rentTotalMonthly": 2625,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 30,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 21,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 25,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "503 Hill St, Ann Arbor, MI 48104",
+   "note": "Midpoint of $2,550-$2,700 across several units. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-723-w-madison-2br",
+  "name": "Varsity 723 W Madison 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.273,
+   "lng": -83.7565
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1925,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 24,
+  "travel": {
+   "central": {
+    "walkMin": 25,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 62,
+    "busMin": 30
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "723 W Madison St, Ann Arbor, MI 48103",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-911-s-forest-2br",
+  "name": "911 S Forest 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.27,
+   "lng": -83.7365
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2425,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 30,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 24,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "911 S Forest Ave, Ann Arbor, MI 48104",
+   "note": "Laundry not stated. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-917-packard-2br",
+  "name": "Varsity 917 Packard 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2693,
+   "lng": -83.7345
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2422,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 27,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "917 Packard St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-515-walnut-2br",
+  "name": "Varsity 515 Walnut 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2735,
+   "lng": -83.743
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2652,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 22,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 47,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 22,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 13,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "515 Walnut St, Ann Arbor, MI 48104",
+   "note": "Midpoint of $2,425-$2,880. UM page lists furnished. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-101-n-ingalls-2br",
+  "name": "Varsity 101 N Ingalls 2BR",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.28,
+   "lng": -83.736
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2650,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 18,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "kerrytown": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 13,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 17,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "101 N Ingalls St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-1001-s-forest-2br",
+  "name": "Varsity 1001 S Forest 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.27,
+   "lng": -83.7365
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2395,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 30,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 24,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1001 S Forest Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-541-elizabeth-2br",
+  "name": "Varsity 541 Elizabeth 2BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.286,
+   "lng": -83.7455
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2500,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 4,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 2,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 12,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "541 Elizabeth St, Ann Arbor, MI 48104",
+   "note": "Laundry and parking not stated. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-518-s-4th-ave-518-2br",
+  "name": "518 S 4th Ave #518 2BR",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.278,
+   "lng": -83.7465
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1650,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 75
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 13,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 13,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "downtown": {
+    "walkMin": 4,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "518 S 4th Ave #518, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-317-e-ann-st-1-2br",
+  "name": "317 E Ann St #1 2BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.2868,
+   "lng": -83.7415
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2020,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 9,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 7,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "317 E Ann St #1, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-michigan-terrace-1025-packard-2br",
+  "name": "Michigan Terrace 1025 Packard 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2693,
+   "lng": -83.7345
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1675,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 27,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1025 Packard St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-1506-geddes-2br",
+  "name": "Varsity 1506 Geddes 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2748,
+   "lng": -83.7268
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2425,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 34,
+  "travel": {
+   "central": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 30,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1506 Geddes Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1039-baldwin-2br",
+  "name": "1039 Baldwin 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2748,
+   "lng": -83.7268
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2150,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 34,
+  "travel": {
+   "central": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 30,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1039 Baldwin Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-526-packard-2br",
+  "name": "Varsity 526 Packard 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2195,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "526 Packard St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-848-tappan-2br",
+  "name": "Varsity 848 Tappan 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2502,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "848 Tappan Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-543-church-2br",
+  "name": "543 Church 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2738,
+   "lng": -83.7392
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2850,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 23,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "543 Church St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-packard-row-2br",
+  "name": "Packard Row 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.258,
+   "lng": -83.716
+  },
+  "bedrooms": 2,
+  "bathrooms": 2,
+  "sqft": 800,
+  "rentTotalMonthly": 2786,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 10,
+  "travel": {
+   "central": {
+    "walkMin": 45,
+    "busMin": 24
+   },
+   "north": {
+    "walkMin": 61,
+    "busMin": 29
+   },
+   "kerrytown": {
+    "walkMin": 63,
+    "busMin": 30
+   },
+   "medical": {
+    "walkMin": 50,
+    "busMin": 26
+   },
+   "downtown": {
+    "walkMin": 59,
+    "busMin": 29
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "2111 Packard St, Ann Arbor, MI 48104",
+   "note": "New construction; amenities not listed. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-huron-flats-1117-w-huron-2br",
+  "name": "Huron Flats 1117 W Huron 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.281,
+   "lng": -83.757
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1565,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 30
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 14,
+  "travel": {
+   "central": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 56,
+    "busMin": 28
+   },
+   "kerrytown": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "downtown": {
+    "walkMin": 11,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/huron-flats-1117-w.-huron--6601",
+   "asOf": "2026-11-20",
+   "address": "1117 W Huron St, Ann Arbor, MI 48103",
+   "note": "Midpoint of $1,355-$1,775; parking $30/mo. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1310-packard-2br",
+  "name": "1310 Packard 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2662,
+   "lng": -83.73
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2000,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 30,
+  "travel": {
+   "central": {
+    "walkMin": 22,
+    "busMin": 16
+   },
+   "north": {
+    "walkMin": 49,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 40,
+    "busMin": 22
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 35,
+    "busMin": 20
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1310 Packard St, Ann Arbor, MI 48104",
+   "note": "Coin laundry. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-921-w-huron-2br",
+  "name": "Varsity 921 W Huron 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.281,
+   "lng": -83.757
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 3295,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 14,
+  "travel": {
+   "central": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 56,
+    "busMin": 28
+   },
+   "kerrytown": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "downtown": {
+    "walkMin": 11,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "921 W Huron St, Ann Arbor, MI 48103",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1809-jackson-ave-2-2br",
+  "name": "1809 Jackson Ave #2 2BR",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.282,
+   "lng": -83.767
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1550,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 26,
+  "travel": {
+   "central": {
+    "walkMin": 40,
+    "busMin": 22
+   },
+   "north": {
+    "walkMin": 68,
+    "busMin": 32
+   },
+   "kerrytown": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "downtown": {
+    "walkMin": 25,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper 2-bedroom search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/2-beds",
+   "asOf": "2026-11-20",
+   "address": "1809 Jackson Ave #2, Ann Arbor, MI 48103",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1313-s-state-2br",
+  "name": "1313 S State 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.269,
+   "lng": -83.7395
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2100,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 50,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 23,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Homes.com 1313 S State",
+   "url": "https://www.homes.com/property/1313-s-state-st-ann-arbor-mi/dwtz4stt694bd/",
+   "asOf": "2026-11-20",
+   "address": "1313 S State St, Ann Arbor, MI 48104",
+   "note": "Listed as starting at $2,100 for 26/27. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-bradford-house-1010-catherine-2br",
+  "name": "Bradford House 1010 Catherine 2BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.2868,
+   "lng": -83.7415
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1650,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 9,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 7,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Homes.com 2-bedroom search",
+   "url": "https://www.homes.com/ann-arbor-mi/homes-for-rent/2-bedroom/p2/",
+   "asOf": "2026-11-20",
+   "address": "1010 Catherine St, Ann Arbor, MI 48104",
+   "note": "Listed as starting at $1,650. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1335-geddes-2br",
+  "name": "1335 Geddes 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2748,
+   "lng": -83.7268
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1595,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 34,
+  "travel": {
+   "central": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 30,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Homes.com 2-bedroom search",
+   "url": "https://www.homes.com/ann-arbor-mi/homes-for-rent/2-bedroom/p2/",
+   "asOf": "2026-11-20",
+   "address": "1335 Geddes Ave, Ann Arbor, MI 48104",
+   "note": "Listed as starting at $1,595. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1336-geddes-2br",
+  "name": "1336 Geddes 2BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2748,
+   "lng": -83.7268
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2200,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 34,
+  "travel": {
+   "central": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 30,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Homes.com 2-bedroom search",
+   "url": "https://www.homes.com/ann-arbor-mi/homes-for-rent/2-bedroom/p2/",
+   "asOf": "2026-11-20",
+   "address": "1336 Geddes Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1001-e-university-2br",
+  "name": "1001 E University 2BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 2291,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "RentCafe 1001 E. University",
+   "url": "https://www.rentcafe.com/apartments/mi/ann-arbor/1001-e-university/default.aspx",
+   "asOf": "2026-11-20",
+   "address": "1001 E University Ave, Ann Arbor, MI 48104",
+   "note": "Mean of four listed 2BR units, $2,225-$2,325. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-203-beakes-st-2br",
+  "name": "203 Beakes St 2BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.2868,
+   "lng": -83.7415
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 800,
+  "rentTotalMonthly": 1800,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 9,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 7,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/perfect-charm-in-the-old-4th-ward--237944",
+   "asOf": "2026-11-20",
+   "address": "203 Beakes St, Ann Arbor, MI 48104",
+   "note": "Lower level of a four-unit house. UM generic unit table ignored. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-915-s-division-2br",
+  "name": "915 S Division 2BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2705,
+   "lng": -83.744
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "sqft": 750,
+  "rentTotalMonthly": 2050,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 100
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/915-919-s-division-st-7220",
+   "asOf": "2026-11-20",
+   "address": "915 S Division St, Ann Arbor, MI 48104",
+   "note": "Parking $100/mo. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1001-e-university-1br",
+  "name": "1001 E University 1BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1750,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "RentCafe 1001 E. University",
+   "url": "https://www.rentcafe.com/apartments/mi/ann-arbor/1001-e-university/default.aspx",
+   "asOf": "2026-11-20",
+   "address": "1001 E University Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-311-1-2-s-5th-ave-1br",
+  "name": "311 1/2 S 5th Ave 1BR",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.2788,
+   "lng": -83.744
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1800,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 12,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 6,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/311-1-2-s.-5th-107851",
+   "asOf": "2026-11-20",
+   "address": "311 1/2 S 5th Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-university-towers-1br",
+  "name": "University Towers 1BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.27,
+   "lng": -83.7365
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 700,
+  "rentTotalMonthly": 2148,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 30,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 24,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Redfin South University 1-bedroom search",
+   "url": "https://www.redfin.com/neighborhood/83579/MI/Ann-Arbor/South-University/1-bedroom-apartments-for-rent",
+   "asOf": "2026-11-20",
+   "address": "536 S Forest Ave, Ann Arbor, MI 48104",
+   "note": "Listed 600-800 sq ft, from $2,148; no pets. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1325-s-university-1325-1-1br",
+  "name": "1325 S University #1325-1 1BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2715,
+   "lng": -83.731
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 373,
+  "rentTotalMonthly": 1449,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 40,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 28,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Redfin South University 1-bedroom search",
+   "url": "https://www.redfin.com/neighborhood/83579/MI/Ann-Arbor/South-University/1-bedroom-apartments-for-rent",
+   "asOf": "2026-11-20",
+   "address": "1325 S University Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1325-s-university-1325-4-1br",
+  "name": "1325 S University #1325-4 1BR",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2715,
+   "lng": -83.731
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 315,
+  "rentTotalMonthly": 1319,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 40,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 28,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Redfin South University 1-bedroom search",
+   "url": "https://www.redfin.com/neighborhood/83579/MI/Ann-Arbor/South-University/1-bedroom-apartments-for-rent",
+   "asOf": "2026-11-20",
+   "address": "1325 S University Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1308-geddes-1308-2-1br",
+  "name": "1308 Geddes #1308-2 1BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2748,
+   "lng": -83.7268
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1699,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 34,
+  "travel": {
+   "central": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 30,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Redfin South University 1-bedroom search",
+   "url": "https://www.redfin.com/neighborhood/83579/MI/Ann-Arbor/South-University/1-bedroom-apartments-for-rent",
+   "asOf": "2026-11-20",
+   "address": "1308 Geddes Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-gallatin-manor-332-e-william-1br",
+  "name": "Gallatin Manor 332 E William 1BR",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.2788,
+   "lng": -83.744
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1745,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 12,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 6,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Redfin South University 1-bedroom search",
+   "url": "https://www.redfin.com/neighborhood/83579/MI/Ann-Arbor/South-University/1-bedroom-apartments-for-rent",
+   "asOf": "2026-11-20",
+   "address": "332 E William St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-915-s-division-1br",
+  "name": "915 S Division 1BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2705,
+   "lng": -83.744
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 600,
+  "rentTotalMonthly": 1400,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 100
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/915-919-s-division-st-7220",
+   "asOf": "2026-11-20",
+   "address": "915 S Division St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-fritz-lofts-1014-church-st-studio",
+  "name": "Fritz Lofts 1014 Church St Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1410,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "1014 Church St, Ann Arbor, MI 48104",
+   "note": "Studio. Midpoint of $1,305-$1,515. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-618-packard-studio",
+  "name": "618 Packard Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1270,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "618 Packard St, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-624-packard-studio",
+  "name": "624 Packard Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1210,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "624 Packard St, Ann Arbor, MI 48104",
+   "note": "Studio. Tenant pays electricity only. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-sans-souci-1036-s-main-studio",
+  "name": "Sans Souci 1036 S Main Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.27,
+   "lng": -83.7488
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1215,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 57,
+    "busMin": 28
+   },
+   "kerrytown": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 38,
+    "busMin": 21
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "1036 S Main St, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-825-tappan-studio",
+  "name": "825 Tappan Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1295,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "825 Tappan Ave, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-602-monroe-st-studio",
+  "name": "602 Monroe St Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2738,
+   "lng": -83.7392
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 243,
+  "rentTotalMonthly": 1500,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 23,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "602 Monroe St, Ann Arbor, MI 48104",
+   "note": "Studio. Three units listed at $1,450-$1,600. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-526-s-division-studio",
+  "name": "526 S Division Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2705,
+   "lng": -83.744
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1375,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "526 S Division St, Ann Arbor, MI 48104",
+   "note": "Studio. Units at $1,350-$1,400. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-320-s-division-studio",
+  "name": "320 S Division Studio",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.2788,
+   "lng": -83.744
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 400,
+  "rentTotalMonthly": 1350,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 12,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 6,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "320 S Division St, Ann Arbor, MI 48104",
+   "note": "Studio, 300-500 sq ft, $1,275-$1,425. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-varsity-515-walnut-studio",
+  "name": "Varsity 515 Walnut Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2735,
+   "lng": -83.743
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1625,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 22,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 47,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 22,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 13,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "515 Walnut St, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-543-church-studio",
+  "name": "543 Church Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2738,
+   "lng": -83.7392
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1625,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 23,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "543 Church St, Ann Arbor, MI 48104",
+   "note": "Studio. $1,600-$1,650. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-the-willows-514-s-forest-studio",
+  "name": "The Willows 514 S Forest Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.27,
+   "lng": -83.7365
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1310,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 12,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 30,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 28,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 24,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "514 S Forest Ave, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-charter-house-1335-s-university-studio",
+  "name": "Charter House 1335 S University Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2715,
+   "lng": -83.731
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1499,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 33,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 40,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 28,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "1335 S University Ave, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-303-e-madison-1-studio",
+  "name": "303 E Madison #1 Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2738,
+   "lng": -83.7392
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1500,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 23,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "303 E Madison St #1, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-exhibit-a2-212-s-4th-ave-studio",
+  "name": "Exhibit A2 212 S 4th Ave Studio",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.278,
+   "lng": -83.7465
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 477,
+  "rentTotalMonthly": 2063,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 13,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 13,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "downtown": {
+    "walkMin": 4,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "212 S Fourth Ave, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-413-washtenaw-studio",
+  "name": "413 Washtenaw Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2728,
+   "lng": -83.7322
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 246,
+  "rentTotalMonthly": 1400,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 30,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 21,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 25,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "413 Washtenaw Ave, Ann Arbor, MI 48104",
+   "note": "Studio, 239-253 sq ft. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-226-packard-studio",
+  "name": "226 Packard Studio",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.2735,
+   "lng": -83.747
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 310,
+  "rentTotalMonthly": 1325,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 21,
+  "travel": {
+   "central": {
+    "walkMin": 13,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 51,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 21,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 11,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "226 Packard St, Ann Arbor, MI 48104",
+   "note": "Studio, 300-590 sq ft, $1,300-$1,350. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-904-s-state-studio",
+  "name": "904 S State Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.269,
+   "lng": -83.7395
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 300,
+  "rentTotalMonthly": 1350,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 75
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 50,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 23,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "904 S State St, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-630-packard-studio",
+  "name": "630 Packard Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 450,
+  "rentTotalMonthly": 1350,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 75
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "630 Packard St, Ann Arbor, MI 48104",
+   "note": "Studio, 400-500 sq ft. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1001-e-university-studio",
+  "name": "1001 E University Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2722,
+   "lng": -83.7355
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 475,
+  "rentTotalMonthly": 1550,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 4,
+  "groceryWalkMin": 28,
+  "travel": {
+   "central": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 42,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 22,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "1001 E University Ave, Ann Arbor, MI 48104",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-323-packard-14-studio",
+  "name": "323 Packard #14 Studio",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2705,
+   "lng": -83.744
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 600,
+  "rentTotalMonthly": 1550,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": true,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "323 Packard St #14, Ann Arbor, MI 48104",
+   "note": "Listed as a studio, 600 sq ft. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1025-arbordale-7-studio",
+  "name": "1025 Arbordale #7 Studio",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.282,
+   "lng": -83.767
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 550,
+  "rentTotalMonthly": 1100,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 26,
+  "travel": {
+   "central": {
+    "walkMin": 40,
+    "busMin": 22
+   },
+   "north": {
+    "walkMin": 68,
+    "busMin": 32
+   },
+   "kerrytown": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "downtown": {
+    "walkMin": 25,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "1025 Arbordale St #7, Ann Arbor, MI 48103",
+   "note": "Studio. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-507-church-st-studio",
+  "name": "507 Church St Studio",
+  "neighborhood": "South U",
+  "coords": {
+   "lat": 42.2738,
+   "lng": -83.7392
+  },
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "sqft": 364,
+  "rentTotalMonthly": 1500,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "internet"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 23,
+  "travel": {
+   "central": {
+    "walkMin": 6,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 23,
+    "busMin": 16
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Zumper studio search",
+   "url": "https://www.zumper.com/apartments-for-rent/ann-arbor-mi/studios",
+   "asOf": "2026-11-20",
+   "address": "507 Church St, Ann Arbor, MI 48104",
+   "note": "Studio. Units at $1,400-$1,700. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-915-s-division-3br",
+  "name": "915 S Division 3BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2705,
+   "lng": -83.744
+  },
+  "bedrooms": 3,
+  "bathrooms": 1,
+  "sqft": 1100,
+  "rentTotalMonthly": 3000,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 100
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 52,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 18,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/915-919-s-division-st-7220",
+   "asOf": "2026-11-20",
+   "address": "915 S Division St, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1316-geddes-3br",
+  "name": "1316 Geddes 3BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2748,
+   "lng": -83.7268
+  },
+  "bedrooms": 3,
+  "bathrooms": 1,
+  "sqft": 1100,
+  "rentTotalMonthly": 3750,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 34,
+  "travel": {
+   "central": {
+    "walkMin": 16,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 33,
+    "busMin": 20
+   },
+   "kerrytown": {
+    "walkMin": 32,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 17,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 30,
+    "busMin": 18
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/1316-geddes-ave-115752",
+   "asOf": "2026-11-20",
+   "address": "1316 Geddes Ave, Ann Arbor, MI 48104",
+   "note": "UM generic unit table ignored. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-1404-e-park-place-3br",
+  "name": "1404 E Park Place 3BR",
+  "neighborhood": "Burns Park",
+  "coords": {
+   "lat": 42.2655,
+   "lng": -83.7255
+  },
+  "bedrooms": 3,
+  "bathrooms": 1,
+  "sqft": 1100,
+  "rentTotalMonthly": 3645,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 24,
+  "travel": {
+   "central": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 45,
+    "busMin": 24
+   },
+   "medical": {
+    "walkMin": 34,
+    "busMin": 20
+   },
+   "downtown": {
+    "walkMin": 40,
+    "busMin": 22
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "ApartmentList 1404 East Park Place",
+   "url": "https://www.apartmentlist.com/mi/ann-arbor/spacious-3-bedroom-near-u-m-athletic-campus-with-parking-yard",
+   "asOf": "2026-11-20",
+   "address": "1404 E Park Pl, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-537-elizabeth-st-unit-2-3br",
+  "name": "537 Elizabeth St Unit 2 3BR",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.286,
+   "lng": -83.7455
+  },
+  "bedrooms": 3,
+  "bathrooms": 1,
+  "sqft": 1100,
+  "rentTotalMonthly": 3249,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 4,
+  "travel": {
+   "central": {
+    "walkMin": 19,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 2,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 24,
+    "busMin": 16
+   },
+   "downtown": {
+    "walkMin": 12,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Homes.com 3-bedroom condos",
+   "url": "https://www.homes.com/ann-arbor-mi/condos-for-rent/3-bedroom/",
+   "asOf": "2026-11-20",
+   "address": "537 Elizabeth St Unit 2, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-432-s-4th-ave-4br-house",
+  "name": "432 S 4th Ave 4BR House",
+  "neighborhood": "Downtown",
+  "coords": {
+   "lat": 42.278,
+   "lng": -83.7465
+  },
+  "bedrooms": 4,
+  "bathrooms": 1,
+  "sqft": 1650,
+  "rentTotalMonthly": 2700,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water",
+   "electric"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 13,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 46,
+    "busMin": 24
+   },
+   "kerrytown": {
+    "walkMin": 13,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "downtown": {
+    "walkMin": 4,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "REAL",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "Apartments.com 432 S 4th Ave",
+   "url": "https://www.apartments.com/432-s-4th-ave-all-utilities-included-ann-arbor-mi/32nxlwf",
+   "asOf": "2026-11-20",
+   "address": "432 S 4th Ave, Ann Arbor, MI 48104",
+   "note": "$675 per person, $2,700 total. Sq ft listed 1,500-1,800. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-915-woodlawn-ave-4br-house",
+  "name": "915 Woodlawn Ave 4BR House",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.269,
+   "lng": -83.7395
+  },
+  "bedrooms": 4,
+  "bathrooms": 2,
+  "sqft": 1500,
+  "rentTotalMonthly": 3200,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 50,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 23,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "REAL",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/915-woodlawn-ave-115348",
+   "asOf": "2026-11-20",
+   "address": "915 Woodlawn Ave, Ann Arbor, MI 48104",
+   "note": "Utilities not included. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-942-woodlawn-ave-4br-house",
+  "name": "942 Woodlawn Ave 4BR House",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.269,
+   "lng": -83.7395
+  },
+  "bedrooms": 4,
+  "bathrooms": 2,
+  "sqft": 1500,
+  "rentTotalMonthly": 4996,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 31,
+  "travel": {
+   "central": {
+    "walkMin": 14,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 50,
+    "busMin": 26
+   },
+   "kerrytown": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "medical": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 23,
+    "busMin": 16
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/942-woodlawn-ave.-116513",
+   "asOf": "2026-11-20",
+   "address": "942 Woodlawn Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-555-packard-4br",
+  "name": "555 Packard 4BR",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2712,
+   "lng": -83.7405
+  },
+  "bedrooms": 4,
+  "bathrooms": 2,
+  "sqft": 1500,
+  "rentTotalMonthly": 5300,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [
+   "heat",
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": true,
+  "petFriendly": false,
+  "noiseLevel": 4,
+  "groceryWalkMin": 27,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 48,
+    "busMin": 25
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "downtown": {
+    "walkMin": 19,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "REAL",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/555-packard-stann-arbor-mi-48104-107839",
+   "asOf": "2026-11-20",
+   "address": "555 Packard St, Ann Arbor, MI 48104",
+   "note": "Includes basic furniture. Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-845-e-university-4br-house",
+  "name": "845 E University 4BR House",
+  "neighborhood": "Packard / Hill",
+  "coords": {
+   "lat": 42.2728,
+   "lng": -83.7322
+  },
+  "bedrooms": 4,
+  "bathrooms": 1,
+  "sqft": 1500,
+  "rentTotalMonthly": 6020,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": false,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 3,
+  "groceryWalkMin": 30,
+  "travel": {
+   "central": {
+    "walkMin": 11,
+    "busMin": null
+   },
+   "north": {
+    "walkMin": 39,
+    "busMin": 22
+   },
+   "kerrytown": {
+    "walkMin": 29,
+    "busMin": 18
+   },
+   "medical": {
+    "walkMin": 21,
+    "busMin": null
+   },
+   "downtown": {
+    "walkMin": 25,
+    "busMin": 17
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "ESTIMATE",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/845-east-university-join-the-waitlist-today--111952",
+   "asOf": "2026-11-20",
+   "address": "845 E University Ave, Ann Arbor, MI 48104",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-808-hutchins-ave-4br-house",
+  "name": "808 Hutchins Ave 4BR House",
+  "neighborhood": "Old West Side",
+  "coords": {
+   "lat": 42.273,
+   "lng": -83.7565
+  },
+  "bedrooms": 4,
+  "bathrooms": 3,
+  "sqft": 1500,
+  "rentTotalMonthly": 4000,
+  "leaseMonths": 12,
+  "laundry": "in_building",
+  "utilitiesIncluded": [],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": true,
+  "noiseLevel": 2,
+  "groceryWalkMin": 24,
+  "travel": {
+   "central": {
+    "walkMin": 25,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 62,
+    "busMin": 30
+   },
+   "kerrytown": {
+    "walkMin": 26,
+    "busMin": 17
+   },
+   "medical": {
+    "walkMin": 43,
+    "busMin": 23
+   },
+   "downtown": {
+    "walkMin": 16,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "ESTIMATE",
+   "parking": "REAL",
+   "petFriendly": "REAL",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "ESTIMATE",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/808-hutchins-ave-230451",
+   "asOf": "2026-11-20",
+   "address": "808 Hutchins Ave, Ann Arbor, MI 48103",
+   "note": "Rent: listed unit rent."
+  }
+ },
+ {
+  "id": "web-210-brookridge-ct-4br-townhouse",
+  "name": "210 Brookridge Ct 4BR Townhouse",
+  "neighborhood": "Kerrytown",
+  "coords": {
+   "lat": 42.289,
+   "lng": -83.75
+  },
+  "bedrooms": 4,
+  "bathrooms": 2,
+  "sqft": 1500,
+  "rentTotalMonthly": 3580,
+  "leaseMonths": 12,
+  "laundry": "in_unit",
+  "utilitiesIncluded": [
+   "water"
+  ],
+  "heatType": "gas",
+  "parking": {
+   "available": true,
+   "monthly": 0
+  },
+  "fees": {
+   "oneTimeTotal": 100
+  },
+  "furnished": false,
+  "petFriendly": false,
+  "noiseLevel": 2,
+  "groceryWalkMin": 8,
+  "travel": {
+   "central": {
+    "walkMin": 27,
+    "busMin": 17
+   },
+   "north": {
+    "walkMin": 44,
+    "busMin": 23
+   },
+   "kerrytown": {
+    "walkMin": 9,
+    "busMin": null
+   },
+   "medical": {
+    "walkMin": 31,
+    "busMin": 19
+   },
+   "downtown": {
+    "walkMin": 17,
+    "busMin": null
+   }
+  },
+  "provenance": {
+   "name": "REAL",
+   "rentTotalMonthly": "REAL",
+   "bedrooms": "REAL",
+   "coords": "ESTIMATE",
+   "travel": "ESTIMATE",
+   "groceryWalkMin": "ESTIMATE",
+   "noiseLevel": "ESTIMATE",
+   "leaseMonths": "ESTIMATE",
+   "neighborhood": "ESTIMATE",
+   "sqft": "ESTIMATE",
+   "bathrooms": "REAL",
+   "laundry": "REAL",
+   "parking": "REAL",
+   "petFriendly": "ESTIMATE",
+   "furnished": "ESTIMATE",
+   "utilitiesIncluded": "REAL",
+   "fees": "ESTIMATE"
+  },
+  "source": {
+   "name": "UM Off-Campus Housing",
+   "url": "https://offcampushousing.umich.edu/city/ann-arbor-mi/listing/4-bedroom-townhouse-near-kerrytown-available-for-2026-2027-233244",
+   "asOf": "2026-11-20",
+   "address": "210 Brookridge Ct, Ann Arbor, MI 48103",
+   "note": "Description also advertises $3,120 for 4 tenants; used the listed $3,580. Rent: listed unit rent."
+  }
+ }
+]

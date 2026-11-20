@@ -1,17 +1,20 @@
 // Hard constraints. Every elimination says how far the listing is from passing,
 // so near-misses can become "constraint" tipping points.
 import type { CostBreakdown, Elimination, Listing, StudentProfile } from "../types";
-import { weeklyCommute } from "./criteria";
+import { walkMinToPlace, weeklyCommute, worstLateTrip } from "./criteria";
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
 export function eliminationReasons(l: Listing, p: StudentProfile, cost: CostBreakdown): Elimination[] {
   const why: Elimination[] = [];
   const h = p.hardConstraints;
-  if (l.bedrooms < p.household.occupants)
-    why.push({ code: "bedrooms", text: `Only ${l.bedrooms} bedroom${l.bedrooms === 1 ? "" : "s"} for ${p.household.occupants} people` });
-  if (l.leaseMonths < p.monthsNeeded)
-    why.push({ code: "leaseShort", text: `Lease covers ${l.leaseMonths} of the ${p.monthsNeeded} months you need` });
+  // With a range, a listing stays if it works for at least one value in it (smallest group, shortest stay).
+  const minPeople = p.occupantsRange?.[0] ?? p.household.occupants;
+  const minMonths = p.monthsRange?.[0] ?? p.monthsNeeded;
+  if (l.bedrooms < minPeople)
+    why.push({ code: "bedrooms", text: `Only ${l.bedrooms} bedroom${l.bedrooms === 1 ? "" : "s"} for ${minPeople} ${minPeople === 1 ? "person" : "people"}` });
+  if (l.leaseMonths < minMonths)
+    why.push({ code: "leaseShort", text: `Lease covers ${l.leaseMonths} of the ${minMonths} months you need` });
   const over = cost.effective.mid - p.budget.capMonthly;
   if (over > 0)
     why.push({ code: "cap", gap: over, text: `${usd(over)}/mo over your ${usd(p.budget.capMonthly)} cap (true cost ${usd(cost.effective.mid)})` });
@@ -21,6 +24,25 @@ export function eliminationReasons(l: Listing, p: StudentProfile, cost: CostBrea
     const w = weeklyCommute(l, p);
     if (w > h.maxWeeklyCommuteMin)
       why.push({ code: "commute", gap: w - h.maxWeeklyCommuteMin, text: `${Math.round(w - h.maxWeeklyCommuteMin)} min/week over your commute limit` });
+  }
+  if (h.laundryAtLeast && l.laundry === "none")
+    why.push({ code: "laundryMin", text: "No laundry on site (you need some)" });
+  if (h.parkingRequired && !l.parking.available)
+    why.push({ code: "parking", text: "No parking offered (you marked it required)" });
+  if (h.maxNoise != null && l.noiseLevel > h.maxNoise)
+    why.push({ code: "noise", text: `Noise level ${l.noiseLevel}/5 (you want ${h.maxNoise} or quieter)` });
+  if (h.maxGroceryWalkMin != null && l.groceryWalkMin > h.maxGroceryWalkMin)
+    why.push({ code: "grocery", gap: l.groceryWalkMin - h.maxGroceryWalkMin, text: `${l.groceryWalkMin}-min walk to groceries (your limit is ${h.maxGroceryWalkMin})` });
+  if (h.maxLateWalkMin != null) {
+    const w = worstLateTrip(l, p);
+    if (w > h.maxLateWalkMin)
+      why.push({ code: "lateWalk", gap: w - h.maxLateWalkMin, text: `${w}-min walk home late at night (your limit is ${h.maxLateWalkMin})` });
+  }
+  for (const pl of p.places ?? []) {
+    const lim = h.placeMaxWalkMin?.[pl.id];
+    if (lim == null) continue;
+    const w = walkMinToPlace(l, pl);
+    if (w > lim) why.push({ code: "place", placeId: pl.id, gap: w - lim, text: `${Math.round(w)}-min walk to ${pl.name} (your limit is ${lim})` });
   }
   if (h.petFriendly && !l.petFriendly) why.push({ code: "pets", text: "No pets allowed" });
   if (h.furnished && !l.furnished) why.push({ code: "furnished", text: "Unfurnished" });
@@ -35,5 +57,5 @@ export function isNearMiss(reasons: Elimination[], capMonthly: number): boolean 
   if (reasons.length !== 1) return false;
   const r = reasons[0];
   if (r.code === "cap") return (r.gap ?? Infinity) <= 0.1 * capMonthly;
-  return r.code === "laundry" || r.code === "commute" || r.code === "furnished" || r.code === "leaseMax";
+  return ["laundry", "laundryMin", "commute", "furnished", "leaseMax", "parking", "noise", "grocery", "lateWalk", "place"].includes(r.code);
 }
