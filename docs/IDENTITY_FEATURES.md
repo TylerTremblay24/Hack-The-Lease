@@ -1,4 +1,4 @@
-# Tipping Point: features that reflect the whole student
+# New Lease: features that reflect the whole student
 
 Rent, bedrooms and commute describe an apartment. They do not describe the person who has to live in it. This
 roadmap adds features so the ranking reflects how a student actually lives: where they eat, how they get around,
@@ -37,7 +37,7 @@ Status: DONE, NEXT (build this round), PLANNED.
 | 11b | Click-to-apply tipping points | Clicks Apply on "raise your cap", "swap these priorities" or "drop this rule" | The page applies the change, the change strip shows what moved, and Undo reverts it | DONE |
 | 11c | Export a one-page summary | Saves the compare view | Printable summary with sources | DONE |
 | 14 | **Largest possible listing bank** | Sees many more real apartments, not a handful | Collect as many Ann Arbor listings as we can legitimately reach (see "Listing bank" below), normalize them to the Listing schema, label each with its source and provenance | DONE (v1: 84 listings) |
-| 13 | **UI overhaul** | Uses a distinctive, memorable interface instead of a default dashboard | Visual identity built around the drag-to-rank chips; done last, after features are locked | PLANNED (design direction to be chosen) |
+| 13 | **UI overhaul** | Uses a distinctive, memorable interface instead of a default dashboard | New Lease brand; the decision first, with a balance that tilts toward the leader and swings on a flip; chips as a ranked row with weights; tabbed inputs; tipping points as levers. Tokens in web/tailwind.config.ts | DONE |
 | 12 | Paste a listing or lease | Pastes text, reviews extracted fields | Claude extracts, the student confirms, fees and utilities flow into true cost | DROPPED |
 
 ## My places (feature 4) in detail

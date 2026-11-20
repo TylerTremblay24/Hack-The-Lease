@@ -6,6 +6,7 @@
     "setup": "npm --prefix web install",
     "dev": "npm --prefix web run dev",
     "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
     "test:engine": "tsx --test web/lib/engine/__tests__/*.test.ts",
     "demo:numbers": "tsx web/lib/engine/__tests__/run-demo.ts"
   },
