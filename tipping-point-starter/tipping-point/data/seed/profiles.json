@@ -1,0 +1,131 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "displayName": "Maya (demo persona, SYNTHETIC)",
+    "consent": {
+      "useFreeText": true,
+      "storeProfile": false
+    },
+    "budget": {
+      "targetMonthly": 1200,
+      "capMonthly": 1400
+    },
+    "household": {
+      "occupants": 2
+    },
+    "monthsNeeded": 12,
+    "hasCar": false,
+    "anchors": [
+      {
+        "anchor": "north",
+        "daysPerWeek": 3,
+        "lateReturn": false,
+        "label": "ME labs + design studio"
+      },
+      {
+        "anchor": "central",
+        "daysPerWeek": 4,
+        "lateReturn": true,
+        "label": "Classes, UgLi until 1 AM"
+      }
+    ],
+    "priorities": [
+      [
+        "cost"
+      ],
+      [
+        "laundry"
+      ],
+      [
+        "commute"
+      ],
+      [
+        "lateNight"
+      ],
+      [
+        "quiet",
+        "space"
+      ]
+    ],
+    "hardConstraints": {},
+    "evidence": [
+      {
+        "target": "cost",
+        "quote": "I can do about $1,200 a month, $1,400 absolute max."
+      },
+      {
+        "target": "laundry",
+        "quote": "Last winter I hauled laundry two blocks in the snow. Never again."
+      },
+      {
+        "target": "commute",
+        "quote": "Labs on North Tue/Thu and studio Wednesday."
+      },
+      {
+        "target": "lateNight",
+        "quote": "I'm at the UgLi till 1 most weeknights."
+      }
+    ]
+  },
+  {
+    "schemaVersion": "1.0",
+    "displayName": "Jordan (demo persona, SYNTHETIC)",
+    "consent": {
+      "useFreeText": true,
+      "storeProfile": false
+    },
+    "budget": {
+      "targetMonthly": 1400,
+      "capMonthly": 1650
+    },
+    "household": {
+      "occupants": 1
+    },
+    "monthsNeeded": 12,
+    "hasCar": false,
+    "anchors": [
+      {
+        "anchor": "kerrytown",
+        "daysPerWeek": 4,
+        "lateReturn": true,
+        "label": "Shifts in Kerrytown, off at 11 PM"
+      },
+      {
+        "anchor": "central",
+        "daysPerWeek": 5,
+        "lateReturn": false,
+        "label": "Classes"
+      }
+    ],
+    "priorities": [
+      [
+        "cost"
+      ],
+      [
+        "commute",
+        "lateNight"
+      ],
+      [
+        "quiet"
+      ],
+      [
+        "grocery"
+      ]
+    ],
+    "hardConstraints": {},
+    "evidence": [
+      {
+        "target": "cost",
+        "quote": "My job covers about $1,400 for rent; $1,650 is the absolute limit."
+      },
+      {
+        "target": "lateNight",
+        "quote": "I walk home after closing shifts and I don't want a long walk."
+      },
+      {
+        "target": "quiet",
+        "quote": "My old place was above a bar and I never slept."
+      }
+    ]
+  }
+]

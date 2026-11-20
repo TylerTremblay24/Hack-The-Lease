@@ -1,0 +1,10 @@
+{
+  "name": "tipping-point",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:engine": "tsx --test web/lib/engine/__tests__/engine.test.ts",
+    "demo:numbers": "tsx web/lib/engine/__tests__/run-demo.ts"
+  },
+  "devDependencies": { "@types/node": "^22", "tsx": "^4", "typescript": "^5" }
+}

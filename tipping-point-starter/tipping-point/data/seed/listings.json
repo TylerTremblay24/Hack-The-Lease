@@ -1,0 +1,876 @@
+[
+  {
+    "id": "kt-loft-2br",
+    "name": "Detroit St Loft 2BR",
+    "neighborhood": "Kerrytown",
+    "coords": {
+      "lat": 42.2851,
+      "lng": -83.7455
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sqft": 950,
+    "rentTotalMonthly": 2700,
+    "leaseMonths": 12,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 75
+    },
+    "fees": {
+      "oneTimeTotal": 150
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 2,
+    "groceryWalkMin": 4,
+    "travel": {
+      "central": {
+        "walkMin": 17,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 38,
+        "busMin": 28
+      },
+      "kerrytown": {
+        "walkMin": 1,
+        "busMin": null
+      },
+      "medical": {
+        "walkMin": 22,
+        "busMin": 16
+      },
+      "downtown": {
+        "walkMin": 9,
+        "busMin": null
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "kt-carriage-1br",
+    "name": "Fourth Ave Carriage House 1BR",
+    "neighborhood": "Kerrytown",
+    "coords": {
+      "lat": 42.2862,
+      "lng": -83.7472
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sqft": 600,
+    "rentTotalMonthly": 1495,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water",
+      "heat"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": false,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 100
+    },
+    "furnished": false,
+    "petFriendly": false,
+    "noiseLevel": 2,
+    "groceryWalkMin": 5,
+    "travel": {
+      "central": {
+        "walkMin": 20,
+        "busMin": 16
+      },
+      "north": {
+        "walkMin": 39,
+        "busMin": 28
+      },
+      "kerrytown": {
+        "walkMin": 3,
+        "busMin": null
+      },
+      "medical": {
+        "walkMin": 24,
+        "busMin": 17
+      },
+      "downtown": {
+        "walkMin": 10,
+        "busMin": null
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "su-studio",
+    "name": "South U Tower Studio",
+    "neighborhood": "South U",
+    "coords": {
+      "lat": 42.2747,
+      "lng": -83.7345
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sqft": 420,
+    "rentTotalMonthly": 1425,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water",
+      "heat",
+      "internet"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 140
+    },
+    "fees": {
+      "oneTimeTotal": 250
+    },
+    "furnished": true,
+    "petFriendly": false,
+    "noiseLevel": 5,
+    "groceryWalkMin": 9,
+    "travel": {
+      "central": {
+        "walkMin": 6,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 36,
+        "busMin": 19
+      },
+      "kerrytown": {
+        "walkMin": 23,
+        "busMin": 17
+      },
+      "medical": {
+        "walkMin": 17,
+        "busMin": null
+      },
+      "downtown": {
+        "walkMin": 21,
+        "busMin": 16
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "su-tower-2br",
+    "name": "South U Tower 2BR",
+    "neighborhood": "South U",
+    "coords": {
+      "lat": 42.2743,
+      "lng": -83.7352
+    },
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sqft": 900,
+    "rentTotalMonthly": 3150,
+    "leaseMonths": 12,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water",
+      "internet"
+    ],
+    "heatType": "electric",
+    "parking": {
+      "available": true,
+      "monthly": 125
+    },
+    "fees": {
+      "oneTimeTotal": 400
+    },
+    "furnished": true,
+    "petFriendly": false,
+    "noiseLevel": 4,
+    "groceryWalkMin": 9,
+    "travel": {
+      "central": {
+        "walkMin": 6,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 37,
+        "busMin": 20
+      },
+      "kerrytown": {
+        "walkMin": 23,
+        "busMin": 17
+      },
+      "medical": {
+        "walkMin": 18,
+        "busMin": 16
+      },
+      "downtown": {
+        "walkMin": 21,
+        "busMin": 16
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "su-house-4br",
+    "name": "Church St House 4BR",
+    "neighborhood": "South U",
+    "coords": {
+      "lat": 42.2735,
+      "lng": -83.733
+    },
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sqft": 1500,
+    "rentTotalMonthly": 4600,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 200
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 4,
+    "groceryWalkMin": 10,
+    "travel": {
+      "central": {
+        "walkMin": 9,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 37,
+        "busMin": 20
+      },
+      "kerrytown": {
+        "walkMin": 26,
+        "busMin": 17
+      },
+      "medical": {
+        "walkMin": 18,
+        "busMin": 16
+      },
+      "downtown": {
+        "walkMin": 24,
+        "busMin": 17
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "su-academic-2br",
+    "name": "Willard St 2BR (8-mo lease)",
+    "neighborhood": "South U",
+    "coords": {
+      "lat": 42.2752,
+      "lng": -83.7362
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sqft": 820,
+    "rentTotalMonthly": 2950,
+    "leaseMonths": 8,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water",
+      "internet"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": false,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 300
+    },
+    "furnished": true,
+    "petFriendly": false,
+    "noiseLevel": 4,
+    "groceryWalkMin": 9,
+    "travel": {
+      "central": {
+        "walkMin": 4,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 37,
+        "busMin": 20
+      },
+      "kerrytown": {
+        "walkMin": 21,
+        "busMin": 16
+      },
+      "medical": {
+        "walkMin": 18,
+        "busMin": null
+      },
+      "downtown": {
+        "walkMin": 19,
+        "busMin": 16
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "ows-1br",
+    "name": "Spring St 1BR",
+    "neighborhood": "Old West Side",
+    "coords": {
+      "lat": 42.2771,
+      "lng": -83.7585
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sqft": 650,
+    "rentTotalMonthly": 1350,
+    "leaseMonths": 12,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 75
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 1,
+    "groceryWalkMin": 12,
+    "travel": {
+      "central": {
+        "walkMin": 26,
+        "busMin": 17
+      },
+      "north": {
+        "walkMin": 58,
+        "busMin": 32
+      },
+      "kerrytown": {
+        "walkMin": 21,
+        "busMin": 16
+      },
+      "medical": {
+        "walkMin": 40,
+        "busMin": 20
+      },
+      "downtown": {
+        "walkMin": 14,
+        "busMin": null
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "ows-duplex-2br",
+    "name": "Crest Ave Duplex 2BR",
+    "neighborhood": "Old West Side",
+    "coords": {
+      "lat": 42.2764,
+      "lng": -83.7612
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sqft": 1000,
+    "rentTotalMonthly": 2300,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 100
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 1,
+    "groceryWalkMin": 10,
+    "travel": {
+      "central": {
+        "walkMin": 30,
+        "busMin": 18
+      },
+      "north": {
+        "walkMin": 62,
+        "busMin": 33
+      },
+      "kerrytown": {
+        "walkMin": 24,
+        "busMin": 17
+      },
+      "medical": {
+        "walkMin": 44,
+        "busMin": 21
+      },
+      "downtown": {
+        "walkMin": 18,
+        "busMin": null
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "nc-plymouth-2br",
+    "name": "Plymouth Rd Garden 2BR",
+    "neighborhood": "North Campus",
+    "coords": {
+      "lat": 42.2988,
+      "lng": -83.7128
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sqft": 950,
+    "rentTotalMonthly": 2050,
+    "leaseMonths": 12,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 150
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 2,
+    "groceryWalkMin": 7,
+    "travel": {
+      "central": {
+        "walkMin": 51,
+        "busMin": 22
+      },
+      "north": {
+        "walkMin": 14,
+        "busMin": null
+      },
+      "kerrytown": {
+        "walkMin": 49,
+        "busMin": 22
+      },
+      "medical": {
+        "walkMin": 33,
+        "busMin": 19
+      },
+      "downtown": {
+        "walkMin": 56,
+        "busMin": 23
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "nc-hubbard-1br",
+    "name": "Hubbard Rd 1BR",
+    "neighborhood": "North Campus",
+    "coords": {
+      "lat": 42.2957,
+      "lng": -83.7105
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sqft": 600,
+    "rentTotalMonthly": 1250,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water",
+      "heat"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 100
+    },
+    "furnished": false,
+    "petFriendly": false,
+    "noiseLevel": 1,
+    "groceryWalkMin": 12,
+    "travel": {
+      "central": {
+        "walkMin": 49,
+        "busMin": 22
+      },
+      "north": {
+        "walkMin": 12,
+        "busMin": null
+      },
+      "kerrytown": {
+        "walkMin": 50,
+        "busMin": 22
+      },
+      "medical": {
+        "walkMin": 31,
+        "busMin": 18
+      },
+      "downtown": {
+        "walkMin": 56,
+        "busMin": 23
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "bp-2br",
+    "name": "Wells St 2BR",
+    "neighborhood": "Burns Park",
+    "coords": {
+      "lat": 42.2668,
+      "lng": -83.7292
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sqft": 1000,
+    "rentTotalMonthly": 2400,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 100
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 1,
+    "groceryWalkMin": 14,
+    "travel": {
+      "central": {
+        "walkMin": 21,
+        "busMin": 16
+      },
+      "north": {
+        "walkMin": 45,
+        "busMin": 29
+      },
+      "kerrytown": {
+        "walkMin": 38,
+        "busMin": 20
+      },
+      "medical": {
+        "walkMin": 29,
+        "busMin": 18
+      },
+      "downtown": {
+        "walkMin": 35,
+        "busMin": 19
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "dt-main-1br",
+    "name": "Main St Flat 1BR",
+    "neighborhood": "Downtown",
+    "coords": {
+      "lat": 42.2797,
+      "lng": -83.7483
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sqft": 650,
+    "rentTotalMonthly": 1750,
+    "leaseMonths": 12,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "electric",
+    "parking": {
+      "available": true,
+      "monthly": 150
+    },
+    "fees": {
+      "oneTimeTotal": 200
+    },
+    "furnished": false,
+    "petFriendly": false,
+    "noiseLevel": 3,
+    "groceryWalkMin": 8,
+    "travel": {
+      "central": {
+        "walkMin": 14,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 44,
+        "busMin": 29
+      },
+      "kerrytown": {
+        "walkMin": 9,
+        "busMin": null
+      },
+      "medical": {
+        "walkMin": 26,
+        "busMin": 17
+      },
+      "downtown": {
+        "walkMin": 2,
+        "busMin": null
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "lt-2br",
+    "name": "Broadway 2BR",
+    "neighborhood": "Lower Town",
+    "coords": {
+      "lat": 42.2905,
+      "lng": -83.7422
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sqft": 900,
+    "rentTotalMonthly": 2150,
+    "leaseMonths": 12,
+    "laundry": "in_unit",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 150
+    },
+    "furnished": false,
+    "petFriendly": true,
+    "noiseLevel": 2,
+    "groceryWalkMin": 8,
+    "travel": {
+      "central": {
+        "walkMin": 25,
+        "busMin": 17
+      },
+      "north": {
+        "walkMin": 32,
+        "busMin": 19
+      },
+      "kerrytown": {
+        "walkMin": 11,
+        "busMin": null
+      },
+      "medical": {
+        "walkMin": 21,
+        "busMin": 16
+      },
+      "downtown": {
+        "walkMin": 19,
+        "busMin": 16
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  },
+  {
+    "id": "hill-3br",
+    "name": "Hill St 3BR",
+    "neighborhood": "Packard / Hill",
+    "coords": {
+      "lat": 42.2722,
+      "lng": -83.7418
+    },
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "sqft": 1200,
+    "rentTotalMonthly": 3300,
+    "leaseMonths": 12,
+    "laundry": "in_building",
+    "utilitiesIncluded": [
+      "water"
+    ],
+    "heatType": "gas",
+    "parking": {
+      "available": true,
+      "monthly": 0
+    },
+    "fees": {
+      "oneTimeTotal": 150
+    },
+    "furnished": false,
+    "petFriendly": false,
+    "noiseLevel": 3,
+    "groceryWalkMin": 9,
+    "travel": {
+      "central": {
+        "walkMin": 9,
+        "busMin": null
+      },
+      "north": {
+        "walkMin": 46,
+        "busMin": 29
+      },
+      "kerrytown": {
+        "walkMin": 22,
+        "busMin": 17
+      },
+      "medical": {
+        "walkMin": 26,
+        "busMin": 17
+      },
+      "downtown": {
+        "walkMin": 17,
+        "busMin": null
+      }
+    },
+    "provenance": {
+      "name": "SYNTHETIC",
+      "rentTotalMonthly": "SYNTHETIC",
+      "sqft": "SYNTHETIC",
+      "laundry": "SYNTHETIC",
+      "noiseLevel": "SYNTHETIC",
+      "groceryWalkMin": "SYNTHETIC",
+      "neighborhood": "REAL",
+      "travel": "ESTIMATE"
+    }
+  }
+]

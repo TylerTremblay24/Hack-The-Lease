@@ -1,0 +1,21 @@
+{
+  "utilitiesPerUnit": {
+    "electric": { "base": { "lo": 30, "mid": 40, "hi": 55 }, "perBedroom": { "lo": 10, "mid": 15, "hi": 22 } },
+    "heat":     { "base": { "lo": 25, "mid": 35, "hi": 50 }, "perBedroom": { "lo": 12, "mid": 18, "hi": 26 } },
+    "water":    { "base": { "lo": 15, "mid": 20, "hi": 28 }, "perBedroom": { "lo": 8,  "mid": 12, "hi": 16 } },
+    "internet": { "base": { "lo": 45, "mid": 60, "hi": 75 }, "perBedroom": { "lo": 0,  "mid": 0,  "hi": 0 } }
+  },
+  "electricHeatMultiplier": 1.6,
+  "subletRecovery": { "lo": 0.3, "mid": 0.55, "hi": 0.8 },
+  "busTimeSpread": 0.2,
+  "anchors": {
+    "weeklyCommuteZeroAt": 600,
+    "lateNightBest": 5,
+    "lateNightWorst": 35,
+    "spaceWorst": 250,
+    "spaceBest": 550,
+    "groceryBest": 5,
+    "groceryWorst": 25,
+    "costFloorShareOfTarget": 0.85
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "displayName": "Jordan (demo persona, SYNTHETIC)",
+  "consent": {
+    "useFreeText": true,
+    "storeProfile": false
+  },
+  "budget": {
+    "targetMonthly": 1400,
+    "capMonthly": 1650
+  },
+  "household": {
+    "occupants": 1
+  },
+  "monthsNeeded": 12,
+  "hasCar": false,
+  "anchors": [
+    {
+      "anchor": "kerrytown",
+      "daysPerWeek": 4,
+      "lateReturn": true,
+      "label": "Shifts in Kerrytown, off at 11 PM"
+    },
+    {
+      "anchor": "central",
+      "daysPerWeek": 5,
+      "lateReturn": false,
+      "label": "Classes"
+    }
+  ],
+  "priorities": [
+    [
+      "cost"
+    ],
+    [
+      "commute",
+      "lateNight"
+    ],
+    [
+      "quiet"
+    ],
+    [
+      "grocery"
+    ]
+  ],
+  "hardConstraints": {},
+  "evidence": [
+    {
+      "target": "cost",
+      "quote": "My job covers about $1,400 for rent; $1,650 is the absolute limit."
+    },
+    {
+      "target": "lateNight",
+      "quote": "I walk home after closing shifts and I don't want a long walk."
+    },
+    {
+      "target": "quiet",
+      "quote": "My old place was above a bar and I never slept."
+    }
+  ]
+}
