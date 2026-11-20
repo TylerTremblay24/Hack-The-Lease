@@ -39,6 +39,8 @@ export default {
       fontSize: {
         micro: ["10px", { lineHeight: "14px", letterSpacing: "0.06em" }],
         label: ["11px", { lineHeight: "16px", letterSpacing: "0.08em" }],
+        fine: ["11px", { lineHeight: "1.4" }], // print sheet body
+        title: ["15px", { lineHeight: "22px", fontWeight: "700" }], // panel titles
         display: ["44px", { lineHeight: "1.04", letterSpacing: "-0.035em", fontWeight: "800" }],
         "display-sm": ["30px", { lineHeight: "1.08", letterSpacing: "-0.03em", fontWeight: "800" }],
       },

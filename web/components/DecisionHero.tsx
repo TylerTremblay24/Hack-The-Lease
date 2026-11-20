@@ -46,7 +46,7 @@ export function DecisionHero({ result, listings, group, children }: Props) {
 
   return (
     <section className="relative -mx-4 overflow-hidden border-b border-line px-4 pb-6 pt-7 md:-mx-7 md:px-7" aria-live="polite">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[url('/brand/skyline.jpg')] bg-[length:auto_100%] bg-right bg-no-repeat opacity-80 [mask-image:linear-gradient(90deg,transparent_30%,#000_80%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[url('/brand/skyline.jpg')] bg-[length:auto_100%] bg-right bg-no-repeat opacity-80 [mask-image:linear-gradient(90deg,transparent_30%,black_80%)]" />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/75 to-bg/30" />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg to-transparent to-50%" />
 

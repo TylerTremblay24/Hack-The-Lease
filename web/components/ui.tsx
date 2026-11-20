@@ -38,7 +38,7 @@ export function SectionTitle({ children, right, icon }: { children: ReactNode; r
   return (
     <div className="flex items-center gap-2">
       {icon}
-      <h2 className="text-[15px] font-bold text-ink">{children}</h2>
+      <h2 className="text-title font-bold text-ink">{children}</h2>
       {right && <div className="ml-auto">{right}</div>}
     </div>
   );

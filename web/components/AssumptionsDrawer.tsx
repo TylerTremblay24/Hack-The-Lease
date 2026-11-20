@@ -1,5 +1,6 @@
 "use client";
 import type { Assumptions } from "@/lib/types";
+import { Badge, label, linkBtn } from "./ui";
 
 export type TuneKey =
   | "weeklyCommuteZeroAt" | "lateNightBest" | "lateNightWorst" | "spaceWorst" | "spaceBest"
@@ -32,33 +33,34 @@ export function AssumptionsDrawer({ base, tune, onTune, onReset }: Props) {
   const u = base.utilitiesPerUnit;
   const range = (r: { lo: number; hi: number }) => `$${r.lo}-${r.hi}`;
   return (
-    <details className="rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm">
-      <summary className="cursor-pointer font-semibold text-slate-100">
-        Assumptions <span className="ml-1 rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold text-slate-400">ESTIMATE</span>
-        {changed > 0 && <span className="ml-2 text-xs font-normal text-amber-300">{changed} changed</span>}
-      </summary>
-      <p className="mt-2 text-xs text-slate-500">These are our estimates, not facts. Change any of them to see if the answer holds. Scales are fixed, so adding a listing never changes another listing's score.</p>
-      <div className="mt-2 space-y-2.5">
+    <section className="space-y-4 p-4 text-sm">
+      <div className="flex items-center gap-2">
+        <h3 className="text-sm font-bold">Assumptions</h3>
+        <Badge kind="est">ESTIMATE</Badge>
+        {changed > 0 && <span className="ml-auto font-mono text-micro text-flip">{changed} CHANGED</span>}
+      </div>
+      <p className="text-xs text-ink-muted">These are our estimates, not facts. Change any of them to see if the answer holds. Scales are fixed, so adding a listing never changes another listing&apos;s score.</p>
+      <div className="space-y-3">
         {DEFS.map((d) => {
           const v = valueOf(base, tune, d.key);
           const fmt = d.fmt ?? String;
           return (
             <label key={d.key} className="block" title={d.help}>
-              <div className="flex justify-between text-xs"><span className="text-slate-300">{d.label}</span><b className={tune[d.key] != null ? "text-amber-300" : "text-slate-100"}>{fmt(v)}</b></div>
-              <input type="range" className="w-full" min={d.min} max={d.max} step={d.step} value={v}
+              <div className="flex justify-between gap-2 text-xs"><span className="text-ink-muted">{d.label}</span><b className={`num font-medium ${tune[d.key] != null ? "text-flip" : "text-ink"}`}>{fmt(v)}</b></div>
+              <input type="range" className="slider w-full" min={d.min} max={d.max} step={d.step} value={v}
                 onChange={(e) => onTune(d.key, Number(e.target.value), `${d.label} ${fmt(Number(e.target.value))}.`)} />
             </label>
           );
         })}
       </div>
-      {changed > 0 && <button onClick={onReset} className="mt-2 text-xs text-amber-300 underline">Reset all to defaults</button>}
-      <div className="mt-3 space-y-1 border-t border-slate-800 pt-2 text-xs text-slate-400">
-        <div className="font-semibold text-slate-300">Fixed in the model (read only)</div>
-        <div>Utilities per unit: electric {range(u.electric.base)}, heat {range(u.heat.base)}, water {range(u.water.base)}, internet {range(u.internet.base)} a month, plus per bedroom. Shown as low to high ranges.</div>
-        <div>Sublet recovery for unused months: {Math.round(base.subletRecovery.lo * 100)}% to {Math.round(base.subletRecovery.hi * 100)}% of rent.</div>
-        <div>Walk to your places: straight-line distance × 1.3 for streets at 80 meters a minute. Full marks at 3 minutes or less, zero at 25 or more.</div>
-        <div>Late-night trips count walking only. Laundry: in-unit 1, in-building 0.6, none 0.</div>
+      {changed > 0 && <button onClick={onReset} className={linkBtn}>Reset all to defaults</button>}
+      <div className="space-y-1.5 border-t border-line pt-3 text-xs text-ink-muted">
+        <div className={label}>Fixed in the model (read only)</div>
+        <p>Utilities per unit: electric {range(u.electric.base)}, heat {range(u.heat.base)}, water {range(u.water.base)}, internet {range(u.internet.base)} a month, plus per bedroom. Shown as low to high ranges.</p>
+        <p>Sublet recovery for unused months: {Math.round(base.subletRecovery.lo * 100)}% to {Math.round(base.subletRecovery.hi * 100)}% of rent.</p>
+        <p>Walk to your places: straight-line distance × 1.3 for streets at 80 meters a minute. Full marks at 3 minutes or less, zero at 25 or more.</p>
+        <p>Late-night trips count walking only. Laundry: in-unit 1, in-building 0.6, none 0.</p>
       </div>
-    </details>
+    </section>
   );
 }

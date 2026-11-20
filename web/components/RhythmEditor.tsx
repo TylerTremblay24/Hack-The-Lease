@@ -21,34 +21,37 @@ type Props = {
 export function RhythmEditor({ rhythm, notes, onChange }: Props) {
   const total = ROWS.reduce((a, r) => a + rhythm[r.id].days, 0);
   return (
-    <section className="space-y-2 rounded-lg border border-slate-800 bg-slate-900 p-3 text-sm">
-      <h2 className="font-semibold text-slate-100">My week</h2>
-      <p className="text-xs text-slate-500">How many days you head to each place. "Late" means you get home after about 11 PM. This drives your commute and late-night walk scores.</p>
+    <section className="space-y-4 p-4 text-sm">
+      <div>
+        <h3 className="text-sm font-bold">My week</h3>
+        <p className="mt-1 text-xs text-ink-muted">Days a week you head to each place. &ldquo;Late&rdquo; means home after about 11 PM. This drives your commute and late-night walk scores.</p>
+      </div>
       {ROWS.map((r) => {
         const v = rhythm[r.id];
         return (
-          <div key={r.id} className="space-y-0.5">
-            <div className="flex items-baseline justify-between">
-              <span className={v.days === 0 ? "text-slate-500" : "text-slate-200"}>{r.label}</span>
-              <b className="text-slate-100">{v.days === 0 ? "not going" : `${v.days} ${v.days === 1 ? "day" : "days"}/week`}</b>
+          <div key={r.id}>
+            <div className="flex items-baseline justify-between gap-2">
+              <span className={v.days === 0 ? "text-ink-faint" : "font-semibold text-ink"}>{r.label}</span>
+              <span className={`num text-xs ${v.days === 0 ? "text-ink-faint" : "text-ink"}`}>{v.days === 0 ? "not going" : `${v.days} ${v.days === 1 ? "day" : "days"}/wk`}</span>
             </div>
-            {notes[r.id] && v.days > 0 && <div className="text-[11px] text-slate-500">{notes[r.id]}</div>}
-            <input type="range" aria-label={`${r.label} days per week`} min={0} max={7} step={1} value={v.days} className="w-full"
-              onChange={(e) => {
-                const days = Number(e.target.value);
-                onChange(r.id, { days, late: days === 0 ? false : v.late }, days === 0 ? `You're not going to ${r.label}.` : `${r.label} ${days} ${days === 1 ? "day" : "days"} a week.`);
-              }} />
-            {v.days > 0 && (
-              <label className="flex items-center gap-2 text-xs text-slate-300">
-                <input type="checkbox" checked={v.late}
-                  onChange={(e) => onChange(r.id, { ...v, late: e.target.checked }, e.target.checked ? `You get home late from ${r.label}.` : `You no longer get home late from ${r.label}.`)} />
-                Some of those days run late
-              </label>
-            )}
+            {notes[r.id] && v.days > 0 && <div className="text-xs text-ink-faint">{notes[r.id]}</div>}
+            <div className="mt-1 flex items-center gap-2">
+              <input type="range" className="slider min-w-0 flex-1" aria-label={`${r.label} days per week`} min={0} max={7} step={1} value={v.days}
+                onChange={(e) => {
+                  const days = Number(e.target.value);
+                  onChange(r.id, { days, late: days === 0 ? false : v.late }, days === 0 ? `You're not going to ${r.label}.` : `${r.label} ${days} ${days === 1 ? "day" : "days"} a week.`);
+                }} />
+              <button disabled={v.days === 0} aria-pressed={v.late} title="Some of those days run late"
+                onClick={() => onChange(r.id, { ...v, late: !v.late }, !v.late ? `You get home late from ${r.label}.` : `You no longer get home late from ${r.label}.`)}
+                className={`rounded-full border px-2 py-0.5 font-mono text-micro font-semibold transition-colors duration-fast disabled:opacity-30 ${
+                  v.late ? "border-flip/50 bg-flip/10 text-flip" : "border-line-strong text-ink-faint hover:text-ink"}`}>
+                LATE
+              </button>
+            </div>
           </div>
         );
       })}
-      <p className="text-xs text-slate-500">{total} trips a week in total.</p>
+      <p className="border-t border-line pt-3 text-xs text-ink-faint"><span className="num text-ink">{total}</span> trips a week in total. Press LATE on places where some days run past 11 PM.</p>
     </section>
   );
 }

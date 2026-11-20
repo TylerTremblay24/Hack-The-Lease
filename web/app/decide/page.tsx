@@ -47,7 +47,7 @@ const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 const sel = "rounded-ctl border border-line-strong bg-bg px-2 py-1 text-sm text-ink";
 const personaName = (d?: string) => (d ?? "Student").split(" (")[0];
 const railSec = "space-y-2.5 border-t border-line p-4 text-sm first:border-t-0";
-const railHead = "flex items-center justify-between text-[13px] font-bold text-ink";
+const railHead = "flex items-center justify-between text-sm font-bold text-ink";
 
 /** Boolean must-have row. */
 function Check({ label: text, checked, onChange, disabled }: { label: string; checked: boolean; onChange: (v: boolean) => void; disabled?: boolean }) {
@@ -60,9 +60,9 @@ function Check({ label: text, checked, onChange, disabled }: { label: string; ch
 /** "Any" or a numeric limit. */
 function Limit({ label: text, value, options, unit, onChange }: { label: string; value?: number; options: number[]; unit: string; onChange: (v?: number) => void }) {
   return (
-    <label className="flex items-center justify-between gap-2">
-      <span className="text-ink-muted">{text}</span>
-      <select className={sel} value={value ?? ""} onChange={(e) => onChange(e.target.value === "" ? undefined : Number(e.target.value))}>
+    <label className="block">
+      <span className="mb-1 block text-xs text-ink-muted">{text}</span>
+      <select className={`${sel} w-full`} value={value ?? ""} onChange={(e) => onChange(e.target.value === "" ? undefined : Number(e.target.value))}>
         <option value="">Any</option>
         {options.map((o) => <option key={o} value={o}>{o} {unit}</option>)}
       </select>
@@ -297,7 +297,7 @@ export default function Decide() {
                 {extra && <GroupResults result={result} x={extra} listings={LISTINGS} places={s.places} />}
                 <section className={`${panel} overflow-hidden`} aria-label="Ranked listings">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-line px-4 py-3.5 md:px-5">
-                    <h2 className="text-[15px] font-bold">{feasible.length} {feasible.length === 1 ? "apartment fits" : "apartments fit"}</h2>
+                    <h2 className="text-title font-bold">{feasible.length} {feasible.length === 1 ? "apartment fits" : "apartments fit"}</h2>
                     {out.length > 0 && <a href="#didnt-make-it" className="text-sm text-ink-muted underline decoration-line-strong underline-offset-2 hover:text-ink">{out.length} didn&apos;t, see why</a>}
                     <span className={`${label} ml-auto`}>ranked by #1 share</span>
                   </div>
