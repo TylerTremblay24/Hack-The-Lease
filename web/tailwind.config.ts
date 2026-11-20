@@ -49,7 +49,7 @@ export default {
       },
       transitionDuration: { fast: "150ms", base: "220ms" },
       transitionTimingFunction: { out: "cubic-bezier(.2,.8,.2,1)" },
-      width: { nav: "216px", "nav-sm": "72px", rail: "264px", side: "312px", balance: "400px" },
+      width: { nav: "216px", "nav-sm": "72px", rail: "248px", side: "296px", balance: "400px" },
       maxWidth: { page: "1600px" },
     },
   },

@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 
 /** Shared building blocks so every screen uses the same tokens. */
 
+/** "Your" for the student, "Sam's" for a roommate. */
+export const poss = (name: string) => (name === "You" ? "Your" : `${name}'s`);
+
 export const panel = "rounded-card border border-line bg-surface shadow-e1";
 export const label = "font-mono text-label uppercase text-ink-muted";
 export const btn =

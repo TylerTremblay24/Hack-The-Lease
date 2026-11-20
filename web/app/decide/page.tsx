@@ -3,7 +3,6 @@ import { useMemo, useState } from "react";
 import { MotionConfig } from "framer-motion";
 import { ASSUMPTIONS, PERSONAS, PLACES, bankListings, DEMO_LISTINGS, WEB_LISTINGS, LISTINGS as ALL_LISTINGS, type Bank } from "@/lib/seed";
 import { useDecision } from "@/lib/useDecision";
-import { criterionLabel } from "@/lib/engine/explain";
 import type { AnchorId, CriterionId, HardConstraints, ScheduleAnchor, StudentProfile, TippingPoint, UserPlace } from "@/lib/types";
 import { applyTipping } from "@/lib/applyTipping";
 import { PriorityChips } from "@/components/PriorityChips";
@@ -23,7 +22,8 @@ import { AssumptionsDrawer, type Tune, type TuneKey } from "@/components/Assumpt
 import { SideNav, type NavTarget } from "@/components/shell/SideNav";
 import { InputRail, type RailTab } from "@/components/shell/InputRail";
 import { DecisionHero } from "@/components/DecisionHero";
-import { Legend, label, panel } from "@/components/ui";
+import { Icon, Legend, label, panel } from "@/components/ui";
+import { WhyPanel } from "@/components/WhyPanel";
 
 interface State {
   persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[]; rhythm: Rhythm; tune: Tune;
@@ -78,6 +78,7 @@ export default function Decide() {
   const [showSummary, setShowSummary] = useState(false);
   const [bank, setBank] = useState<Bank>("all");
   const [tab, setTab] = useState<RailTab>("week");
+  const [compareOpen, setCompareOpen] = useState(false);
   const LISTINGS = useMemo(() => bankListings(bank), [bank]);
 
   const base = PERSONAS[s.persona];
@@ -198,13 +199,12 @@ export default function Decide() {
   const listing = (id: string) => LISTINGS.find((l) => l.id === id)!;
   const feasible = result.evaluations.filter((e) => e.feasible);
   const out = result.evaluations.filter((e) => !e.feasible);
-  const maxDelta = Math.max(0.001, ...(result.whyWinner ?? []).map((d) => Math.abs(d.delta)));
   const r = s.rules;
   const onOff = (v: boolean, a: string, b: string) => (v ? a : b);
 
   function nav(t: NavTarget) {
     if (t === "summary") { if (story) setShowSummary(true); return; }
-    if (t === "compare") { document.getElementById("compare")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (t === "compare") { setCompareOpen(true); return; }
     if (t === "group" || t === "tune") { setTab(t); document.getElementById("inputs")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     setTab("week");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -225,7 +225,7 @@ export default function Decide() {
           bank={bank} onBank={pickBank}
           banks={[{ id: "all", label: "All", count: ALL_LISTINGS.length }, { id: "web", label: "Web", count: WEB_LISTINGS.length }, { id: "demo", label: "Demo", count: DEMO_LISTINGS.length }]}
           pinned={pinned.length} roommates={gOn ? s.group.members.length : 0}
-          onNav={nav} active={tab === "group" ? "group" : tab === "tune" ? "tune" : "decide"} />
+          onNav={nav} active={compareOpen ? "compare" : tab === "group" ? "group" : tab === "tune" ? "tune" : "decide"} />
 
         <main className="min-w-0 flex-1 px-4 pb-12 md:px-7">
           <div className="mx-auto max-w-page">
@@ -295,25 +295,29 @@ export default function Decide() {
               <div className="min-w-0 space-y-5">
                 {story && <StoryCard story={story} onSummary={() => setShowSummary(true)} />}
                 {extra && <GroupResults result={result} x={extra} listings={LISTINGS} places={s.places} />}
-                <div id="compare" className="scroll-mt-20">
-                  <CompareView
-                    cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
-                    result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
-                </div>
-                <section className="space-y-3">
-                  <div className="flex items-baseline gap-3">
+                <section className={`${panel} overflow-hidden`} aria-label="Ranked listings">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-line px-4 py-3.5 md:px-5">
                     <h2 className="text-[15px] font-bold">{feasible.length} {feasible.length === 1 ? "apartment fits" : "apartments fit"}</h2>
-                    {out.length > 0 && <span className="text-sm text-ink-muted">{out.length} didn&apos;t</span>}
+                    {out.length > 0 && <a href="#didnt-make-it" className="text-sm text-ink-muted underline decoration-line-strong underline-offset-2 hover:text-ink">{out.length} didn&apos;t, see why</a>}
+                    <span className={`${label} ml-auto`}>ranked by #1 share</span>
                   </div>
-                  {feasible.length === 0 && <p className={`${panel} p-4 text-sm`}>Nothing fits all your rules. Loosen one on the left to see what comes back.</p>}
+                  {feasible.length === 0 && (
+                    <div className="p-6 text-sm text-ink-muted">
+                      <p className="font-semibold text-ink">Nothing fits all your rules.</p>
+                      <p className="mt-1">Loosen a must-have in the Rules tab, or widen the budget. The list below says what each listing missed.</p>
+                    </div>
+                  )}
                   {feasible.map((e, i) => (
-                    <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={extra?.budget.cap ?? s.budget[1]} places={s.places}
+                    <ListingCard key={e.listingId} lead={i === 0} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={extra?.budget.cap ?? s.budget[1]} places={s.places}
                       pinned={pinned.includes(e.listingId)} canPin={pinned.length < 3} onPin={() => togglePin(e.listingId)} />
                   ))}
                   {out.length > 0 && (
-                    <details className={`${panel} p-4 text-sm`} open={feasible.length === 0}>
-                      <summary className="cursor-pointer text-ink-muted">{out.length} listings didn&apos;t make it (why)</summary>
-                      <ul className="mt-2 space-y-1 text-ink-muted">
+                    <details id="didnt-make-it" className="group border-t border-line px-4 py-3.5 text-sm md:px-5" open={feasible.length === 0}>
+                      <summary className="flex cursor-pointer list-none items-center gap-2 text-ink-muted hover:text-ink">
+                        <Icon name="chevron" size={14} className="transition-transform duration-base group-open:rotate-90" />
+                        {out.length} {out.length === 1 ? "listing didn't" : "listings didn't"} make it, and why
+                      </summary>
+                      <ul className="mt-3 space-y-1.5 text-ink-muted">
                         {out.map((e) => <li key={e.listingId}><b className="text-ink">{listing(e.listingId).name}</b>: {e.eliminatedBecause.map((x) => x.text).join("; ")}</li>)}
                       </ul>
                     </details>
@@ -322,24 +326,8 @@ export default function Decide() {
               </div>
 
               <aside className="min-w-0 space-y-5 text-sm lg:col-start-2 xl:col-start-auto">
-                {result.whyWinner && result.winnerId && result.runnerUpId && (
-                  <section className={`${panel} p-4`}>
-                    <h2 className="mb-1 text-[15px] font-bold">Why #1 beats #2</h2>
-                    <p className="mb-3 text-xs text-ink-faint">{listing(result.winnerId).name} vs {listing(result.runnerUpId).name}</p>
-                    {result.whyWinner.map((d) => (
-                      <div key={d.criterion} className="mb-1.5 flex items-center gap-2">
-                        <span className="w-32 text-xs text-ink-muted">{criterionLabel(d.criterion, s.places)}</span>
-                        <div className="relative h-2 flex-1 rounded-sm bg-line">
-                          <div className="absolute left-1/2 h-2 border-l border-line-strong" />
-                          <div className={`absolute h-2 rounded-sm ${d.delta >= 0 ? "bg-leader" : "bg-against"}`}
-                            style={{ width: `${(Math.abs(d.delta) / maxDelta) * 50}%`, [d.delta >= 0 ? "left" : "right"]: "50%" }} />
-                        </div>
-                      </div>
-                    ))}
-                    <p className={`${label} mt-2`}>Green favors #1 · coral favors #2</p>
-                  </section>
-                )}
-                <TippingPoints result={result} places={s.places} onApply={applyTip} />
+                <WhyPanel result={result} listings={LISTINGS} places={s.places} group={gOn} />
+                <TippingPoints result={result} places={s.places} onApply={applyTip} members={gOn ? s.group.members : []} />
               </aside>
             </div>
 
@@ -347,6 +335,15 @@ export default function Decide() {
           </div>
         </main>
       </div>
+      <CompareView open={compareOpen} onClose={() => setCompareOpen(false)}
+        cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
+        result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
+      {pinned.length > 0 && !compareOpen && (
+        <button onClick={() => setCompareOpen(true)}
+          className="fixed bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full border border-leader/50 bg-surface px-4 py-2.5 text-sm font-semibold shadow-e2 transition-colors duration-fast hover:bg-surface-2">
+          <Icon name="compare" size={16} className="text-leader" /> Compare <span className="num text-ink-muted">{pinned.length}/3</span>
+        </button>
+      )}
       {showSummary && story && <SummarySheet story={story} result={result} listings={LISTINGS} places={s.places} extra={extra} who={who} budgetText={budgetText} onClose={() => setShowSummary(false)} />}
     </MotionConfig>
   );

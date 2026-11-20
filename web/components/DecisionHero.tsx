@@ -38,7 +38,7 @@ export function DecisionHero({ result, listings, group, children }: Props) {
   const share = (id: string | null) => (id ? ev(id)?.rankAcceptability[0] ?? 0 : 0);
   const [L, R] = pair ?? [null, null];
   const sL = share(L), sR = share(R);
-  const angle = pair ? Math.max(-11, Math.min(11, -(sL - sR) * 14)) : 0;
+  const angle = pair ? Math.max(-7, Math.min(7, -(sL - sR) * 12)) : 0;
 
   const priceTip = runner && result.tippingPoints.find((t) => t.kind === "price" && t.listingId === runner.id && t.amount != null);
   const swapTip = result.tippingPoints.find((t) => t.kind === "swap");
@@ -82,9 +82,9 @@ export function DecisionHero({ result, listings, group, children }: Props) {
               <span className={label}>How the decision leans</span>
               {flipNote && <span className="font-mono text-label font-semibold uppercase text-flip">{flipNote}</span>}
             </div>
-            <div className="relative mx-7 mt-1 h-24" role="img" aria-label={`${find(L)?.name} ${pct(sL)} versus ${R ? `${find(R)?.name} ${pct(sR)}` : "no runner-up"}`}>
+            <div className="relative mx-7 mt-1 h-28" role="img" aria-label={`${find(L)?.name} ${pct(sL)} versus ${R ? `${find(R)?.name} ${pct(sR)}` : "no runner-up"}`}>
               <div className="absolute inset-y-2 left-1/2 border-l border-dashed border-line-strong" />
-              <motion.div className="absolute left-0 right-0 top-14 h-1 origin-center rounded-full bg-cream"
+              <motion.div className="absolute left-0 right-0 top-16 h-1 origin-center rounded-full bg-cream"
                 initial={false} animate={{ rotate: angle }} transition={{ type: "spring", stiffness: 140, damping: 11, mass: 0.9 }}>
                 {[{ id: L, s: sL, side: "left-0 -translate-x-1/2" }, { id: R, s: sR, side: "right-0 translate-x-1/2" }].map((p, i) => (
                   <div key={i} className={`absolute bottom-1 ${p.side} flex flex-col items-center`}>
@@ -95,7 +95,7 @@ export function DecisionHero({ result, listings, group, children }: Props) {
                   </div>
                 ))}
               </motion.div>
-              <svg className="absolute left-1/2 top-14 mt-0.5 -translate-x-1/2" width="34" height="30" viewBox="0 0 34 30" aria-hidden>
+              <svg className="absolute left-1/2 top-16 mt-0.5 -translate-x-1/2" width="34" height="30" viewBox="0 0 34 30" aria-hidden>
                 <path d="M17 0L34 30H0z" className="fill-sage" />
               </svg>
             </div>

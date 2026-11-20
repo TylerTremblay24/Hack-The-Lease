@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, type KeyboardEvent } from "react";
 import type { CriterionId, UserPlace } from "@/lib/types";
 import { CRITERION_GROUPS, criterionBlurb, criterionLabel } from "@/lib/engine/explain";
-import { Icon, btn, label } from "./ui";
+import { Icon, btn, label, poss } from "./ui";
 
 type Props = {
   tiers: CriterionId[][]; places: UserPlace[]; onChange: (t: CriterionId[][], note: string) => void;
@@ -42,7 +42,7 @@ function WorkChip({ id, text, rank, tiedWithPrev, inTie, weight, maxWeight, canT
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const top = rank === 1 && !inTie;
   return (
-    <div ref={setNodeRef} style={{ transform: CSS.Transform.toString(transform), transition }} className="relative min-w-36 flex-1 basis-40">
+    <div ref={setNodeRef} style={{ transform: CSS.Transform.toString(transform), transition }} className="relative min-w-32 flex-1 basis-32 sm:basis-40">
       {insertBefore && <span aria-hidden className="absolute -left-2 bottom-1 top-1 w-1 rounded-full bg-flip" />}
       {tiedWithPrev && <span aria-hidden className="absolute -left-2.5 top-1/2 z-10 -translate-y-1/2 rounded bg-surface px-0.5 font-mono text-micro text-ink-muted">=</span>}
       <motion.div {...attributes} {...listeners} title={criterionBlurb(id)} aria-roledescription="sortable priority"
@@ -116,10 +116,10 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
     const next = tiers.map((t) => [...t]);
     next.splice(beforeTier ?? next.length, 0, [c]);
     setSettled(c);
-    onChange(next, `Added ${lab(c)} to ${owner ? `${owner}'s` : "your"} priorities.`);
+    onChange(next, `Added ${lab(c)} to ${owner ? poss(owner).toLowerCase() === "your" ? "your" : poss(owner) : "your"} priorities.`);
   }
   function remove(c: CriterionId) {
-    onChange(tiers.map((t) => t.filter((x) => x !== c)).filter((t) => t.length), `Removed ${lab(c)} from ${owner ? `${owner}'s` : "your"} priorities.`);
+    onChange(tiers.map((t) => t.filter((x) => x !== c)).filter((t) => t.length), `Removed ${lab(c)} from ${owner ? poss(owner).toLowerCase() === "your" ? "your" : poss(owner) : "your"} priorities.`);
   }
   function toggleTie(i: number) {
     if (i === 0) return;
@@ -155,7 +155,7 @@ export function PriorityChips({ tiers, places, onChange, weights, owner }: Props
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
         <Icon name="spark" size={20} className="hidden text-flip sm:block" />
         <div className="min-w-0">
-          <h2 className="text-base font-bold text-ink">{owner ? `${owner}'s priorities` : "Your priorities"}</h2>
+          <h2 className="text-base font-bold text-ink">{owner ? `${poss(owner)} priorities` : "Your priorities"}</h2>
           <p className="text-xs text-ink-muted">Drag to reorder, most important first. The order becomes the weights; nothing is typed in.</p>
         </div>
         <button onClick={() => setBankOpen((o) => !o)} aria-expanded={bankOpen} aria-controls="chip-bank" className={`${btn} ml-auto`}>
