@@ -31,11 +31,12 @@ Status: DONE, NEXT (build this round), PLANNED.
 | 6 | Getting-around style | Chooses walk, bike, bus, car, in any mix | Changes which travel time counts and adds a bike-friendliness chip | PLANNED |
 | 7 | Home habits | Cooks at home, hosts friends, studies at home, night owl or early bird | Adds chips for kitchen and grocery access, space for hosting, quiet hours; maps to noise tolerance | PLANNED |
 | 8 | Needs, not identities | Ticks access needs such as ground floor, elevator, step-free entry | Hard rules with the same near-miss tipping points | PLANNED |
-| 9 | Roommates | Each roommate ranks chips on their own; the group is merged | SMAA with several decision makers; shows where the group agrees and the exact point where they split | PLANNED |
+| 9 | Roommates | Each roommate ranks chips on their own; the group is merged | SMAA with several decision makers; shows where the group agrees and the exact point where they split | DONE |
 | 10 | Your story card | Sees "why this fits you" with the student's own words quoted | Pulls verbatim evidence from the free-text parse (Claude parses at the edges only) | PLANNED |
 | 11 | Compare | Pins up to three listings | Side-by-side values with the best in each row highlighted, what each is strongest on, and what would flip it | DONE |
 | 11b | Click-to-apply tipping points | Clicks Apply on "raise your cap", "swap these priorities" or "drop this rule" | The page applies the change, the change strip shows what moved, and Undo reverts it | DONE |
 | 11c | Export a one-page summary | Saves the compare view | Printable summary with sources | PLANNED |
+| 13 | **UI overhaul** | Uses a distinctive, memorable interface instead of a default dashboard | Visual identity built around the drag-to-rank chips; done last, after features are locked | PLANNED (design direction to be chosen) |
 | 12 | Paste a listing or lease | Pastes text, reviews extracted fields | Claude extracts, the student confirms, fees and utilities flow into true cost | PLANNED |
 
 ## My places (feature 4) in detail
@@ -64,3 +65,17 @@ Status: DONE, NEXT (build this round), PLANNED.
 A student adds the two places they live around (for example a favorite late-night food spot and the cafe where
 they study), ranks "Near my cafe" above "Laundry", and watches the leader change. The tipping-point panel then
 says exactly how much closer or cheaper a rival would need to be.
+
+## Roommates (feature 9) in detail
+
+- **Input.** "Plan with roommates" makes you Roommate 1 and adds Roommate 2 (up to 4). Each tab has its own ranked chips,
+  name and budget. Added roommates start from a sample ranking that they edit; nothing about who they are is collected.
+- **Shared on purpose.** Must-haves, the weekly schedule, places, months and headcount. Per-roommate weeks are a next step.
+- **Group budget.** The tightest cap sets the cap for everyone (the target is the lowest target). The panel names who binds it.
+- **Method.** Each of the N draws samples one weight vector per roommate that respects that roommate's order, scores every
+  listing for each roommate, then merges: **Average** (mean of scores) or **Protect the least happy** (lowest score).
+  Rank acceptability, why-#1 and tipping points then work as for one student.
+- **Outputs.** Group #1 share, each roommate's own favorite, agreement (share of draws where all own-#1s match), who likes the
+  group pick least, the fairest compromise, a score table per roommate, and the top 3 priorities where the roommates differ most.
+- **Group tipping points** name the roommate: "If Roommate 2 put X above Y, Z would be the group's #1" and "the tightest
+  budget raising their cap by $N makes Z the group's #1", each with an Apply button.

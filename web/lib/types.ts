@@ -189,7 +189,9 @@ export interface Elimination {
 export type TippingAction =
   | { type: "cap"; to: number } // raise the hard cap to this
   | { type: "swap"; tier: number } // swap priority tiers `tier` and `tier + 1`
-  | { type: "relax"; code: Elimination["code"]; placeId?: string }; // drop one must-have
+  | { type: "relax"; code: Elimination["code"]; placeId?: string } // drop one must-have
+  | { type: "memberSwap"; member: string; tier: number } // roommates: swap two tiers in one roommate's list
+  | { type: "memberCap"; member: string; to: number }; // roommates: raise one roommate's cap
 
 export interface ListingEvaluation {
   listingId: string;

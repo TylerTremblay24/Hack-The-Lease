@@ -13,11 +13,13 @@ import { RangeSlider } from "@/components/RangeSlider";
 import { MyPlaces } from "@/components/MyPlaces";
 import { RhythmEditor, type Rhythm } from "@/components/RhythmEditor";
 import { CompareView } from "@/components/CompareView";
+import { GroupPanel, type GroupState } from "@/components/GroupPanel";
+import { GroupResults } from "@/components/GroupResults";
 import { AssumptionsDrawer, type Tune, type TuneKey } from "@/components/AssumptionsDrawer";
 
 interface State {
   persona: number; tiers: CriterionId[][]; budget: [number, number]; months: [number, number]; occupants: [number, number]; hasCar: boolean; places: UserPlace[]; rhythm: Rhythm; tune: Tune;
-  rules: HardConstraints; dataU: boolean;
+  rules: HardConstraints; dataU: boolean; group: GroupState;
 }
 const ANCHORS: AnchorId[] = ["central", "north", "kerrytown", "medical", "downtown"];
 const rhythmOf = (p: StudentProfile): Rhythm =>
@@ -29,7 +31,7 @@ const init = (persona: number): State => {
   const p = PERSONAS[persona];
   return {
     persona, tiers: p.priorities, budget: [p.budget.targetMonthly, p.budget.capMonthly], months: [p.monthsNeeded, p.monthsNeeded], occupants: [p.household.occupants, p.household.occupants],
-    hasCar: p.hasCar, places: [], rhythm: rhythmOf(p), tune: {}, rules: { ...p.hardConstraints }, dataU: true,
+    hasCar: p.hasCar, places: [], rhythm: rhythmOf(p), tune: {}, rules: { ...p.hardConstraints }, dataU: true, group: { on: false, active: 0, rule: "average", members: [] },
   };
 };
 const mid = ([a, b]: [number, number]) => Math.round((a + b) / 2);
@@ -91,7 +93,26 @@ export default function Decide() {
     return { ...ASSUMPTIONS, busTimeSpread: busTimeSpread ?? ASSUMPTIONS.busTimeSpread, anchors: { ...ASSUMPTIONS.anchors, ...anchors } };
   }, [s.tune]);
 
-  const { result, prev, diff } = useDecision(profile, LISTINGS, assumptions, s.dataU);
+  const groupInput = useMemo(() => (s.group.on ? { members: s.group.members, rule: s.group.rule } : undefined), [s.group]);
+  const { result, prev, diff, extra } = useDecision(profile, LISTINGS, assumptions, s.dataU, groupInput);
+  const gOn = s.group.on;
+  const shownTiers = gOn ? s.group.members[s.group.active].tiers : s.tiers;
+  const shownBudget = gOn ? s.group.members[s.group.active].budget : s.budget;
+  const setTiers = (t: CriterionId[][], note: string) =>
+    gOn ? edit({ group: { ...s.group, members: s.group.members.map((m, i) => (i === s.group.active ? { ...m, tiers: t } : m)) } }, note) : edit({ tiers: t }, note);
+  const setBudget = (v: [number, number], note: string) =>
+    gOn ? edit({ group: { ...s.group, members: s.group.members.map((m, i) => (i === s.group.active ? { ...m, budget: v } : m)) } }, note) : edit({ budget: v }, note);
+  function onGroup(g: GroupState, note: string) {
+    if (g.on && !s.group.on) { // turning on: you become roommate 1 with your current list and budget
+      g = { ...g, members: g.members.map((m, i) => (i === 0 ? { ...m, tiers: s.tiers, budget: s.budget } : m)) };
+      return edit({ group: g }, note);
+    }
+    if (!g.on && s.group.on) { // turning off: keep roommate 1's list and budget
+      const me = s.group.members[0];
+      return edit({ group: { ...g, members: [] }, tiers: me.tiers, budget: me.budget }, note);
+    }
+    edit({ group: g }, note);
+  }
   const prevFirst = (id: string) => prev?.evaluations.find((e) => e.listingId === id)?.rankAcceptability[0] ?? null;
 
   function edit(next: Partial<State>, label: string) {
@@ -118,6 +139,7 @@ export default function Decide() {
     edit({
       places: s.places.filter((p) => p.id !== pl.id),
       tiers: s.tiers.map((t) => t.filter((c) => c !== id)).filter((t) => t.length),
+      group: { ...s.group, members: s.group.members.map((m) => ({ ...m, tiers: m.tiers.map((t) => t.filter((c) => c !== id)).filter((t) => t.length) })) },
       rules: { ...s.rules, placeMaxWalkMin: Object.keys(limits).length ? limits : undefined },
     }, `Removed ${pl.name} from your places.`);
   }
@@ -131,7 +153,20 @@ export default function Decide() {
 
   function applyTip(tp: TippingPoint) {
     if (!tp.apply) return;
-    const { patch, label } = applyTipping({ tiers: s.tiers, budget: s.budget, rules: s.rules, hasCar: s.hasCar, places: s.places }, tp.apply);
+    const a = tp.apply;
+    if (a.type === "memberSwap" || a.type === "memberCap") {
+      const m = s.group.members.find((x) => x.id === a.member);
+      if (!m) return;
+      const members = s.group.members.map((x) => {
+        if (x.id !== a.member) return x;
+        if (a.type === "memberCap") return { ...x, budget: [Math.min(x.budget[0], a.to), a.to] as [number, number] };
+        const t = x.tiers.map((y) => [...y]);
+        [t[a.tier], t[a.tier + 1]] = [t[a.tier + 1], t[a.tier]];
+        return { ...x, tiers: t };
+      });
+      return edit({ group: { ...s.group, members } }, a.type === "memberCap" ? `Applied: ${m.name}'s cap raised to ${usd(a.to)}.` : `Applied: ${m.name} swapped two priorities.`);
+    }
+    const { patch, label } = applyTipping({ tiers: s.tiers, budget: s.budget, rules: s.rules, hasCar: s.hasCar, places: s.places }, a);
     edit(patch as Partial<State>, label);
   }
   const togglePin = (id: string) => setPinned((p) => (p.includes(id) ? p.filter((x) => x !== id) : p.length < 3 ? [...p, id] : p));
@@ -156,8 +191,10 @@ export default function Decide() {
             </select>
           </section>
 
+          <GroupPanel g={s.group} budget={s.budget} onChange={onGroup} />
+
           <section>
-            <PriorityChips tiers={s.tiers} places={s.places} onChange={(t, note) => edit({ tiers: t }, note)} />
+            <PriorityChips tiers={shownTiers} places={s.places} onChange={setTiers} />
           </section>
 
           <RhythmEditor rhythm={s.rhythm} notes={Object.fromEntries(base.anchors.filter((a) => a.label).map((a) => [a.anchor, a.label]))}
@@ -188,8 +225,8 @@ export default function Decide() {
 
           <section className={`${card} space-y-3 text-sm`}>
             <h2 className="font-semibold text-slate-100">Your situation</h2>
-            <RangeSlider label="Budget per person (target to hard cap)" min={900} max={2200} step={25} value={s.budget} format={usd}
-              onChange={(v) => edit({ budget: v }, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
+            <RangeSlider label={gOn ? `${s.group.members[s.group.active].name}'s budget per person (target to hard cap)` : "Budget per person (target to hard cap)"} min={900} max={2200} step={25} value={shownBudget} format={usd}
+              onChange={(v) => setBudget(v, v[0] === v[1] ? `Budget set to ${usd(v[1])}.` : `Budget set to ${usd(v[0])} target, ${usd(v[1])} cap.`)} />
             <RangeSlider label="Months you'll live there" min={1} max={12} value={s.months} unit="mo"
               onChange={(v) => edit({ months: v }, v[0] === v[1] ? `You'll be there ${v[0]} months.` : `You'll be there ${v[0]} to ${v[1]} months.`)} />
             <RangeSlider label="People sharing the unit" min={1} max={8} value={s.occupants}
@@ -212,9 +249,10 @@ export default function Decide() {
           <CompareView
             cols={pinned.map((id) => ({ listing: listing(id), ev: result.evaluations.find((e) => e.listingId === id)! })).filter((c) => c.ev)}
             result={result} places={s.places} hasLate={profile.anchors.some((a) => a.lateReturn)} onUnpin={togglePin} />
+          {extra && <GroupResults result={result} x={extra} listings={LISTINGS} places={s.places} />}
           {feasible.length === 0 && <p className={`${card} text-sm`}>Nothing fits all your rules. Loosen one below to see what comes back.</p>}
           {feasible.map((e, i) => (
-            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={s.budget[1]} places={s.places}
+            <ListingCard key={e.listingId} listing={listing(e.listingId)} ev={e} rank={i + 1} prevFirst={prevFirst(e.listingId)} cap={extra?.budget.cap ?? s.budget[1]} places={s.places}
               pinned={pinned.includes(e.listingId)} canPin={pinned.length < 3} onPin={() => togglePin(e.listingId)} />
           ))}
           {out.length > 0 && (

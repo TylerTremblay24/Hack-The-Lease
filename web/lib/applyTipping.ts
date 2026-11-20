@@ -31,7 +31,7 @@ const RULE_NAME: Record<string, string> = {
 };
 
 /** Returns the state patch and a one-line label for the change strip. */
-export function applyTipping(s: ApplyState, a: TippingAction): { patch: Partial<ApplyState>; label: string } {
+export function applyTipping(s: ApplyState, a: Exclude<TippingAction, { type: "memberSwap" } | { type: "memberCap" }>): { patch: Partial<ApplyState>; label: string } {
   if (a.type === "cap") {
     const hi = Math.max(a.to, s.budget[1]);
     return { patch: { budget: [Math.min(s.budget[0], hi), hi] }, label: `Applied: cap raised to ${usd(hi)}.` };
